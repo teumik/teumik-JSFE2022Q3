@@ -1,0 +1,501 @@
+// @import "../normolize/normalize";
+
+$green: #4b9200;
+$orange: linear-gradient(113.96deg, #f9804b, #fe9013);
+$yellow: #ffee2e;
+$orangeGradient: linear-gradient(
+    315.75deg,
+    rgba(254, 210, 144, 0.7) 30.06%,
+    #febdab 100.95%,
+    rgba(254, 210, 144, 0.7) 106.36%
+  ),
+  linear-gradient(
+    315.75deg,
+    rgba(254, 189, 171, 0.74) 30.06%,
+    rgba(243, 169, 248, 0.66) 50.74%,
+    #e0d8f0 80.49%,
+    #eaf7fe 127.9%,
+    #eaf7fe 149.54%
+  ),
+  linear-gradient(
+    315.75deg,
+    rgba(254, 189, 171, 0.74) 30.06%,
+    rgba(243, 169, 248, 0.66) 50.74%,
+    #e0d8f0 80.49%,
+    #eaf7fe 127.9%,
+    #eaf7fe 149.54%
+  );
+$pinkGradient: linear-gradient(
+    315.75deg,
+    rgba(254, 189, 171, 0.74) 30.06%,
+    rgba(243, 169, 248, 0.66) 50.74%,
+    #e0d8f0 80.49%,
+    #eaf7fe 127.9%,
+    #eaf7fe 149.54%
+  ),
+  linear-gradient(
+    315.75deg,
+    rgba(254, 189, 171, 0.74) 30.06%,
+    rgba(243, 169, 248, 0.66) 50.74%,
+    #e0d8f0 80.49%,
+    #eaf7fe 127.9%,
+    #eaf7fe 149.54%
+  );
+$red: #d31414;
+$black: #000000;
+$blackBlue: #333b41;
+$gray: #767474;
+$graySmoky: #ababab;
+$grayLight: #f1f3f2;
+$white: #ffffff;
+$whiteFrostedGlass: rgba(253, 253, 255, 0.52);
+
+$desktopWidth: 1600px;
+$maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
+
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url("../../fonts/Roboto-Bold.ttf"), url("../../fonts/Roboto-Light.ttf"), url("../../fonts/Roboto-Medium.ttf"),
+    url("../../fonts/Roboto-Regular.ttf");
+}
+
+%font-family {
+  font-family: "Roboto", sans-serif;
+}
+
+%font-bold {
+  @extend %font-family;
+  font-weight: 700;
+}
+
+%font-light {
+  @extend %font-family;
+  font-weight: 300;
+}
+
+%font-medium {
+  @extend %font-family;
+  font-weight: 500;
+}
+
+%font-regular {
+  @extend %font-family;
+  font-weight: 400;
+}
+
+%button {
+  padding: 16px;
+  width: 294px;
+  @extend %font-medium;
+  color: $white;
+  line-height: 140%;
+  text-transform: uppercase;
+  background: $orange;
+  border: none;
+}
+
+%button_small-radius {
+  @extend %button;
+  border-radius: 5px;
+}
+
+%button_big-radius {
+  @extend %button;
+  border-radius: 25px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper-content {
+  max-width: $maxWidth;
+  margin: 0 auto;
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  padding: 14px 0;
+  @extend %font-medium;
+  font-size: 16px;
+  color: $white;
+  background-color: $black;
+  .wrapper-content {
+    display: grid;
+    grid-template-columns: repeat(2, auto) 1fr;
+    justify-content: start;
+    align-items: center;
+    gap: 63px;
+    .logo {
+      position: relative;
+      width: min-content;
+      padding: 2px 4px;
+      @extend %font-regular;
+      font-size: 1.188125em;
+      line-height: 120%;
+      border: 1px solid $white;
+      border-radius: 2px;
+      text-align: center;
+      &::before {
+        content: "";
+        background-image: url("../../assets/icons/bamboo-stick.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 12px;
+        height: 21px;
+        position: absolute;
+        top: 22px;
+        left: 9px;
+      }
+    }
+    .nav ul {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      gap: 58px;
+      white-space: nowrap;
+      list-style: none;
+      line-height: 140%;
+    }
+    .copyright {
+      justify-self: end;
+      white-space: nowrap;
+      line-height: 140%;
+    }
+  }
+}
+
+.watch-section {
+  height: 780px;
+  background-image: url("../../assets/images/giant-panda-desktop.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  .wrapper-content {
+    display: flex;
+    justify-content: end;
+    .watch {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+      padding-top: 166px;
+      width: 500px;
+      .circle {
+        position: absolute;
+        top: 92px;
+        left: -73px;
+        z-index: 0;
+        width: 465px;
+        height: 465px;
+        background: $orange;
+        border-radius: 50%;
+      }
+      .promo-text {
+        position: relative;
+        z-index: 1;
+        @extend %font-bold;
+        font-size: 106.496px;
+        line-height: 75%;
+        text-align: center;
+        color: white;
+        text-transform: uppercase;
+        &_yellow {
+          color: $yellow;
+        }
+      }
+      &__button {
+        @extend %button_big-radius;
+      }
+    }
+  }
+}
+
+.backstage-section {
+  position: relative;
+  padding: 140px 0 177px;
+  &::after {
+    content: "";
+    height: 613px;
+    width: 12.75%;
+    background-image: url("../../assets/images/flower_foto1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 12px;
+    right: 0;
+  }
+  .backstage {
+    display: flex;
+    justify-content: space-between;
+    gap: 31px;
+    .image-container {
+      flex: 0 1 609px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+    }
+    .text-container {
+      flex: 0 1 465px;
+      color: $blackBlue;
+      .title {
+        margin: 0;
+        @extend %font-regular;
+        font-size: 48px;
+        line-height: 120%;
+      }
+      .subtitle {
+        margin: 34px 0;
+        @extend %font-regular;
+        font-size: 24px;
+        line-height: 120%;
+      }
+      .text {
+        padding: 20px 0;
+        @extend %font-regular;
+        font-size: 16px;
+        line-height: 137%;
+        &_main {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+.animals-section {
+  position: relative;
+  padding-bottom: 100px;
+  &::before {
+    content: "";
+    height: 460px;
+    width: 292px;
+    width: 18.25%;
+    background-image: url("../../assets/images/palm.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  &::after {
+    content: "";
+    height: 275px;
+    width: 368px;
+    width: 23%;
+    background-image: url("../../assets/images/strelitzia.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  .animals-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    .animals-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .button-container {
+        width: 62px;
+        height: 62px;
+        position: absolute;
+        right: -80px;
+        .button {
+          @extend %button;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+        &_left {
+          @extend .button;
+          left: -80px;
+        }
+      }
+      .animals {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 30px;
+        &__item {
+          border: 1px solid;
+          border-image: $orange 1;
+          .image-container {
+            overflow: hidden;
+            .image {
+              width: 100%;
+              // width: 366px;
+            }
+          }
+          .text-container {
+            position: relative;
+            padding: 6px 14px 14px;
+            // padding: 6px 54px 14px 14px;
+            .title {
+              @extend %font-medium;
+              font-size: 16px;
+              text-transform: uppercase;
+            }
+            .text {
+              @extend %font-light;
+              font-size: 15px;
+            }
+          }
+        }
+        .meat .text-container::after {
+          content: "";
+          width: 48px;
+          height: 38px;
+          background-image: url("../../assets/icons/meet-fish.svg");
+          background-size: cover;
+          background-repeat: no-repeat;
+          position: absolute;
+          top: 4px;
+          right: 8px;
+        }
+        .vegan .text-container::after {
+          content: "";
+          width: 33px;
+          height: 37px;
+          background-image: url("../../assets/icons/banana-bamboo.svg");
+          background-size: cover;
+          background-repeat: no-repeat;
+          position: absolute;
+          top: 6px;
+          right: 12px;
+        }
+      }
+    }
+    .animals__button {
+      @extend %button_big-radius;
+      @extend %font-medium;
+      line-height: 140%;
+      font-size: 16px;
+    }
+  }
+}
+
+.feed-section {
+  padding: 69px 0 100px;
+  background: $orangeGradient;
+  color: $blackBlue;
+  .feed-container {
+    display: grid;
+    padding: 41px 99px 59px;
+    background: $whiteFrostedGlass;
+    border-radius: 20px;
+    .feed__title {
+      text-align: center;
+      margin: 60px 0 40px;
+      @extend %font-regular;
+      font-size: 36px;
+      line-height: 130%;
+      &_color {
+        margin: 0;
+        @extend %font-regular;
+        font-size: 48px;
+        line-height: 120%;
+        color: #fe9013;
+      }
+    }
+    .feed__subtitle {
+      padding: 30px 0 40px;
+      @extend %font-regular;
+      font-size: 24px;
+      line-height: 120%;
+    }
+    .feed__text {
+      @extend %font-regular;
+      font-size: 16px;
+      line-height: 130%;
+      &_long {
+        @extend %font-medium;
+        font-weight: 500;
+        padding-bottom: 10px;
+        width: 105%;
+        font-size: 16px;
+        line-height: 130%;
+        letter-spacing: 0.08px;
+      }
+      &_short {
+        width: 90%;
+        .emergency {
+          position: relative;
+          color: inherit;
+          text-decoration: none;
+          white-space: nowrap;
+          &::after {
+            content: "";
+            display: block;
+            width: 99%;
+            border: 0.5px solid #fe9013;
+            position: absolute;
+            left: 1px;
+            right: 0;
+            bottom: -3px;
+          }
+        }
+      }
+    }
+    .instructions {
+      margin: 0 auto;
+      max-width: 764px;
+      border: 1px solid red;
+      margin-bottom: 60px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      justify-items: center;
+      align-items: stretch;
+      justify-self: center;
+      gap: 30px;
+      .instructions__item {
+        max-width: 168px;
+        display: grid;
+        gap: 30px;
+        &_1 {
+          grid-column-end: span 2;
+        }
+        &_2 {
+          grid-column-end: span 2;
+        }
+        &_3 {
+          grid-column-end: span 2;
+        }
+        .icon {
+          width: 168px;
+          height: 168px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: $white;
+          border: orange solid 1px;
+          border-radius: 5px;
+        }
+        .text {
+          @extend %font-regular;
+          font-size: 16px;
+          line-height: 140%;
+        }
+      }
+      .arrow {
+        align-self: center;
+      }
+    }
+    .feed__button {
+      justify-self: center;
+      @extend %button_big-radius;
+      @extend %font-medium;
+      line-height: 140%;
+      font-size: 16px;
+    }
+  }
+}
