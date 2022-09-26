@@ -1,0 +1,462 @@
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url("../../fonts/Roboto-Bold.ttf"), url("../../fonts/Roboto-Light.ttf"), url("../../fonts/Roboto-Medium.ttf"), url("../../fonts/Roboto-Regular.ttf");
+}
+
+.watch-section .wrapper-content .watch .promo-text, .animals-section .animals-container .animals-wrapper .animals__item .text-container .text, .watch-section .wrapper-content .watch__button, .animals-section .animals-container .animals__button, .feed-section .feed-container .feed__button, .animals-section .animals-container .animals-wrapper .button-container .button, .animals-section .animals-container .animals-wrapper .button-container .button-container_left, .header, .animals-section .animals-container .animals-wrapper .animals__item .text-container .title, .feed-section .feed-container .feed__text_long, .header .wrapper-content .logo, .backstage-section .backstage .text-container .title, .backstage-section .backstage .text-container .subtitle, .backstage-section .backstage .text-container .text, .feed-section .feed-container .feed__title, .feed-section .feed-container .feed__title_color, .feed-section .feed-container .feed__subtitle, .feed-section .feed-container .feed__text, .feed-section .feed-container .instructions .instructions__item .text {
+  font-family: "Roboto", sans-serif;
+}
+
+.watch-section .wrapper-content .watch .promo-text {
+  font-weight: 700;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item .text-container .text {
+  font-weight: 300;
+}
+
+.watch-section .wrapper-content .watch__button, .animals-section .animals-container .animals__button, .feed-section .feed-container .feed__button, .animals-section .animals-container .animals-wrapper .button-container .button, .animals-section .animals-container .animals-wrapper .button-container .button-container_left, .header, .animals-section .animals-container .animals-wrapper .animals__item .text-container .title, .feed-section .feed-container .feed__text_long {
+  font-weight: 500;
+}
+
+.header .wrapper-content .logo, .backstage-section .backstage .text-container .title, .backstage-section .backstage .text-container .subtitle, .backstage-section .backstage .text-container .text, .feed-section .feed-container .feed__title, .feed-section .feed-container .feed__title_color, .feed-section .feed-container .feed__subtitle, .feed-section .feed-container .feed__text, .feed-section .feed-container .instructions .instructions__item .text {
+  font-weight: 400;
+}
+
+.watch-section .wrapper-content .watch__button, .animals-section .animals-container .animals__button, .feed-section .feed-container .feed__button, .animals-section .animals-container .animals-wrapper .button-container .button, .animals-section .animals-container .animals-wrapper .button-container .button-container_left {
+  padding: 16px;
+  width: 294px;
+  color: #ffffff;
+  line-height: 140%;
+  text-transform: uppercase;
+  background: linear-gradient(113.96deg, #f9804b, #fe9013);
+  border: none;
+}
+
+.watch-section .wrapper-content .watch__button, .animals-section .animals-container .animals__button, .feed-section .feed-container .feed__button {
+  border-radius: 25px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper-content {
+  max-width: 72.5%;
+  margin: 0 auto;
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  padding: 14px 0;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.header .wrapper-content {
+  display: grid;
+  grid-template-columns: repeat(2, auto) 1fr;
+  justify-content: start;
+  align-items: center;
+  gap: 63px;
+}
+
+.header .wrapper-content .logo {
+  position: relative;
+  width: min-content;
+  padding: 2px 4px;
+  font-size: 1.188125em;
+  line-height: 120%;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.header .wrapper-content .logo::before {
+  content: "";
+  background-image: url("../../assets/icons/bamboo-stick.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 21px;
+  position: absolute;
+  top: 22px;
+  left: 9px;
+}
+
+.header .wrapper-content .nav ul {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 58px;
+  white-space: nowrap;
+  list-style: none;
+  line-height: 140%;
+}
+
+.header .wrapper-content .copyright {
+  justify-self: end;
+  white-space: nowrap;
+  line-height: 140%;
+}
+
+.watch-section {
+  height: 780px;
+  background-image: url("../../assets/images/giant-panda-desktop.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.watch-section .wrapper-content {
+  display: flex;
+  justify-content: end;
+}
+
+.watch-section .wrapper-content .watch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  padding-top: 166px;
+  width: 500px;
+}
+
+.watch-section .wrapper-content .watch .circle {
+  position: absolute;
+  top: 92px;
+  left: -73px;
+  z-index: 0;
+  width: 465px;
+  height: 465px;
+  background: linear-gradient(113.96deg, #f9804b, #fe9013);
+  border-radius: 50%;
+}
+
+.watch-section .wrapper-content .watch .promo-text {
+  position: relative;
+  z-index: 1;
+  font-size: 106.496px;
+  line-height: 75%;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+}
+
+.watch-section .wrapper-content .watch .promo-text_yellow {
+  color: #ffee2e;
+}
+
+.backstage-section {
+  position: relative;
+  padding: 140px 0 177px;
+}
+
+.backstage-section::after {
+  content: "";
+  height: 613px;
+  width: 12.75%;
+  background-image: url("../../assets/images/flower_foto1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 12px;
+  right: 0;
+}
+
+.backstage-section .backstage {
+  display: flex;
+  justify-content: space-between;
+  gap: 31px;
+}
+
+.backstage-section .backstage .image-container {
+  flex: 0 1 609px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.backstage-section .backstage .text-container {
+  flex: 0 1 465px;
+  color: #333b41;
+}
+
+.backstage-section .backstage .text-container .title {
+  margin: 0;
+  font-size: 48px;
+  line-height: 120%;
+}
+
+.backstage-section .backstage .text-container .subtitle {
+  margin: 34px 0;
+  font-size: 24px;
+  line-height: 120%;
+}
+
+.backstage-section .backstage .text-container .text {
+  padding: 20px 0;
+  font-size: 16px;
+  line-height: 137%;
+}
+
+.backstage-section .backstage .text-container .text_main {
+  padding: 0;
+}
+
+.animals-section {
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.animals-section::before {
+  content: "";
+  height: 460px;
+  width: 292px;
+  width: 18.25%;
+  background-image: url("../../assets/images/palm.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.animals-section::after {
+  content: "";
+  height: 275px;
+  width: 368px;
+  width: 23%;
+  background-image: url("../../assets/images/strelitzia.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.animals-section .animals-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
+
+.animals-section .animals-container .animals-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animals-section .animals-container .animals-wrapper .button-container {
+  width: 62px;
+  height: 62px;
+  position: absolute;
+  right: -80px;
+}
+
+.animals-section .animals-container .animals-wrapper .button-container .button, .animals-section .animals-container .animals-wrapper .button-container .button-container_left {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.animals-section .animals-container .animals-wrapper .button-container_left {
+  left: -80px;
+}
+
+.animals-section .animals-container .animals-wrapper .animals {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 30px;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item {
+  border: 1px solid;
+  border-image: linear-gradient(113.96deg, #f9804b, #fe9013) 1;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item .image-container {
+  overflow: hidden;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item .image-container .image {
+  width: 100%;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item .text-container {
+  position: relative;
+  padding: 6px 14px 14px;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item .text-container .title {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item .text-container .text {
+  font-size: 15px;
+}
+
+.animals-section .animals-container .animals-wrapper .animals .meat .text-container::after {
+  content: "";
+  width: 48px;
+  height: 38px;
+  background-image: url("../../assets/icons/meet-fish.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 4px;
+  right: 8px;
+}
+
+.animals-section .animals-container .animals-wrapper .animals .vegan .text-container::after {
+  content: "";
+  width: 33px;
+  height: 37px;
+  background-image: url("../../assets/icons/banana-bamboo.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 6px;
+  right: 12px;
+}
+
+.animals-section .animals-container .animals__button {
+  line-height: 140%;
+  font-size: 16px;
+}
+
+.feed-section {
+  padding: 69px 0 100px;
+  background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #febdab 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #e0d8f0 80.49%, #eaf7fe 127.9%, #eaf7fe 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #e0d8f0 80.49%, #eaf7fe 127.9%, #eaf7fe 149.54%);
+  color: #333b41;
+}
+
+.feed-section .feed-container {
+  display: grid;
+  padding: 41px 99px 59px;
+  background: rgba(253, 253, 255, 0.52);
+  border-radius: 20px;
+}
+
+.feed-section .feed-container .feed__title {
+  text-align: center;
+  margin: 60px 0 40px;
+  font-size: 36px;
+  line-height: 130%;
+}
+
+.feed-section .feed-container .feed__title_color {
+  margin: 0;
+  font-size: 48px;
+  line-height: 120%;
+  color: #fe9013;
+}
+
+.feed-section .feed-container .feed__subtitle {
+  padding: 30px 0 40px;
+  font-size: 24px;
+  line-height: 120%;
+}
+
+.feed-section .feed-container .feed__text {
+  font-size: 16px;
+  line-height: 130%;
+}
+
+.feed-section .feed-container .feed__text_long {
+  font-weight: 500;
+  padding-bottom: 10px;
+  width: 105%;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: 0.08px;
+}
+
+.feed-section .feed-container .feed__text_short {
+  width: 90%;
+}
+
+.feed-section .feed-container .feed__text_short .emergency {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.feed-section .feed-container .feed__text_short .emergency::after {
+  content: "";
+  display: block;
+  width: 99%;
+  border: 0.5px solid #fe9013;
+  position: absolute;
+  left: 1px;
+  right: 0;
+  bottom: -3px;
+}
+
+.feed-section .feed-container .instructions {
+  margin: 0 auto;
+  max-width: 764px;
+  border: 1px solid red;
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  justify-items: center;
+  align-items: stretch;
+  justify-self: center;
+  gap: 30px;
+}
+
+.feed-section .feed-container .instructions .instructions__item {
+  max-width: 168px;
+  display: grid;
+  gap: 30px;
+}
+
+.feed-section .feed-container .instructions .instructions__item_1 {
+  grid-column-end: span 2;
+}
+
+.feed-section .feed-container .instructions .instructions__item_2 {
+  grid-column-end: span 2;
+}
+
+.feed-section .feed-container .instructions .instructions__item_3 {
+  grid-column-end: span 2;
+}
+
+.feed-section .feed-container .instructions .instructions__item .icon {
+  width: 168px;
+  height: 168px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border: orange solid 1px;
+  border-radius: 5px;
+}
+
+.feed-section .feed-container .instructions .instructions__item .text {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.feed-section .feed-container .instructions .arrow {
+  align-self: center;
+}
+
+.feed-section .feed-container .feed__button {
+  justify-self: center;
+  line-height: 140%;
+  font-size: 16px;
+}
