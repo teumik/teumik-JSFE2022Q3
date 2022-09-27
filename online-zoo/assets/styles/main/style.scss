@@ -451,7 +451,6 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     .instructions {
       margin: 0 auto;
       max-width: 764px;
-      border: 1px solid red;
       margin-bottom: 60px;
       display: grid;
       grid-template-columns: repeat(8, 1fr);
@@ -534,7 +533,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       // height: 391px;
     }
     .slider-bar {
-      margin: 22px 0 31px;
+      margin: 26px 0 31px;
       position: relative;
       width: 51.637931%;
       height: 6px;
@@ -573,7 +572,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   gap: 30px;
   &__item {
     position: relative;
-    padding: 12px 15px 19px 16px;
+    padding: 14px 15px 19px 16px;
     background-color: $grayLight;
     border-radius: 20px;
     &::before {
@@ -589,10 +588,9 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       z-index: -1;
     }
     .user {
-      margin-bottom: 9px;
+      margin-bottom: 7px;
       display: flex;
       gap: 10px;
-
       &__avatar {
       }
       &__name {
@@ -603,16 +601,25 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       }
       &__meta {
         display: flex;
+
         gap: 16px;
         @extend %font-light;
         font-size: 15px;
         line-height: 120%;
         color: #bdbdbd;
+        .user__date {
+          position: relative;
+          &::before {
+            content: "\2022";
+            position: absolute;
+            left: -8px;
+          }
+        }
       }
     }
   }
   .feedback {
-    height: 309px;
+    height: 307px;
     overflow: scroll;
     @extend %font-light;
     font-size: 15px;
