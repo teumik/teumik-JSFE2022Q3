@@ -85,7 +85,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 
 %button {
   padding: 16px;
-  width: 294px;
+  width: 298px;
   @extend %font-medium;
   color: $white;
   line-height: 140%;
@@ -209,6 +209,8 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       }
       &__button {
         @extend %button_big-radius;
+        font-size: 16px;
+        line-height: 140%;
       }
     }
   }
@@ -497,5 +499,124 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       line-height: 140%;
       font-size: 16px;
     }
+  }
+}
+
+.testimonials-section {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    height: 408px;
+    width: 247px;
+    width: 15.4375%;
+    background: url("../../assets/images/leav.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    bottom: -133px;
+  }
+  .testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 140px 0 180px;
+    .title {
+      margin-bottom: 47px;
+      @extend %font-regular;
+      font-size: 36px;
+      line-height: 130%;
+      color: $blackBlue;
+      text-align: center;
+    }
+    .feedbacks {
+      // height: 391px;
+    }
+    .slider-bar {
+      margin: 22px 0 31px;
+      position: relative;
+      width: 51.637931%;
+      height: 6px;
+      background: #f5f7f6;
+      border-radius: 5px;
+      &_position {
+        width: 19%;
+        height: 100%;
+        background-color: #fe9013;
+        border-radius: 5px;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: -0.5px;
+        bottom: -0.5px;
+        left: -0.5px;
+        right: -0.5px;
+        background: $pinkGradient;
+        border-radius: 5.5px;
+        z-index: -1;
+      }
+    }
+    &__button {
+      align-self: flex-start;
+      @extend %button_small-radius;
+      font-size: 16px;
+    }
+  }
+}
+
+.feedbacks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 30px;
+  &__item {
+    position: relative;
+    padding: 12px 15px 19px 16px;
+    background-color: $grayLight;
+    border-radius: 20px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      bottom: -2px;
+      left: -2px;
+      right: -2px;
+      background: $pinkGradient;
+      border-radius: 22px;
+
+      z-index: -1;
+    }
+    .user {
+      margin-bottom: 9px;
+      display: flex;
+      gap: 10px;
+
+      &__avatar {
+      }
+      &__name {
+        @extend %font-regular;
+        font-size: 16px;
+        line-height: 120%;
+        color: $black;
+      }
+      &__meta {
+        display: flex;
+        gap: 16px;
+        @extend %font-light;
+        font-size: 15px;
+        line-height: 120%;
+        color: #bdbdbd;
+      }
+    }
+  }
+  .feedback {
+    height: 309px;
+    overflow: scroll;
+    @extend %font-light;
+    font-size: 15px;
+    line-height: 120%;
+    color: $gray;
   }
 }
