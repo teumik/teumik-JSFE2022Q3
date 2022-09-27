@@ -3,7 +3,7 @@
   src: url("../../fonts/Roboto-Bold.ttf"), url("../../fonts/Roboto-Light.ttf"), url("../../fonts/Roboto-Medium.ttf"), url("../../fonts/Roboto-Regular.ttf");
 }
 
-.info__copyright, .watch-section .wrapper-content .watch .promo-text, .animals-section .animals-container .animals-wrapper .animals__item .text-container .text, .feedbacks__item .user__meta, .feedbacks .feedback, .testimonials-section .testimonials__button, .footer .donate__button, .watch-section .wrapper-content .watch__button, .animals-section .animals-container .animals__button, .feed-section .feed-container .feed__button, .animals-section .animals-container .animals-wrapper .button-container .button, .animals-section .animals-container .animals-wrapper .button-container .button-container_left, .header, .animals-section .animals-container .animals-wrapper .animals__item .text-container .title, .feed-section .feed-container .feed__text_long, .news .subscribe-form__button, .header .wrapper-content .logo, .news__logo, .backstage-section .backstage .text-container .title, .backstage-section .backstage .text-container .subtitle, .backstage-section .backstage .text-container .text, .feed-section .feed-container .feed__title, .feed-section .feed-container .feed__title_color, .feed-section .feed-container .feed__subtitle, .feed-section .feed-container .feed__text, .feed-section .feed-container .instructions .instructions__item .text, .testimonials-section .testimonials .title, .feedbacks__item .user__name, .news__subscribe, .news .subscribe-form__input, .info__social .socials__item .title, .info .nav .menu {
+.info__copyright, .watch-section .wrapper-content .watch .promo-text, .animals-section .animals-container .animals-wrapper .animals__item .text-container .text, .feedbacks__item .user__meta, .feedbacks .feedback, .testimonials-section .testimonials__button, .footer .donate__button, .watch-section .wrapper-content .watch__button, .animals-section .animals-container .animals__button, .feed-section .feed-container .feed__button, .animals-section .animals-container .animals-wrapper .button-container .button, .animals-section .animals-container .animals-wrapper .button-container .button-container_left, .header, .animals-section .animals-container .animals-wrapper .animals__item .text-container .title, .feed-section .feed-container .feed__text_long, .news .subscribe-form__button, .header .wrapper-content .logo, .news__logo, .backstage-section .backstage .text-container .title, .backstage-section .backstage .text-container .subtitle, .backstage-section .backstage .text-container .text, .feed-section .feed-container .feed__title, .feed-section .feed-container .feed__title_color, .feed-section .feed-container .feed__subtitle, .feed-section .feed-container .feed__text, .feed-section .feed-container .instructions .instructions__item .text, .testimonials-section .testimonials .title, .feedbacks__item .user__name, .news__subscribe, .news .subscribe-form__input, .info__social .socials__item .link .title, .info .nav .menu {
   font-family: "Roboto", sans-serif;
 }
 
@@ -23,7 +23,7 @@
   font-weight: 500;
 }
 
-.news .subscribe-form__button, .header .wrapper-content .logo, .news__logo, .backstage-section .backstage .text-container .title, .backstage-section .backstage .text-container .subtitle, .backstage-section .backstage .text-container .text, .feed-section .feed-container .feed__title, .feed-section .feed-container .feed__title_color, .feed-section .feed-container .feed__subtitle, .feed-section .feed-container .feed__text, .feed-section .feed-container .instructions .instructions__item .text, .testimonials-section .testimonials .title, .feedbacks__item .user__name, .news__subscribe, .news .subscribe-form__input, .info__social .socials__item .title, .info .nav .menu {
+.news .subscribe-form__button, .header .wrapper-content .logo, .news__logo, .backstage-section .backstage .text-container .title, .backstage-section .backstage .text-container .subtitle, .backstage-section .backstage .text-container .text, .feed-section .feed-container .feed__title, .feed-section .feed-container .feed__title_color, .feed-section .feed-container .feed__subtitle, .feed-section .feed-container .feed__text, .feed-section .feed-container .instructions .instructions__item .text, .testimonials-section .testimonials .title, .feedbacks__item .user__name, .news__subscribe, .news .subscribe-form__input, .info__social .socials__item .link .title, .info .nav .menu {
   font-weight: 400;
 }
 
@@ -33,21 +33,26 @@
   color: #ffffff;
   line-height: 140%;
   text-transform: uppercase;
-  background: linear-gradient(113.96deg, #f9804b, #fe9013);
+  background: #f9804b;
+  background-image: linear-gradient(113.96deg, #f9804b, #fe9013);
   border: none;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .testimonials-section .testimonials__button:hover, .footer .donate__button:hover, .watch-section .wrapper-content .watch__button:hover, .animals-section .animals-container .animals__button:hover, .feed-section .feed-container .feed__button:hover, .animals-section .animals-container .animals-wrapper .button-container .button:hover, .animals-section .animals-container .animals-wrapper .button-container .button-container_left:hover {
   background: #e47209;
+  transition: all 0.3s;
 }
 
 .testimonials-section .testimonials__button:active, .footer .donate__button:active, .watch-section .wrapper-content .watch__button:active, .animals-section .animals-container .animals__button:active, .feed-section .feed-container .feed__button:active, .animals-section .animals-container .animals-wrapper .button-container .button:active, .animals-section .animals-container .animals-wrapper .button-container .button-container_left:active {
   background: #4b9200;
+  transition: all 0.3s;
 }
 
 .testimonials-section .testimonials__button:disabled, .footer .donate__button:disabled, .watch-section .wrapper-content .watch__button:disabled, .animals-section .animals-container .animals__button:disabled, .feed-section .feed-container .feed__button:disabled, .animals-section .animals-container .animals-wrapper .button-container .button:disabled, .animals-section .animals-container .animals-wrapper .button-container .button-container_left:disabled {
   background: #767474;
+  transition: all 0.3s;
 }
 
 .testimonials-section .testimonials__button, .footer .donate__button {
@@ -62,21 +67,11 @@
   padding: 10px 39px;
   font-size: 16px;
   line-height: 140%;
-  color: #333b41;
   background-color: #f1f3f2;
+  color: #333b41;
   border: 1px solid #333b41;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.news .subscribe-form__button:active {
-  color: #4b9200;
-  border: 1px solid #4b9200;
-}
-
-.news .subscribe-form__button:disabled {
-  color: #d31414;
-  border: 1px solid #d31414;
 }
 
 .header .wrapper-content .logo, .news__logo {
@@ -87,51 +82,54 @@
   border: 1px solid #ffffff;
   border-radius: 2px;
   text-align: center;
+  transition: all 0.3s;
 }
 
 .header .wrapper-content .logo .link, .news__logo .link {
   padding: 2px 4px;
 }
 
-.header .wrapper-content .logo::before, .news__logo::before {
-  content: "";
-  background-image: url("../../assets/icons/bamboo-stick.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 12px;
-  height: 21px;
+.header .wrapper-content .logo svg, .news__logo svg {
   position: absolute;
   top: 22px;
   left: 9px;
 }
 
-.header .wrapper-content .logo:hover, .news__logo:hover {
-  border: 1px solid #e47209;
-  color: linear-gradient(113.96deg, #f9804b, #fe9013);
+.header .wrapper-content .logo svg path, .news__logo svg path {
+  transition: all 0.3s;
 }
 
-.header .wrapper-content .logo:hover svg, .news__logo:hover svg {
-  fill: red;
+.header .wrapper-content .logo:hover, .news__logo:hover {
+  transition: all 0.3s;
+  border: 1px solid #fe9013;
 }
 
 .header .wrapper-content .logo:hover svg path, .news__logo:hover svg path {
-  fill: red;
+  transition: all 0.3s;
+  fill: #fe9013;
 }
 
 .link {
+  display: inline-block;
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .link:hover {
-  color: orange;
+  color: #fe9013;
+}
+
+.link_active {
+  color: #fe9013;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 .wrapper-content {
@@ -355,8 +353,37 @@
 
 .animals-section .animals-container .animals-wrapper .animals__item {
   position: relative;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 5px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item:hover {
+  background: linear-gradient(113.96deg, #f9804b, #fe9013);
+  transition: all 0.5s;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item:hover .image-container {
+  transition: all 0.5s;
+  filter: brightness(0.5);
+  overflow: hidden;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item:hover .image-container .image {
+  transition: all 0.5s;
+  transform: scale(1.02732);
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item:hover .text-container {
+  transition: all 0.5s;
+  top: -80px;
+  color: #ffffff;
+}
+
+.animals-section .animals-container .animals-wrapper .animals__item:hover .text-container::after {
+  transition: all 0.5s;
+  opacity: 0;
 }
 
 .animals-section .animals-container .animals-wrapper .animals__item::before {
@@ -371,22 +398,38 @@
   z-index: -1;
 }
 
+.animals-section .animals-container .animals-wrapper .animals__item .image-container {
+  transition: all 0.5s;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
 .animals-section .animals-container .animals-wrapper .animals__item .image-container .image {
+  transition: all 0.5s;
   border-radius: 5px 5px 0 0;
   width: 100%;
+  height: 366px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .animals-section .animals-container .animals-wrapper .animals__item .text-container {
   position: relative;
+  top: 0;
   padding: 6px 14px 14px;
+  overflow: hidden;
+  transition: all 0.5s;
 }
 
 .animals-section .animals-container .animals-wrapper .animals__item .text-container .title {
+  max-width: 75%;
   font-size: 16px;
   text-transform: uppercase;
 }
 
 .animals-section .animals-container .animals-wrapper .animals__item .text-container .text {
+  max-width: 75%;
   font-size: 15px;
 }
 
@@ -400,6 +443,7 @@
   position: absolute;
   top: 4px;
   right: 8px;
+  transition: all 0.5s;
 }
 
 .animals-section .animals-container .animals-wrapper .animals .vegan .text-container::after {
@@ -412,6 +456,7 @@
   position: absolute;
   top: 6px;
   right: 12px;
+  transition: all 0.5s;
 }
 
 .animals-section .animals-container .animals__button {
@@ -472,7 +517,6 @@
 
 .feed-section .feed-container .feed__text_short .emergency {
   position: relative;
-  color: inherit;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -491,11 +535,11 @@
 .feed-section .feed-container .instructions {
   margin: 0 auto;
   max-width: 764px;
-  margin-bottom: 60px;
+  margin-bottom: 62px;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   justify-items: center;
-  align-items: stretch;
+  align-items: start;
   justify-self: center;
   gap: 30px;
   z-index: 1;
@@ -548,7 +592,9 @@
 }
 
 .feed-section .feed-container .instructions .arrow {
-  align-self: center;
+  position: relative;
+  top: 60px;
+  z-index: 1;
 }
 
 .feed-section .feed-container .feed__button {
@@ -591,7 +637,7 @@
 }
 
 .testimonials-section .testimonials .slider-bar {
-  margin: 25px 0 31px;
+  margin: 23px 0 31px;
   position: relative;
   width: 51.637931%;
   height: 6px;
@@ -604,6 +650,7 @@
   height: 100%;
   background-color: #fe9013;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .testimonials-section .testimonials .slider-bar::before {
@@ -723,26 +770,45 @@
 }
 
 .news .subscribe-form__input {
-  font-size: 16px;
-  line-height: 140%;
-  width: 228px;
   position: relative;
   padding: 10px;
-  background: #111115;
-  border: 1px solid orange;
+  width: 228px;
+  font-size: 16px;
+  line-height: 140%;
+  color: #ffffff;
+  background: transparent;
+  border: 0.7px solid #fe9013;
   border-radius: 2px;
+  outline: none;
 }
 
-.news .subscribe-form__input::before {
-  content: "";
-  position: absolute;
-  top: -0.7px;
-  bottom: -0.7px;
-  left: -0.7px;
-  right: -0.7px;
-  background: linear-gradient(113.96deg, #f9804b, #fe9013);
-  border-radius: 2.7px;
-  z-index: -1;
+.news .subscribe-form__input:focus {
+  border: 0.7px solid #4b9200;
+}
+
+.news .subscribe-form__input:focus + .subscribe-form__button {
+  border: 1px solid #4b9200;
+  color: #4b9200;
+}
+
+.news .subscribe-form__input:valid + .subscribe-form__button {
+  color: #333b41;
+  border: 1px solid #333b41;
+}
+
+.news .subscribe-form__input:valid + .subscribe-form__button:active {
+  color: #4b9200;
+  border: 1px solid #4b9200;
+}
+
+.news .subscribe-form__input:invalid {
+  color: #d31414;
+  border: 0.7px solid #d31414;
+}
+
+.news .subscribe-form__input:invalid + .subscribe-form__button {
+  border: 1px solid #d31414;
+  color: #d31414;
 }
 
 .info {
@@ -759,13 +825,13 @@
   list-style: none;
 }
 
-.info__social .socials__item {
+.info__social .socials__item .link {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.info__social .socials__item .icon {
+.info__social .socials__item .link .icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -775,9 +841,17 @@
   border-radius: 50%;
 }
 
-.info__social .socials__item .title {
+.info__social .socials__item .link .title {
   font-size: 16px;
   line-height: 140%;
+}
+
+.info__social .socials__item:hover .icon {
+  background: #4b9200;
+}
+
+.info__social .socials__item:hover .title {
+  color: #4b9200;
 }
 
 .info .nav .menu {
@@ -798,6 +872,81 @@
   line-height: 130%;
 }
 
+.info__copyright .link_info {
+  position: relative;
+  cursor: pointer;
+}
+
+.info__copyright .link_info:hover {
+  color: #4b9200;
+}
+
+.info__copyright .link_info:hover::after {
+  content: "";
+  display: block;
+  width: 99%;
+  border: 0.5px solid #4b9200;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+}
+
 .info__copyright .author {
   margin-bottom: 10px;
+}
+
+.range {
+  position: relative;
+  width: 51.637931%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #f5f7f6;
+  height: 6px;
+  border-radius: 5px;
+  margin: 23px 0 31px;
+}
+
+.range::before {
+  content: "";
+  position: absolute;
+  top: -0.5px;
+  bottom: -0.5px;
+  left: -0.5px;
+  right: -0.5px;
+  background: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #e0d8f0 80.49%, #eaf7fe 127.9%, #eaf7fe 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #e0d8f0 80.49%, #eaf7fe 127.9%, #eaf7fe 149.54%);
+  border-radius: 5.5px;
+  z-index: -1;
+}
+
+input[type="range"]::-moz-range-track {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  border: 1px solid transparent;
+  border-image-slice: 1;
+  -moz-border-image: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #e0d8f0 80.49%, #eaf7fe 127.9%, #eaf7fe 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #e0d8f0 80.49%, #eaf7fe 127.9%, #eaf7fe 149.54%);
+  border-radius: 5px;
+  -moz-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 19%;
+  height: 6px;
+  background-color: #fe9013;
+  border: none;
+  border-radius: 5px;
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 19%;
+  height: 6px;
+  background-color: #fe9013;
+  border: none;
+  border-radius: 5px;
+  -moz-appearance: none;
+  cursor: pointer;
 }
