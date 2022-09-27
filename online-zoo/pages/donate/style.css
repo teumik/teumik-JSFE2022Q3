@@ -1,0 +1,14 @@
+div {
+  border: 1px solid red;
+}
+
+.second {
+  position: relative;
+  transition: all 1s ease;
+  top: 0;
+}
+
+.first:hover .second {
+  top: -50px;
+  left: 0;
+}
