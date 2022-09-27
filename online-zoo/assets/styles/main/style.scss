@@ -2,6 +2,7 @@
 
 $green: #4b9200;
 $orange: linear-gradient(113.96deg, #f9804b, #fe9013);
+$orangeSecond: linear-gradient(113.96deg, #fa6f32 1.49%, #fe9013 101.44%);
 $yellow: #ffee2e;
 $orangeGradient: linear-gradient(
     315.75deg,
@@ -63,6 +64,11 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   font-family: "Roboto", sans-serif;
 }
 
+%font-thin {
+  @extend %font-family;
+  font-weight: 100;
+}
+
 %font-bold {
   @extend %font-family;
   font-weight: 700;
@@ -92,6 +98,16 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   text-transform: uppercase;
   background: $orange;
   border: none;
+  cursor: pointer;
+  &:hover {
+    background: #e47209;
+  }
+  &:active {
+    background: $green;
+  }
+  &:disabled {
+    background: $gray;
+  }
 }
 
 %button_small-radius {
@@ -102,6 +118,73 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 %button_big-radius {
   @extend %button;
   border-radius: 25px;
+}
+
+%small-button {
+  padding: 10px 39px;
+  @extend %font-regular;
+  font-size: 16px;
+  line-height: 140%;
+  color: $blackBlue;
+  background-color: $grayLight;
+  border: 1px solid $blackBlue;
+  border-radius: 5px;
+  cursor: pointer;
+  &:active {
+    color: $green;
+    border: 1px solid $green;
+  }
+  &:disabled {
+    color: $red;
+    border: 1px solid $red;
+  }
+}
+
+%logo {
+  position: relative;
+  width: min-content;
+  .link {
+    padding: 2px 4px;
+  }
+  @extend %font-regular;
+  font-size: 1.188125em;
+  line-height: 120%;
+  border: 1px solid $white;
+  border-radius: 2px;
+  text-align: center;
+  &::before {
+    content: "";
+    background-image: url("../../assets/icons/bamboo-stick.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 21px;
+    position: absolute;
+    top: 22px;
+    left: 9px;
+  }
+  &:hover {
+    border: 1px solid #e47209;
+    color: $orange;
+    // fill: red;
+    svg {
+      fill: red;
+      path {
+        fill: red;
+      }
+    }
+  }
+}
+
+.link {
+  // display: block;
+  // border: 1px solid #d31414;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: orange;
+  }
 }
 
 * {
@@ -123,6 +206,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   font-size: 16px;
   color: $white;
   background-color: $black;
+  z-index: 2;
   .wrapper-content {
     display: grid;
     grid-template-columns: repeat(2, auto) 1fr;
@@ -130,26 +214,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     align-items: center;
     gap: 63px;
     .logo {
-      position: relative;
-      width: min-content;
-      padding: 2px 4px;
-      @extend %font-regular;
-      font-size: 1.188125em;
-      line-height: 120%;
-      border: 1px solid $white;
-      border-radius: 2px;
-      text-align: center;
-      &::before {
-        content: "";
-        background-image: url("../../assets/icons/bamboo-stick.svg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 12px;
-        height: 21px;
-        position: absolute;
-        top: 22px;
-        left: 9px;
-      }
+      @extend %logo;
     }
     .nav ul {
       display: grid;
@@ -329,11 +394,23 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px 30px;
         &__item {
-          border: 1px solid;
-          border-image: $orange 1;
+          position: relative;
+          background-color: $white;
+          border-radius: 5px;
+          &::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            bottom: -1px;
+            left: -1px;
+            right: -1px;
+            background: $orangeSecond;
+            border-radius: 6px;
+            z-index: -1;
+          }
           .image-container {
-            overflow: hidden;
             .image {
+              border-radius: 5px 5px 0 0;
               width: 100%;
               // width: 366px;
             }
@@ -341,7 +418,6 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
           .text-container {
             position: relative;
             padding: 6px 14px 14px;
-            // padding: 6px 54px 14px 14px;
             .title {
               @extend %font-medium;
               font-size: 16px;
@@ -458,6 +534,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       align-items: stretch;
       justify-self: center;
       gap: 30px;
+      z-index: 1;
       .instructions__item {
         max-width: 168px;
         display: grid;
@@ -472,14 +549,25 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
           grid-column-end: span 2;
         }
         .icon {
+          position: relative;
           width: 168px;
           height: 168px;
           display: flex;
           justify-content: center;
           align-items: center;
           background: $white;
-          border: orange solid 1px;
           border-radius: 5px;
+          &::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            bottom: -1px;
+            left: -1px;
+            right: -1px;
+            background: $orange;
+            border-radius: 6px;
+            z-index: -1;
+          }
         }
         .text {
           @extend %font-regular;
@@ -522,7 +610,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     align-items: center;
     padding: 140px 0 180px;
     .title {
-      margin-bottom: 47px;
+      margin-bottom: 49px;
       @extend %font-regular;
       font-size: 36px;
       line-height: 130%;
@@ -533,7 +621,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       // height: 391px;
     }
     .slider-bar {
-      margin: 26px 0 31px;
+      margin: 25px 0 31px;
       position: relative;
       width: 51.637931%;
       height: 6px;
@@ -584,7 +672,6 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       right: -2px;
       background: $pinkGradient;
       border-radius: 22px;
-
       z-index: -1;
     }
     .user {
@@ -625,5 +712,126 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     font-size: 15px;
     line-height: 120%;
     color: $gray;
+  }
+}
+
+.footer {
+  padding: 40px 0 50px;
+  color: $white;
+  background-color: #111115;
+  .news {
+  }
+  .donate {
+    padding: 36px 0 44px;
+    &__button {
+      @extend %button_small-radius;
+      @extend %font-medium;
+      font-size: 16px;
+      line-height: 140%;
+    }
+  }
+}
+
+.news {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 36px;
+  &__logo {
+    @extend %logo;
+  }
+  &__subscribe {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 13px;
+    @extend %font-regular;
+    font-size: 24px;
+    line-height: 120%;
+  }
+  .subscribe-form {
+    display: flex;
+    gap: 10px;
+    &__input {
+      @extend %font-regular;
+      font-size: 16px;
+      line-height: 140%;
+      width: 228px;
+      position: relative;
+      padding: 10px;
+      background: #111115;
+      border: 1px solid orange;
+      border-radius: 2px;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -0.7px;
+        bottom: -0.7px;
+        left: -0.7px;
+        right: -0.7px;
+        background: $orange;
+        border-radius: 2.7px;
+        z-index: -1;
+      }
+    }
+    &__button {
+      @extend %small-button;
+    }
+  }
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+  gap: 88px;
+  &__social {
+    .socials {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+      &__item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        .icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 26px;
+          height: 26px;
+          background-color: #c4c4c4;
+          border-radius: 50%;
+        }
+        .title {
+          @extend %font-regular;
+          font-size: 16px;
+          line-height: 140%;
+        }
+      }
+    }
+  }
+  .nav {
+    .menu {
+      display: flex;
+      gap: 58px;
+      @extend %font-regular;
+      font-size: 16px;
+      line-height: 140%;
+      list-style: none;
+      &__item {
+        white-space: nowrap;
+      }
+    }
+  }
+  &__copyright {
+    justify-self: end;
+    @extend %font-thin;
+    font-size: 16px;
+    line-height: 130%;
+    .author {
+      margin-bottom: 10px;
+    }
   }
 }
