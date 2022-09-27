@@ -416,7 +416,6 @@
 .feed-section .feed-container .instructions {
   margin: 0 auto;
   max-width: 764px;
-  border: 1px solid red;
   margin-bottom: 60px;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -504,7 +503,7 @@
 }
 
 .testimonials-section .testimonials .slider-bar {
-  margin: 22px 0 31px;
+  margin: 26px 0 31px;
   position: relative;
   width: 51.637931%;
   height: 6px;
@@ -544,7 +543,7 @@
 
 .feedbacks__item {
   position: relative;
-  padding: 12px 15px 19px 16px;
+  padding: 14px 15px 19px 16px;
   background-color: #f1f3f2;
   border-radius: 20px;
 }
@@ -562,7 +561,7 @@
 }
 
 .feedbacks__item .user {
-  margin-bottom: 9px;
+  margin-bottom: 7px;
   display: flex;
   gap: 10px;
 }
@@ -581,8 +580,18 @@
   color: #bdbdbd;
 }
 
+.feedbacks__item .user__meta .user__date {
+  position: relative;
+}
+
+.feedbacks__item .user__meta .user__date::before {
+  content: "\2022";
+  position: absolute;
+  left: -8px;
+}
+
 .feedbacks .feedback {
-  height: 309px;
+  height: 307px;
   overflow: scroll;
   font-size: 15px;
   line-height: 120%;
