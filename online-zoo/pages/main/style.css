@@ -316,7 +316,6 @@
 .animals-section .animals-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 80px;
 }
 
@@ -345,6 +344,7 @@
 }
 
 .animals-section .animals-container .animals-wrapper .animals {
+  width: 100%;
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -460,6 +460,7 @@
 }
 
 .animals-section .animals-container .animals__button {
+  align-self: center;
   line-height: 140%;
   font-size: 16px;
 }
