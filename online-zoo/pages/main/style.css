@@ -832,6 +832,10 @@
   border: 0.7px solid #d31414;
 }
 
+.news .subscribe-form__input:invalid::placeholder {
+  color: #d31414;
+}
+
 .news .subscribe-form__input:invalid + .subscribe-form__button {
   border: 1px solid #d31414;
   color: #d31414;
