@@ -1,0 +1,495 @@
+$green: #4b9200;
+$orange: linear-gradient(113.96deg, #f9804b, #fe9013);
+$orangeSecond: linear-gradient(113.96deg, #fa6f32 1.49%, #fe9013 101.44%);
+$yellow: #ffee2e;
+$orangeGradient: linear-gradient(
+    315.75deg,
+    rgba(254, 210, 144, 0.7) 30.06%,
+    #febdab 100.95%,
+    rgba(254, 210, 144, 0.7) 106.36%
+  ),
+  linear-gradient(
+    315.75deg,
+    rgba(254, 189, 171, 0.74) 30.06%,
+    rgba(243, 169, 248, 0.66) 50.74%,
+    #e0d8f0 80.49%,
+    #eaf7fe 127.9%,
+    #eaf7fe 149.54%
+  ),
+  linear-gradient(
+    315.75deg,
+    rgba(254, 189, 171, 0.74) 30.06%,
+    rgba(243, 169, 248, 0.66) 50.74%,
+    #e0d8f0 80.49%,
+    #eaf7fe 127.9%,
+    #eaf7fe 149.54%
+  );
+$pinkGradient: linear-gradient(
+    315.75deg,
+    rgba(254, 189, 171, 0.74) 30.06%,
+    rgba(243, 169, 248, 0.66) 50.74%,
+    #e0d8f0 80.49%,
+    #eaf7fe 127.9%,
+    #eaf7fe 149.54%
+  ),
+  linear-gradient(
+    315.75deg,
+    rgba(254, 189, 171, 0.74) 30.06%,
+    rgba(243, 169, 248, 0.66) 50.74%,
+    #e0d8f0 80.49%,
+    #eaf7fe 127.9%,
+    #eaf7fe 149.54%
+  );
+$red: #d31414;
+$black: #000000;
+$blackBlue: #333b41;
+$gray: #767474;
+$graySmoky: #ababab;
+$grayLight: #f1f3f2;
+$white: #ffffff;
+$whiteFrostedGlass: rgba(253, 253, 255, 0.52);
+
+$desktopWidth: 1600px;
+$maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
+
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url("../../fonts/Roboto-Bold.ttf"), url("../../fonts/Roboto-Light.ttf"), url("../../fonts/Roboto-Medium.ttf"),
+    url("../../fonts/Roboto-Regular.ttf");
+}
+
+%font-family {
+  font-family: "Roboto", sans-serif;
+}
+
+%font-thin {
+  @extend %font-family;
+  font-weight: 100;
+}
+
+%font-bold {
+  @extend %font-family;
+  font-weight: 700;
+}
+
+%font-light {
+  @extend %font-family;
+  font-weight: 300;
+}
+
+%font-medium {
+  @extend %font-family;
+  font-weight: 500;
+}
+
+%font-regular {
+  @extend %font-family;
+  font-weight: 400;
+}
+
+%button {
+  $s: 0.3s;
+  padding: 16px;
+  width: 298px;
+  @extend %font-medium;
+  color: $white;
+  line-height: 140%;
+  text-transform: uppercase;
+  background: #f9804b;
+  background-image: $orange;
+  border: none;
+  cursor: pointer;
+  transition: all $s;
+  &:hover {
+    background: #e47209;
+    transition: all $s;
+  }
+  &:active {
+    background: $green;
+    transition: all $s;
+  }
+  &:disabled {
+    background: $gray;
+    transition: all $s;
+  }
+}
+
+%button_small-radius {
+  @extend %button;
+  border-radius: 5px;
+}
+
+%button_big-radius {
+  @extend %button;
+  border-radius: 25px;
+}
+
+%small-button {
+  padding: 10px 39px;
+  @extend %font-regular;
+  font-size: 16px;
+  line-height: 140%;
+  background-color: $grayLight;
+  color: $blackBlue;
+  border: 1px solid $blackBlue;
+  border-radius: 5px;
+  cursor: pointer;
+  // &:active {
+  //   color: $green;
+  //   border: 1px solid $green;
+  // }
+  // &:disabled {
+  //   color: $red;
+  //   border: 1px solid $red;
+  // }
+  // &_active {
+  //   border: 1px solid $green;
+  // }
+}
+
+%logo {
+  position: relative;
+  width: min-content;
+  .link {
+    padding: 2px 4px;
+  }
+  @extend %font-regular;
+  font-size: 1.188125em;
+  line-height: 120%;
+  border: 1px solid $white;
+  border-radius: 2px;
+  text-align: center;
+  svg {
+    position: absolute;
+    top: 22px;
+    left: 9px;
+    path {
+      transition: all 0.3s;
+    }
+  }
+  // &::before {
+  //   content: "";
+  //   background-image: url("../../assets/icons/bamboo-stick.svg");
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   width: 12px;
+  //   height: 21px;
+  //   position: absolute;
+  //   top: 22px;
+  //   left: 9px;
+  // }
+  transition: all 0.3s;
+  &:hover {
+    transition: all 0.3s;
+    border: 1px solid #fe9013;
+    svg path {
+      transition: all 0.3s;
+      fill: #fe9013;
+    }
+  }
+}
+
+.link {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    color: #fe9013;
+  }
+}
+.link_active {
+  color: #fe9013;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.wrapper-content {
+  max-width: $maxWidth;
+  margin: 0 auto;
+}
+
+.header {
+  // position: absolute;
+  // top: 0;
+  width: 100%;
+  padding: 14px 0;
+  @extend %font-medium;
+  font-size: 16px;
+  color: $white;
+  background-color: $black;
+  z-index: 2;
+  .wrapper-content {
+    display: grid;
+    grid-template-columns: repeat(2, auto) 1fr;
+    justify-content: start;
+    align-items: center;
+    gap: 63px;
+    .logo {
+      @extend %logo;
+    }
+    .nav ul {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      gap: 58px;
+      white-space: nowrap;
+      list-style: none;
+      line-height: 140%;
+    }
+    .copyright {
+      justify-self: end;
+      white-space: nowrap;
+      line-height: 140%;
+    }
+  }
+}
+
+.watch-section {
+  height: 390px;
+  background-image: url("../../assets/images/panda_bg_donate.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.donate-section {
+  padding: 40px 0 180px;
+  background: $orangeGradient;
+  color: $white;
+  .donate {
+    &__title {
+      margin-bottom: 10px;
+      @extend %font-regular;
+      font-size: 36px;
+      line-height: 130%;
+    }
+    &__text {
+      @extend %font-medium;
+      font-size: 16px;
+      line-height: 140%;
+      &_regular {
+        @extend %font-regular;
+      }
+    }
+    &__subtitle {
+      @extend %font-regular;
+      font-size: 36px;
+      line-height: 130%;
+      margin: 40px 0 60px;
+      &_color {
+        color: #fe9013;
+      }
+    }
+  }
+}
+
+.feed {
+  padding: 40px 92px 62px;
+  background-color: rgba(255, 255, 255, 0.52);
+  color: #333b41;
+  &__title {
+    @extend %font-regular;
+    font-size: 48px;
+    line-height: 120%;
+    &_color {
+      color: #fe9013;
+    }
+  }
+  &__subtitle {
+    @extend %font-regular;
+    font-size: 24px;
+    line-height: 120%;
+  }
+}
+
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+// ====================================
+
+.footer {
+  padding: 40px 0 50px;
+  color: $white;
+  background-color: #111115;
+  .news {
+  }
+  .donate {
+    padding: 36px 0 44px;
+    &__button {
+      @extend %button_small-radius;
+      @extend %font-medium;
+      font-size: 16px;
+      line-height: 140%;
+    }
+  }
+}
+
+.news {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 36px;
+  &__logo {
+    @extend %logo;
+  }
+  &__subscribe {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 13px;
+    @extend %font-regular;
+    font-size: 24px;
+    line-height: 120%;
+  }
+  .subscribe-form {
+    display: flex;
+    gap: 10px;
+    &__input {
+      position: relative;
+      padding: 10px;
+      width: 228px;
+      @extend %font-regular;
+      font-size: 16px;
+      line-height: 140%;
+      color: $white;
+      background: transparent;
+      border: 0.7px solid #fe9013;
+      border-radius: 2px;
+      outline: none;
+      &:focus {
+        border: 0.7px solid $green;
+        & + .subscribe-form__button {
+          border: 1px solid $green;
+          color: $green;
+        }
+      }
+      &:valid {
+        & + .subscribe-form__button {
+          color: $blackBlue;
+          border: 1px solid $blackBlue;
+        }
+        & + .subscribe-form__button:active {
+          color: $green;
+          border: 1px solid $green;
+        }
+      }
+      &:invalid {
+        color: $red;
+        border: 0.7px solid $red;
+        & + .subscribe-form__button {
+          border: 1px solid $red;
+          color: $red;
+        }
+      }
+    }
+    &__button {
+      @extend %small-button;
+      // &:active {
+      //   color: $green;
+      //   border: 1px solid $green;
+      //   background: $green;
+      // }
+    }
+  }
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+  gap: 88px;
+  &__social {
+    .socials {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+      &__item {
+        .link {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 26px;
+            height: 26px;
+            background-color: #c4c4c4;
+            border-radius: 50%;
+          }
+          .title {
+            @extend %font-regular;
+            font-size: 16px;
+            line-height: 140%;
+          }
+        }
+        &:hover {
+          .icon {
+            background: $green;
+          }
+          .title {
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+  .nav {
+    .menu {
+      display: flex;
+      gap: 58px;
+      @extend %font-regular;
+      font-size: 16px;
+      line-height: 140%;
+      list-style: none;
+      &__item {
+        white-space: nowrap;
+      }
+    }
+  }
+  &__copyright {
+    justify-self: end;
+    @extend %font-thin;
+    font-size: 16px;
+    line-height: 130%;
+    .link_info {
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        color: $green;
+        &::after {
+          content: "";
+          display: block;
+          width: 99%;
+          border: 0.5px solid $green;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -3px;
+        }
+      }
+    }
+    .author {
+      margin-bottom: 10px;
+    }
+  }
+}
