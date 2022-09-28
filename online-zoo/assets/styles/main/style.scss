@@ -864,7 +864,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
           border: 1px solid $blackBlue;
           transition: all $s;
         }
-        & + .subscribe-form__button {
+        & + .subscribe-form__button:active {
           color: $green;
           border: 1px solid $green;
           transition: all $s;

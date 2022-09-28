@@ -831,7 +831,7 @@
   transition: all 0.3s;
 }
 
-.news .subscribe-form__input:valid + .subscribe-form__button {
+.news .subscribe-form__input:valid + .subscribe-form__button:active {
   color: #4b9200;
   border: 1px solid #4b9200;
   transition: all 0.3s;
