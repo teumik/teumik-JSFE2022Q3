@@ -654,6 +654,13 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
           transition: all $s;
         }
       }
+      &:not(.subscribe-form__input:focus) {
+        & + .subscribe-form__button {
+          color: $blackBlue;
+          border: 1px solid $blackBlue;
+          transition: all $s;
+        }
+      }
       &:valid {
         transition: all $s;
         & + .subscribe-form__button {
