@@ -384,7 +384,6 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   .animals-container {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     gap: 80px;
     .animals-wrapper {
       position: relative;
@@ -833,6 +832,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     line-height: 120%;
   }
   .subscribe-form {
+    $s: 0.3s;
     display: flex;
     gap: 10px;
     &__input {
@@ -847,47 +847,52 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       border: 0.7px solid #fe9013;
       border-radius: 2px;
       outline: none;
+      transition: all $s;
       &:focus {
         border: 0.7px solid $green;
+        transition: all $s;
         & + .subscribe-form__button {
           border: 1px solid $green;
           color: $green;
+          transition: all $s;
         }
       }
       &:valid {
+        transition: all $s;
         & + .subscribe-form__button {
           color: $blackBlue;
           border: 1px solid $blackBlue;
+          transition: all $s;
         }
-        & + .subscribe-form__button:active {
+        & + .subscribe-form__button {
           color: $green;
           border: 1px solid $green;
+          transition: all $s;
         }
       }
       &:invalid {
         &::placeholder {
           color: $red;
+          transition: all $s;
         }
         color: $red;
         border: 0.7px solid $red;
+        transition: all $s;
         & + .subscribe-form__button {
           border: 1px solid $red;
           color: $red;
+          transition: all $s;
         }
       }
     }
     &__button {
       @extend %small-button;
-      // &:active {
-      //   color: $green;
-      //   border: 1px solid $green;
-      //   background: $green;
-      // }
     }
   }
 }
 
 .info {
+  $s: 0.3s;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: end;
@@ -911,19 +916,23 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
             height: 26px;
             background-color: #c4c4c4;
             border-radius: 50%;
+            transition: all $s;
           }
           .title {
             @extend %font-regular;
             font-size: 16px;
             line-height: 140%;
+            transition: all $s;
           }
         }
         &:hover {
           .icon {
             background: $green;
+            transition: all $s;
           }
           .title {
             color: $green;
+            transition: all $s;
           }
         }
       }
