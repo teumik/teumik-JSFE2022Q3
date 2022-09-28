@@ -661,6 +661,9 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
         }
       }
       &:invalid {
+        &::placeholder {
+          color: $red;
+        }
         color: $red;
         border: 0.7px solid $red;
         & + .subscribe-form__button {
