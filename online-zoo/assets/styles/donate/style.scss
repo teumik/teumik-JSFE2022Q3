@@ -251,7 +251,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 }
 
 .watch-section {
-  height: 390px;
+  height: 387px;
   background-image: url("../../assets/images/panda_bg_donate.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -268,12 +268,14 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       @extend %font-regular;
       font-size: 36px;
       line-height: 130%;
+      text-align: center;
     }
     &__text {
       @extend %font-medium;
       font-size: 16px;
-      line-height: 140%;
+      line-height: 137%;
       &_regular {
+        padding-right: 4px;
         @extend %font-regular;
       }
     }
@@ -281,7 +283,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       @extend %font-regular;
       font-size: 36px;
       line-height: 130%;
-      margin: 40px 0 60px;
+      margin: 47px 0 59px;
       &_color {
         color: #fe9013;
       }
@@ -291,20 +293,172 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 
 .feed {
   padding: 40px 92px 62px;
-  background-color: rgba(255, 255, 255, 0.52);
   color: #333b41;
+  background-color: rgba(255, 255, 255, 0.52);
+  border-radius: 20px;
   &__title {
+    position: relative;
+    left: -6px;
     @extend %font-regular;
     font-size: 48px;
     line-height: 120%;
+    text-align: center;
     &_color {
       color: #fe9013;
     }
   }
   &__subtitle {
+    margin: 21px 0 58px;
     @extend %font-regular;
     font-size: 24px;
     line-height: 120%;
+  }
+  .diet {
+    margin-bottom: 44px;
+    padding-top: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 31px;
+    &__icon {
+      &_first {
+        position: relative;
+        top: 27px;
+        right: 13px;
+      }
+      &_second {
+        position: relative;
+        top: 14px;
+        right: 33px;
+      }
+      .number {
+        margin-bottom: 11px;
+        @extend %font-medium;
+        font-size: 72px;
+        line-height: 80%;
+        color: $black;
+        text-align: center;
+      }
+      .text {
+        @extend %font-regular;
+        font-size: 16px;
+        line-height: 140%;
+        color: #333b41;
+        text-align: center;
+      }
+    }
+  }
+  .amount {
+    margin-bottom: 142px;
+    @extend %font-regular;
+    font-size: 16px;
+    line-height: 140%;
+    color: $black;
+  }
+  .share {
+    @extend %font-regular;
+    font-size: 16px;
+    line-height: 140%;
+    &__text {
+      text-align: center;
+    }
+  }
+}
+
+.payment {
+  text-align: center;
+  &-wrapper {
+    max-width: 268px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    .input-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 46px;
+      @extend %font-regular;
+      font-size: 16px;
+      line-height: 140%;
+      .input {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 14px;
+      }
+    }
+    .payment__cash-wrapper {
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+      position: relative;
+      width: 100%;
+      .dollar {
+        position: absolute;
+        top: 17px;
+        right: 10px;
+      }
+    }
+  }
+  &__cash {
+    width: 100%;
+    padding: 16px 9px;
+    @extend %font-regular;
+    font-size: 16px;
+    line-height: 140%;
+    color: #929699;
+    background-color: transparent;
+    border: 1px solid #929699;
+    border-radius: 2px;
+    outline: transparent;
+    &:focus {
+      color: $green;
+      border: 1px solid $green;
+      &::placeholder {
+        color: $green;
+      }
+      & + .dollar svg path {
+        fill: $green;
+      }
+    }
+    &:invalid {
+      color: $red;
+      border: 1px solid $red;
+      &::placeholder {
+        color: $red;
+      }
+      & + .dollar svg path {
+        fill: $red;
+      }
+    }
+  }
+
+  &__type {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #fe9013;
+    &:checked {
+      border: none;
+      background-color: $green;
+    }
+  }
+  &__label {
+  }
+
+  &__button {
+    margin: 30px 0 30px;
+    @extend %button_big-radius;
+    font-size: 16px;
+    line-height: 140%;
+    color: $white;
   }
 }
 
