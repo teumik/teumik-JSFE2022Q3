@@ -236,8 +236,6 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 }
 
 .header {
-  // position: absolute;
-  // top: 0;
   width: 100%;
   padding: 14px 0;
   @extend %font-medium;
@@ -389,6 +387,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 }
 
 .payment {
+  $s: 0.3s;
   text-align: center;
   &-wrapper {
     max-width: 268px;
@@ -440,14 +439,21 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     border: 1px solid #929699;
     border-radius: 2px;
     outline: transparent;
+    transition: all $s;
+    & + .dollar svg path {
+      fill: #929699;
+      transition: all $s;
+    }
     &:focus {
       color: $green;
       border: 1px solid $green;
       &::placeholder {
         color: $green;
+        transition: all $s;
       }
       & + .dollar svg path {
         fill: $green;
+        transition: all $s;
       }
     }
     &:invalid {
@@ -455,9 +461,11 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       border: 1px solid $red;
       &::placeholder {
         color: $red;
+        transition: all $s;
       }
       & + .dollar svg path {
         fill: $red;
+        transition: all $s;
       }
     }
   }
@@ -468,12 +476,12 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     height: 16px;
     border-radius: 50%;
     border: 1px solid #fe9013;
+    transition: all $s;
     &:checked {
       border: none;
       background-color: $green;
+      transition: all $s;
     }
-  }
-  &__label {
   }
 
   &__button {
@@ -513,6 +521,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
       &:first-child {
         margin-left: -20px;
       }
@@ -563,6 +572,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     line-height: 140%;
     color: #333b41;
     white-space: nowrap;
+    cursor: pointer;
     &::before {
       content: "";
       position: relative;
