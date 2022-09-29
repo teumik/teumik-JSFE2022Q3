@@ -400,7 +400,7 @@
 
 .animals-section .animals-container .animals-wrapper .animals__item .image-container {
   transition: all 0.5s;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   position: relative;
   overflow: hidden;
 }
@@ -807,39 +807,57 @@
   border: 0.7px solid #fe9013;
   border-radius: 2px;
   outline: none;
+  transition: all 0.3s;
 }
 
 .news .subscribe-form__input:focus {
   border: 0.7px solid #4b9200;
+  transition: all 0.3s;
 }
 
 .news .subscribe-form__input:focus + .subscribe-form__button {
   border: 1px solid #4b9200;
   color: #4b9200;
+  transition: all 0.3s;
+}
+
+.news .subscribe-form__input:not(.subscribe-form__input:focus) + .subscribe-form__button {
+  color: #333b41;
+  border: 1px solid #333b41;
+  transition: all 0.3s;
+}
+
+.news .subscribe-form__input:valid {
+  transition: all 0.3s;
 }
 
 .news .subscribe-form__input:valid + .subscribe-form__button {
   color: #333b41;
   border: 1px solid #333b41;
+  transition: all 0.3s;
 }
 
-.news .subscribe-form__input:valid + .subscribe-form__button:active {
+.news .subscribe-form__input:valid + .subscribe-form__button {
   color: #4b9200;
   border: 1px solid #4b9200;
+  transition: all 0.3s;
 }
 
 .news .subscribe-form__input:invalid {
   color: #d31414;
   border: 0.7px solid #d31414;
+  transition: all 0.3s;
 }
 
 .news .subscribe-form__input:invalid::placeholder {
   color: #d31414;
+  transition: all 0.3s;
 }
 
 .news .subscribe-form__input:invalid + .subscribe-form__button {
   border: 1px solid #d31414;
   color: #d31414;
+  transition: all 0.3s;
 }
 
 .info {
@@ -870,19 +888,23 @@
   height: 26px;
   background-color: #c4c4c4;
   border-radius: 50%;
+  transition: all 0.3s;
 }
 
 .info__social .socials__item .link .title {
   font-size: 16px;
   line-height: 140%;
+  transition: all 0.3s;
 }
 
 .info__social .socials__item:hover .icon {
   background: #4b9200;
+  transition: all 0.3s;
 }
 
 .info__social .socials__item:hover .title {
   color: #4b9200;
+  transition: all 0.3s;
 }
 
 .info .nav .menu {
