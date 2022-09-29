@@ -400,7 +400,7 @@
 
 .animals-section .animals-container .animals-wrapper .animals__item .image-container {
   transition: all 0.5s;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   position: relative;
   overflow: hidden;
 }
