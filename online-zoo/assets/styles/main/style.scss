@@ -1,5 +1,3 @@
-// @import "../normolize/normalize";
-
 $green: #4b9200;
 $orange: linear-gradient(113.96deg, #f9804b, #fe9013);
 $orangeSecond: linear-gradient(113.96deg, #fa6f32 1.49%, #fe9013 101.44%);
@@ -136,17 +134,6 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   border: 1px solid $blackBlue;
   border-radius: 5px;
   cursor: pointer;
-  // &:active {
-  //   color: $green;
-  //   border: 1px solid $green;
-  // }
-  // &:disabled {
-  //   color: $red;
-  //   border: 1px solid $red;
-  // }
-  // &_active {
-  //   border: 1px solid $green;
-  // }
 }
 
 %logo {
@@ -169,17 +156,6 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       transition: all 0.3s;
     }
   }
-  // &::before {
-  //   content: "";
-  //   background-image: url("../../assets/icons/bamboo-stick.svg");
-  //   background-size: cover;
-  //   background-repeat: no-repeat;
-  //   width: 12px;
-  //   height: 21px;
-  //   position: absolute;
-  //   top: 22px;
-  //   left: 9px;
-  // }
   transition: all 0.3s;
   &:hover {
     transition: all 0.3s;
@@ -213,8 +189,11 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 }
 
 .wrapper-content {
-  max-width: $maxWidth;
+  // width: $maxWidth;
+  max-width: 1160px;
   margin: 0 auto;
+  padding: 0 3%;
+  box-sizing: content-box;
 }
 
 .header {
@@ -305,21 +284,24 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   padding: 140px 0 177px;
   &::after {
     content: "";
-    height: 613px;
-    width: 12.75%;
+    height: 85%;
+    width: 100%;
+    max-width: 12.75%;
     background-image: url("../../assets/images/flower_foto1.png");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: left center;
     position: absolute;
     top: 12px;
     right: 0;
+    z-index: -1;
   }
   .backstage {
     display: flex;
     justify-content: space-between;
     gap: 31px;
     .image-container {
-      flex: 0 1 609px;
+      flex: 0 10 609px;
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -358,28 +340,40 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   padding-bottom: 100px;
   &::before {
     content: "";
-    height: 460px;
-    width: 292px;
-    width: 18.25%;
+    // height: 460px;
+    // width: 18.25%;
+    // max-width: 292px;
+    height: 100%;
+    width: 100%;
+    max-width: 18.25%;
     background-image: url("../../assets/images/palm.png");
-    background-size: cover;
+    // background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: right;
+    // background-position: right;
+    background-position: bottom;
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: -1;
   }
   &::after {
     content: "";
-    height: 275px;
-    width: 368px;
-    width: 23%;
+    // height: 275px;
+    // width: 23%;
+    // max-width: 368px;
+    height: 100%;
+    width: 100%;
+    max-width: 23%;
     background-image: url("../../assets/images/strelitzia.png");
-    background-size: cover;
+    // background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: bottom;
     position: absolute;
     bottom: 0;
     right: 0;
+    z-index: -1;
   }
   .animals-container {
     display: flex;
@@ -387,14 +381,17 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     gap: 80px;
     .animals-wrapper {
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
       .button-container {
         width: 62px;
         height: 62px;
         position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         right: -80px;
+        z-index: 10;
         .button {
           @extend %button;
           width: 100%;
@@ -461,9 +458,9 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
               transition: all $s;
               border-radius: 5px 5px 0 0;
               width: 100%;
-              height: 366px;
-              object-fit: cover;
-              object-position: center;
+              // height: 366px;
+              // object-fit: cover;
+              // object-position: center;
             }
           }
           .text-container {
@@ -654,15 +651,22 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   overflow: hidden;
   &::after {
     content: "";
-    height: 408px;
-    width: 247px;
-    width: 15.4375%;
+    // height: 408px;
+    // width: 15.4375%;
+    // max-width: 247px;
     background: url("../../assets/images/leav.png");
-    background-size: cover;
+    // background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
     right: 0;
     bottom: -133px;
+    z-index: -1;
+
+    height: 100%;
+    width: 100%;
+    max-width: 15.43%;
+    background-size: contain;
+    background-position: bottom;
   }
   .testimonials {
     display: flex;
@@ -982,6 +986,289 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     }
     .author {
       margin-bottom: 10px;
+    }
+  }
+}
+
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+
+.none {
+  display: none;
+}
+
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+// изменения в коненте
+
+@media screen and (max-width: 1599px) {
+  .backstage-section {
+    &::after {
+      max-width: 10%;
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .backstage-section {
+    &::after {
+      max-width: 4%;
+    }
+  }
+  .animals-section {
+    .animals-container {
+      .animals-wrapper {
+        .button-container {
+          &_left {
+            left: 34.37%;
+          }
+          &_right {
+            right: 34.37%;
+          }
+        }
+        .animals {
+          gap: 93px 30px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .backstage-section {
+    &::after {
+      display: none;
+    }
+  }
+
+  .testimonials-section {
+    .testimonials {
+      padding-top: 101px;
+      .title {
+        margin-bottom: 31px;
+      }
+      .feedbacks {
+        &__item {
+          .user {
+            &__name {
+              width: min-content;
+            }
+            &__meta {
+              flex-direction: column;
+              gap: 0;
+            }
+            &__date {
+              &::before {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .header .nav ul.menu {
+    gap: 48px;
+  }
+  .watch-section {
+    height: 584px;
+    .wrapper-content {
+      .watch {
+        padding-top: 124px;
+        padding-right: 12px;
+        gap: 40px;
+        .watch-container {
+          .circle {
+            width: 367px;
+            height: 367px;
+            top: 69px;
+            left: -14px;
+          }
+          .promo-text {
+            font-size: 85px;
+          }
+        }
+      }
+    }
+  }
+  .backstage-section {
+    padding: 100px 0 142px;
+    &::after {
+      display: none;
+    }
+    .backstage {
+      .image-container {
+        flex: 0 10 609px;
+        align-items: center;
+      }
+    }
+  }
+
+  .animals-section {
+    &::before {
+      background-image: url("../../assets/images/palm_small-desktop.png");
+      max-width: 19.25%;
+    }
+    &::after {
+      max-width: 24%;
+    }
+    padding-bottom: 139px;
+    .animals-container {
+      .animals-wrapper {
+        .animals {
+          &__item {
+            &.makeNone {
+              display: none;
+            }
+            &.makeDisplay {
+              display: block;
+            }
+            &:nth-child(1) {
+              order: -3;
+            }
+            &:nth-child(2) {
+              order: -3;
+            }
+            &:nth-child(3) {
+              order: 0;
+            }
+            &:nth-child(4) {
+              order: 0;
+            }
+            &:nth-child(5) {
+              order: -2;
+            }
+            &:nth-child(6) {
+              order: 3;
+            }
+            &:nth-child(7) {
+              order: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .feed-section {
+    padding: 30px 0 50px;
+    .feed-container {
+      padding: 31px 48px 50px 49px;
+      .instructions {
+        margin-bottom: 71px;
+      }
+      .feed__title {
+        margin-top: 40px;
+        &_color {
+          margin-top: 0;
+        }
+      }
+      .feed__subtitle {
+        padding: 21px 0 20px;
+      }
+      .feed__text {
+        &_long {
+          width: 94%;
+        }
+        &_short {
+          width: 95%;
+          .emergency::after {
+            bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .testimonials-section {
+    &::after {
+      bottom: -88px;
+      max-width: 19.8%;
+    }
+    .testimonials {
+      padding-top: 101px;
+      padding-bottom: 140px;
+      .range {
+        margin-bottom: 52px;
+        width: 41.637931%;
+      }
+      .title {
+        margin-bottom: 31px;
+      }
+      .feedbacks {
+        display: flex;
+        &__item {
+          & .feedback {
+            padding-right: 10px;
+          }
+          &.makeNone {
+            display: none;
+          }
+          &.makeDisplay {
+            display: block;
+            &_morePad .feedback {
+              padding-right: 11px;
+            }
+          }
+          .user {
+            &__name {
+              width: auto;
+            }
+            &__meta {
+              flex-direction: row;
+              gap: 16px;
+            }
+            &__date {
+              &::before {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+      .feedback {
+        &__item {
+          .user {
+            &__meta {
+              flex-direction: column;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    .wrapper-content {
+      padding-right: 1.8%;
+    }
+    &-content {
+      padding-left: 14px;
+      .news {
+        margin-right: 31px;
+      }
+      .info {
+        grid-template-columns: 1.07fr 0.7fr 1.23fr;
+        .nav {
+          .menu {
+            gap: 48px;
+          }
+        }
+      }
     }
   }
 }
