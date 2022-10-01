@@ -841,14 +841,11 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
             margin-left: -20px;
           }
         }
-        // max-width: 400px;
       }
     }
   }
 
   .footer {
-    .wrapper-content {
-    }
     &-content {
       .news {
         margin-right: 31px;
