@@ -1064,8 +1064,11 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 }
 
 @media screen and (max-width: 1000px) {
-  .header .nav ul.menu {
-    gap: 48px;
+  .header {
+    background-color: #111115;
+    .nav ul.menu {
+      gap: 48px;
+    }
   }
 
   .watch-section {
