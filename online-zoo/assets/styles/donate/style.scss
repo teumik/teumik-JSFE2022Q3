@@ -1,5 +1,5 @@
 $green: #4b9200;
-$orange: linear-gradient(113.96deg, #f9804b, #fe9013);
+$orange: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
 $orangeSecond: linear-gradient(113.96deg, #fa6f32 1.49%, #fe9013 101.44%);
 $yellow: #ffee2e;
 $orangeGradient: linear-gradient(
@@ -226,12 +226,17 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   z-index: 2;
   .wrapper-content {
     display: grid;
-    grid-template-columns: repeat(2, auto) 1fr;
+    // grid-template-columns: repeat(2, auto) 1fr;
+    grid-template-columns: auto 1fr;
     justify-content: start;
     align-items: center;
     gap: 63px;
     .logo {
       @extend %logo;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
     }
     .nav ul {
       display: grid;
@@ -897,23 +902,23 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     .feed {
       .amount {
         .tabletNone {
-          display: none;
+          // display: none;
         }
         .text {
-          margin-left: 10px;
-          margin-bottom: 7px;
+          // margin-left: 10px;
+          // margin-bottom: 7px;
         }
         &__bar {
-          padding: 0 35px 0 35px;
+          // padding: 0 35px 0 35px;
         }
         &__line {
         }
         &__label {
           &-item {
-            left: 14px;
+            // left: 14px;
           }
           &:nth-child(4) {
-            margin-left: -20px;
+            // margin-left: -20px;
           }
           &:last-child {
           }
@@ -965,7 +970,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     padding: 3px 0 2px;
     font-size: 16px;
     line-height: 140%;
-    .makeNone {
+    .nav.makeNone {
       display: none;
     }
     .wrapper-content {
@@ -987,10 +992,8 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
         }
       }
       .nav {
-        ul.menu {
-          &.makeNone {
-            display: none;
-          }
+        &.makeNone {
+          display: none;
         }
       }
       .burger-button {
@@ -1022,6 +1025,35 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     margin-top: 34px;
     height: 335px;
     background-position-x: 37%;
+  }
+
+  .donate-section {
+    .feed {
+      .amount {
+        .tabletNone {
+          // display: none;
+        }
+        .text {
+          margin-left: 10px;
+          margin-bottom: 7px;
+        }
+        &__bar {
+          padding: 0 35px 0 35px;
+        }
+        &__line {
+        }
+        &__label {
+          &-item {
+            left: 14px;
+          }
+          &:nth-child(4) {
+            margin-left: -20px;
+          }
+          &:last-child {
+          }
+        }
+      }
+    }
   }
 
   .donate-section {
