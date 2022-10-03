@@ -209,9 +209,11 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 }
 
 .wrapper-content {
-  width: $maxWidth;
+  // width: $maxWidth;
   max-width: 1160px;
   margin: 0 auto;
+  padding: 0 3%;
+  box-sizing: content-box;
 }
 
 .header {
@@ -252,7 +254,8 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   background-image: url("../../assets/images/panda_bg_donate.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  // background-position: center;
+  background-position-x: 29%;
 }
 
 .donate-section {
@@ -789,6 +792,74 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     }
     .author {
       margin-bottom: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .header .nav ul.menu {
+    gap: 48px;
+  }
+
+  .watch-section {
+    height: 390px;
+  }
+
+  .donate-section {
+    padding-bottom: 31px;
+    .donate {
+      &__title {
+        width: 90%;
+        margin-bottom: 31px;
+        text-align: unset;
+      }
+      &__subtitle {
+        margin-bottom: 39px;
+      }
+    }
+    .feed {
+      padding: 21px 65px 45px;
+      &__subtitle {
+        width: 104%;
+        margin-top: 10px;
+        margin-left: -18px;
+      }
+      .amount {
+        .makeNone {
+          display: none;
+        }
+        &__bar {
+          padding: 0 9px 0 11px;
+        }
+        &__line {
+        }
+        &__label {
+          &-item {
+            left: 22px;
+          }
+          &:nth-child(2) {
+            margin-left: -20px;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    &-content {
+      .news {
+        margin-right: 31px;
+      }
+      .info {
+        grid-template-columns: 1.07fr 0.7fr 1.23fr;
+        .nav {
+          position: relative;
+          left: 15px;
+          .menu {
+            gap: 48px;
+          }
+        }
+      }
     }
   }
 }
