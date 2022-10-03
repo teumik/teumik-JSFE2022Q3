@@ -34,7 +34,7 @@
   line-height: 140%;
   text-transform: uppercase;
   background: #f9804b;
-  background-image: linear-gradient(113.96deg, #f9804b, #fe9013);
+  background-image: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
   border: none;
   cursor: pointer;
   transition: all 0.3s;
@@ -151,10 +151,15 @@
 
 .header .wrapper-content {
   display: grid;
-  grid-template-columns: repeat(2, auto) 1fr;
+  grid-template-columns: auto 1fr;
   justify-content: start;
   align-items: center;
   gap: 63px;
+}
+
+.header .wrapper-content .nav {
+  display: flex;
+  justify-content: space-between;
 }
 
 .header .wrapper-content .nav ul {
@@ -202,7 +207,7 @@
   z-index: 0;
   width: 465px;
   height: 465px;
-  background: linear-gradient(113.96deg, #f9804b, #fe9013);
+  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
   border-radius: 50%;
 }
 
@@ -368,7 +373,7 @@
 }
 
 .animals-section .animals-container .animals-wrapper .animals__item:hover {
-  background: linear-gradient(113.96deg, #f9804b, #fe9013);
+  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
   transition: all 0.5s;
 }
 
@@ -588,7 +593,7 @@
   bottom: -1px;
   left: -1px;
   right: -1px;
-  background: linear-gradient(113.96deg, #f9804b, #fe9013);
+  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
   border-radius: 6px;
   z-index: -1;
 }
@@ -983,9 +988,6 @@
 }
 
 @media screen and (max-width: 1220px) {
-  .backstage-section::after {
-    display: none;
-  }
   .testimonials-section .testimonials {
     padding-top: 101px;
   }
@@ -1160,40 +1162,9 @@
   .header .nav ul.menu {
     gap: 40px;
   }
-  .feed-section .feed-container .instructions {
-    display: flex;
-    justify-content: space-between;
-    gap: 0px;
-  }
-  .feed-section .feed-container .instructions__item {
-    position: relative;
-  }
-  .feed-section .feed-container .instructions__item:nth-child(3)::after {
-    content: "";
-    width: 89px;
-    height: 29px;
-    background-image: url("../../assets/icons/arrow_green.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: -17px;
-    left: -73px;
-    z-index: 10;
-  }
-  .feed-section .feed-container .instructions__item:nth-child(5)::before {
-    content: "";
-    width: 89px;
-    height: 29px;
-    background-image: url("../../assets/icons/arrow_green.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: -18px;
-    left: -75px;
-    z-index: 10;
-  }
-  .feed-section .feed-container .instructions .arrow {
-    display: none;
+  .feed-section .feed-container .instructions__item .icon {
+    max-width: 120px;
+    padding: 0 10px;
   }
   .testimonials-section .testimonials .feedbacks__item .user__name {
     width: min-content;
@@ -1240,7 +1211,7 @@
     font-size: 16px;
     line-height: 140%;
   }
-  .header .makeNone {
+  .header .nav.makeNone {
     display: none;
   }
   .header .wrapper-content .logo {
@@ -1260,7 +1231,7 @@
     top: 12px;
     left: 0px;
   }
-  .header .wrapper-content .nav ul.menu.makeNone {
+  .header .wrapper-content .nav.makeNone {
     display: none;
   }
   .header .wrapper-content .burger-button {
@@ -1389,6 +1360,45 @@
   }
   .animals-section .animals-container .animals-wrapper .button-container_right {
     right: 37.2%;
+  }
+  .feed-section .feed-container .instructions {
+    display: flex;
+    justify-content: space-between;
+    gap: 0px;
+  }
+  .feed-section .feed-container .instructions__item {
+    position: relative;
+  }
+  .feed-section .feed-container .instructions__item .icon {
+    max-width: 168px;
+    padding: 0;
+  }
+  .feed-section .feed-container .instructions__item:nth-child(3)::after {
+    content: "";
+    width: 89px;
+    height: 29px;
+    background-image: url("../../assets/icons/arrow_green.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -17px;
+    left: -73px;
+    z-index: 10;
+  }
+  .feed-section .feed-container .instructions__item:nth-child(5)::before {
+    content: "";
+    width: 89px;
+    height: 29px;
+    background-image: url("../../assets/icons/arrow_green.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -18px;
+    left: -75px;
+    z-index: 10;
+  }
+  .feed-section .feed-container .instructions .arrow {
+    display: none;
   }
   .feed-section {
     padding-top: 20px;

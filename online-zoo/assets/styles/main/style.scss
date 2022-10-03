@@ -1,5 +1,5 @@
 $green: #4b9200;
-$orange: linear-gradient(113.96deg, #f9804b, #fe9013);
+$orange: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
 $orangeSecond: linear-gradient(113.96deg, #fa6f32 1.49%, #fe9013 101.44%);
 $yellow: #ffee2e;
 $orangeGradient: linear-gradient(
@@ -206,12 +206,17 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   z-index: 2;
   .wrapper-content {
     display: grid;
-    grid-template-columns: repeat(2, auto) 1fr;
+    // grid-template-columns: repeat(2, auto) 1fr;
+    grid-template-columns: auto 1fr;
     justify-content: start;
     align-items: center;
     gap: 63px;
     .logo {
       @extend %logo;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
     }
     .nav ul {
       display: grid;
@@ -1031,7 +1036,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 @media screen and (max-width: 1220px) {
   .backstage-section {
     &::after {
-      display: none;
+      // display: none;
     }
   }
 
@@ -1269,42 +1274,11 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   .feed-section {
     .feed-container {
       .instructions {
-        display: flex;
-        justify-content: space-between;
-        gap: 0px;
         &__item {
-          position: relative;
-          &:nth-child(3) {
-            &::after {
-              content: "";
-              width: 89px;
-              height: 29px;
-              background-image: url("../../assets/icons/arrow_green.svg");
-              background-size: cover;
-              background-repeat: no-repeat;
-              position: absolute;
-              top: -17px;
-              left: -73px;
-              z-index: 10;
-            }
+          .icon {
+            max-width: 120px;
+            padding: 0 10px;
           }
-          &:nth-child(5) {
-            &::before {
-              content: "";
-              width: 89px;
-              height: 29px;
-              background-image: url("../../assets/icons/arrow_green.svg");
-              background-size: cover;
-              background-repeat: no-repeat;
-              position: absolute;
-              top: -18px;
-              left: -75px;
-              z-index: 10;
-            }
-          }
-        }
-        .arrow {
-          display: none;
         }
       }
     }
@@ -1389,7 +1363,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     padding: 3px 0 2px;
     font-size: 16px;
     line-height: 140%;
-    .makeNone {
+    .nav.makeNone {
       display: none;
     }
     .wrapper-content {
@@ -1411,10 +1385,8 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
         }
       }
       .nav {
-        ul.menu {
-          &.makeNone {
-            display: none;
-          }
+        &.makeNone {
+          display: none;
         }
       }
       .burger-button {
@@ -1561,6 +1533,54 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
           &_right {
             right: 37.2%;
           }
+        }
+      }
+    }
+  }
+
+  .feed-section {
+    .feed-container {
+      .instructions {
+        display: flex;
+        justify-content: space-between;
+        gap: 0px;
+        &__item {
+          position: relative;
+          .icon {
+            max-width: 168px;
+            padding: 0;
+          }
+          &:nth-child(3) {
+            &::after {
+              content: "";
+              width: 89px;
+              height: 29px;
+              background-image: url("../../assets/icons/arrow_green.svg");
+              background-size: cover;
+              background-repeat: no-repeat;
+              position: absolute;
+              top: -17px;
+              left: -73px;
+              z-index: 10;
+            }
+          }
+          &:nth-child(5) {
+            &::before {
+              content: "";
+              width: 89px;
+              height: 29px;
+              background-image: url("../../assets/icons/arrow_green.svg");
+              background-size: cover;
+              background-repeat: no-repeat;
+              position: absolute;
+              top: -18px;
+              left: -75px;
+              z-index: 10;
+            }
+          }
+        }
+        .arrow {
+          display: none;
         }
       }
     }
@@ -2039,3 +2059,21 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     }
   }
 }
+
+// .header .wrapper-content .nav.burger-menu {
+//   display: grid;
+//   gap: 15px;
+//   padding: 10px;
+//   position: absolute;
+//   top: 35px;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   font-size: 16px;
+//   line-height: 140%;
+//   .menu {
+//     display: grid;
+//     grid-template-columns: none;
+//     gap: 15px;
+//   }
+// }
