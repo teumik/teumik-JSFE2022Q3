@@ -1230,9 +1230,12 @@
     padding: 0 3.175%;
   }
   .header {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    padding: 3px 0 2px;
     font-size: 16px;
     line-height: 140%;
-    padding: 3px 0 2px;
   }
   .header .makeNone {
     display: none;
@@ -1442,6 +1445,9 @@
     height: 37px;
     padding-left: 6px;
   }
+  .testimonials-section .testimonials .feedbacks__item .feedback:active {
+    height: auto;
+  }
   .testimonials-section .testimonials .feedbacks__item .feedback.makeHide {
     display: none;
   }
@@ -1599,13 +1605,11 @@
   .mobileDisplay {
     display: unset;
   }
-  .header {
-    position: relative;
-  }
   .header .wrapper-content .burger-button {
     margin-bottom: 1px;
   }
   .watch-section {
+    margin-top: 34px;
     margin-bottom: 104px;
     height: 187px;
   }

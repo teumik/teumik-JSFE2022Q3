@@ -1380,9 +1380,12 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   }
 
   .header {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    padding: 3px 0 2px;
     font-size: 16px;
     line-height: 140%;
-    padding: 3px 0 2px;
     .makeNone {
       display: none;
     }
@@ -1620,6 +1623,9 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
           .feedback {
             height: 37px;
             padding-left: 6px;
+            &:active {
+              height: auto;
+            }
             &.makeHide {
               display: none;
             }
@@ -1828,7 +1834,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   }
 
   .header {
-    position: relative;
+    // position: relative;
     .wrapper-content {
       .burger-button {
         margin-bottom: 1px;
@@ -1837,6 +1843,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   }
 
   .watch-section {
+    margin-top: 34px;
     margin-bottom: 104px;
     height: 187px;
     .wrapper-content {
