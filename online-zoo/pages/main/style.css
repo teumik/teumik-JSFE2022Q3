@@ -1211,9 +1211,21 @@
   .header .wrapper-content .nav ul.menu {
     gap: 24px;
   }
+  .footer-content .info {
+    gap: 40px;
+  }
+  .footer-content .info .nav .menu {
+    gap: 20px;
+  }
 }
 
 @media screen and (max-width: 640px) {
+  .tabletNone {
+    display: none;
+  }
+  .tabletDisplay {
+    display: unset;
+  }
   .wrapper-content {
     padding: 0 3.175%;
   }
@@ -1492,6 +1504,19 @@
     position: static;
     align-self: flex-start;
   }
+  .animals-section .animals-container {
+    gap: 20px;
+  }
+  .animals-section .animals-container .animals-wrapper .animals {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .animals-section .animals-container .animals-wrapper .button-container {
+    display: none;
+  }
+  .feed-section .feed-container {
+    justify-content: center;
+  }
   .feed-section .feed-container .instructions {
     margin-bottom: 40px;
     padding-right: 0;
@@ -1503,14 +1528,14 @@
     position: relative;
   }
   .feed-section .feed-container .instructions__item:nth-child(3)::after {
-    top: -17px;
-    left: -73px;
-    transform: rotate(90deg);
+    top: -53px;
+    left: 140px;
+    transform: rotate(84deg);
   }
   .feed-section .feed-container .instructions__item:nth-child(5)::before {
-    top: -18px;
-    left: -75px;
-    transform: rotate(90deg);
+    top: -52px;
+    left: 140px;
+    transform: rotate(84deg);
   }
   .footer-content .info {
     gap: 36px;
@@ -1520,7 +1545,60 @@
   }
 }
 
+@media screen and (max-width: 430px) {
+  .footer .footer-content .news {
+    margin: 0;
+    padding-top: 6px;
+  }
+  .footer .footer-content .news .news__logo {
+    border: none;
+    width: 100%;
+  }
+  .footer .footer-content .news .news__logo .link {
+    position: relative;
+  }
+  .footer .footer-content .news .news__logo .link svg {
+    top: -1px;
+    left: 76px;
+  }
+  .footer .footer-content .donate {
+    padding: 83px 0 28px;
+    text-align: center;
+  }
+  .footer .footer-content .info {
+    grid-template-columns: none;
+    gap: 29px;
+  }
+  .footer .footer-content .info .info__social {
+    top: 73px;
+    right: 50%;
+    transform: translate(50%);
+  }
+  .footer .footer-content .info .info__social .socials {
+    flex-direction: row;
+    gap: 30px;
+  }
+  .footer .footer-content .info .nav .menu {
+    width: 93%;
+    margin: auto;
+    justify-content: space-between;
+  }
+  .footer .footer-content .info .info__copyright {
+    order: -1;
+    font-size: 15px;
+  }
+  .footer .footer-content .info .info__copyright .author {
+    margin-bottom: 12px;
+  }
+}
+
 @media screen and (max-width: 320px) {
+  .mobileNone {
+    display: none;
+  }
+  .mobileDisplay {
+    display: unset;
+  }
   .header {
     position: relative;
   }
@@ -1528,6 +1606,7 @@
     margin-bottom: 1px;
   }
   .watch-section {
+    margin-bottom: 104px;
     height: 187px;
   }
   .watch-section .wrapper-content .watch {
@@ -1553,15 +1632,140 @@
     align-self: center;
   }
   .backstage-section {
-    padding-top: 104px;
+    padding-top: 0;
+    padding-bottom: 31px;
   }
   .backstage-section::after {
     max-width: 10%;
-    top: 38px;
-    height: 35%;
+    top: -66px;
+    height: 51%;
   }
   .backstage-section .backstage .text-container .title {
     padding-left: 0;
     font-size: 24px;
+  }
+  .backstage-section .backstage .text-container .text {
+    margin-left: 2px;
+    padding: 10px 0;
+    width: 119%;
+    line-height: 132%;
+  }
+  .backstage-section .backstage .text-container .text_main {
+    width: 123%;
+    margin-left: 0;
+    line-height: 137%;
+  }
+  .backstage-section .backstage .text-container .subtitle {
+    margin: 10px 2px 0px;
+  }
+  .animals-section {
+    padding-bottom: 60px;
+  }
+  .animals-section::before {
+    max-width: 22%;
+    left: -12px;
+  }
+  .animals-section:after {
+    background-image: url("../../assets/images/strelitzia_mobile.png");
+    max-width: 23%;
+    bottom: -12px;
+    right: 0;
+  }
+  .animals-section .wrapper-content {
+    padding: 0px 5.43%;
+  }
+  .animals-section .animals-container {
+    gap: 20px;
+  }
+  .animals-section .animals-container .animals-wrapper .animals {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .animals-section .animals-container .animals-wrapper .button-container {
+    display: none;
+  }
+  .feed-section .wrapper-content {
+    padding: 0 3.175%;
+  }
+  .feed-section .feed-container {
+    justify-content: center;
+    padding: 21px 9px 40px;
+  }
+  .feed-section .feed-container .feed__title {
+    margin-top: 0;
+    margin-bottom: 19px;
+    font-size: 24px;
+  }
+  .feed-section .feed-container .feed__title_color {
+    margin: 0;
+  }
+  .feed-section .feed-container .feed__subtitle {
+    padding-top: 10px;
+    padding-bottom: 19px;
+    margin-left: -3px;
+    font-size: 18px;
+    line-height: 122%;
+    text-align: center;
+  }
+  .feed-section .feed-container .instructions {
+    margin-bottom: 40px;
+    gap: 26px;
+  }
+  .feed-section .feed-container .instructions .instructions__item {
+    gap: 9px;
+  }
+  .feed-section .feed-container .instructions .instructions__item:first-child .text {
+    padding-bottom: 18px;
+  }
+  .feed-section .feed-container .instructions .instructions__item:nth-child(3)::after {
+    top: -53px;
+    left: 140px;
+    transform: rotate(84deg);
+  }
+  .feed-section .feed-container .instructions .instructions__item:nth-child(5)::before {
+    top: -52px;
+    left: 140px;
+    transform: rotate(84deg);
+  }
+  .testimonials-section .wrapper-content {
+    padding: 0 12px 0 13px;
+  }
+  .testimonials-section::after {
+    background-image: url("../../assets/images/leav_mobile.png");
+    bottom: -30px;
+    max-width: 16%;
+    right: 0px;
+  }
+  .testimonials-section .testimonials {
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+  .testimonials-section .testimonials .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .testimonials-section .testimonials .feedbacks {
+    margin-bottom: 32px;
+  }
+  .testimonials-section .testimonials .feedbacks__item {
+    padding: 7px 15px 13px 10px;
+  }
+  .testimonials-section .testimonials .feedbacks__item:nth-child(5) .feedback {
+    padding-top: 0;
+  }
+  .testimonials-section .testimonials .feedbacks__item:nth-child(5) .user {
+    gap: 4px;
+  }
+  .testimonials-section .testimonials .feedbacks__item:nth-child(5) .user__name {
+    margin: 0;
+  }
+  .testimonials-section .testimonials .feedbacks__item .feedback {
+    padding-top: 1px;
+  }
+  .testimonials-section .testimonials .feedbacks__item .user {
+    gap: 6px;
+  }
+  .testimonials-section .testimonials .feedbacks__item .user__name {
+    margin: 2px 0;
   }
 }
