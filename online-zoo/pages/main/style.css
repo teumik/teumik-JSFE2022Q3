@@ -1500,7 +1500,8 @@
   }
   .footer {
     position: relative;
-    padding: 13px 0 0;
+    padding: 13px 0 0px;
+    padding-bottom: 12px;
   }
   .footer-content .news__subscribe {
     display: none;
@@ -1578,6 +1579,9 @@
 }
 
 @media screen and (max-width: 430px) {
+  .footer {
+    padding-bottom: 21px;
+  }
   .footer .footer-content .news {
     margin: 0;
     padding-top: 6px;
