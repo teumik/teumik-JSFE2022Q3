@@ -1698,7 +1698,8 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 
   .footer {
     position: relative;
-    padding: 13px 0 0;
+    padding: 13px 0 0px;
+    padding-bottom: 12px;
     &-content {
       .news {
         &__subscribe {
@@ -1810,6 +1811,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 
 @media screen and (max-width: 430px) {
   .footer {
+    padding-bottom: 21px;
     .footer-content {
       .news {
         margin: 0;
