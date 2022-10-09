@@ -34,11 +34,10 @@
           PetStory online
         </a>
       </h1>
-      <nav class="nav makeNone">
+      <nav class="nav makeNone burger-menu">
         <ul class="menu">
           <li class="menu__item hover">
-            <a class="link"
-              href="https://rolling-scopes-school.github.io/teumik-JSFE2022Q3/online-zoo/pages/main/index.html">About</a>
+            <a class="link link_active">About</a>
           </li>
           <li class="menu__item">
             <a class="link">Map</a>
@@ -46,8 +45,9 @@
           <li class="menu__item">
             <a class="link">Zoos</a>
           </li>
-          <li class="menu__item link_active">
-            <a class="link">Donate</a>
+          <li class="menu__item">
+            <a class="link"
+              href="https://rolling-scopes-school.github.io/teumik-JSFE2022Q3/online-zoo/pages/donate/index.html">Donate</a>
           </li>
           <li class="menu__item">
             <a class="link">Contact us</a>
@@ -58,14 +58,42 @@
             &copy;</a>
         </div>
       </nav>
-      <div class="burger-button none makeDisplay">
+      <div class="burger-button open none makeDisplay">
         <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="close-button none">
         <div class="line"></div>
         <div class="line"></div>
       </div>
     </div>
   </header>
-
+  <div class="nav burger-menu none">
+    <ul class="menu">
+      <li class="menu__item">
+        <a class="link">About</a>
+      </li>
+      <li class="menu__item">
+        <a class="link">Map</a>
+      </li>
+      <li class="menu__item">
+        <a class="link">Zoos</a>
+      </li>
+      <li class="menu__item link_active">
+        <a class="link"
+          href="https://rolling-scopes-school.github.io/teumik-JSFE2022Q3/online-zoo/pages/donate/index.html">Donate</a>
+      </li>
+      <li class="menu__item">
+        <a class="link">Contact us</a>
+      </li>
+    </ul>
+    <div class="copyright">
+      <a class="link" href="https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online">Designed by
+        &copy;</a>
+    </div>
+  </div>
+  <div class="overlay"></div>
   <!-- ===================
   ========================
 ==========================
@@ -129,49 +157,49 @@
               <div class="amount__bar">
                 <div class="amount__line">
                   <label for="5000" class="amount__label makeNone">
-                    <input type="radio" name="cash" id="5000" class="amount__input-item">
+                    <input type="radio" name="cash" id="5000" value="5000" class="amount__input-item">
                     <label for="5000" class="amount__label-item">5000</label>
                   </label>
                   <label for="2000" class="amount__label tabletNone">
-                    <input type="radio" name="cash" id="2000" class="amount__input-item">
+                    <input type="radio" name="cash" id="2000" value="2000" class="amount__input-item">
                     <label for="2000" class="amount__label-item">2000</label>
                   </label>
                   <label for="1000" class="amount__label tabletNone">
-                    <input type="radio" name="cash" id="1000" class="amount__input-item">
+                    <input type="radio" name="cash" id="1000" value="1000" class="amount__input-item">
                     <label for="1000" class="amount__label-item">1000</label>
                   </label>
                   <label for="500" class="amount__label">
-                    <input type="radio" name="cash" id="500" class="amount__input-item">
+                    <input type="radio" name="cash" id="500" value="500" class="amount__input-item">
                     <label for="500" class="amount__label-item">500</label>
                   </label>
                   <label for="250" class="amount__label">
-                    <input type="radio" name="cash" id="250" class="amount__input-item">
+                    <input type="radio" name="cash" id="250" value="250" class="amount__input-item">
                     <label for="250" class="amount__label-item">250</label>
                   </label>
                   <label for="100" class="amount__label">
-                    <input type="radio" name="cash" id="100" class="amount__input-item">
+                    <input type="radio" name="cash" id="100" value="100" class="amount__input-item">
                     <label for="100" class="amount__label-item">100</label>
                   </label>
                   <label for="50" class="amount__label">
-                    <input type="radio" name="cash" id="50" class="amount__input-item">
+                    <input type="radio" name="cash" id="50" value="50" class="amount__input-item">
                     <label for="50" class="amount__label-item">50</label>
                   </label>
                   <label for="25" class="amount__label">
-                    <input type="radio" name="cash" id="25" class="amount__input-item">
+                    <input type="radio" name="cash" id="25" value="25" class="amount__input-item">
                     <label for="25" class="amount__label-item">25</label>
                   </label>
                 </div>
               </div>
-              <div class="amount__cash">
-                <!-- <label for="5000" class="amount__label-item">5000</label>
+              <!-- <div class="amount__cash">
+                <label for="5000" class="amount__label-item">5000</label>
                 <label for="2000" class="amount__label-item">2000</label>
                 <label for="1000" class="amount__label-item">1000</label>
                 <label for="500" class="amount__label-item">500</label>
                 <label for="250" class="amount__label-item">250</label>
                 <label for="100" class="amount__label-item">100</label>
                 <label for="50" class="amount__label-item">50</label>
-                <label for="25" class="amount__label-item">25</label> -->
-              </div>
+                <label for="25" class="amount__label-item">25</label>
+              </div> -->
             </div>
             <form class="payment">
               <div class="payment-wrapper">
