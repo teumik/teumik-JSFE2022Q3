@@ -677,7 +677,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     align-items: center;
     padding: 140px 0 180px;
     .title {
-      margin-bottom: 49px;
+      margin-bottom: 47px;
       @extend %font-regular;
       font-size: 36px;
       line-height: 130%;
@@ -693,7 +693,7 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
       background: #f5f7f6;
       height: 6px;
       border-radius: 5px;
-      margin: 23px 0 31px;
+      margin: 20px 0 31px;
       &::before {
         content: "";
         position: absolute;
@@ -714,24 +714,27 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
         -moz-border-image: $pinkGradient;
         border-radius: 5px;
         -moz-appearance: none;
+        transition: all 1s;
       }
       &::-webkit-slider-thumb {
-        width: 19%;
+        width: 12.5%;
         height: 6px;
         background-color: #fe9013;
         border: none;
         border-radius: 5px;
         appearance: none;
         cursor: pointer;
+        transition: all 1s;
       }
       &::-moz-range-thumb {
-        width: 19%;
+        width: 12.5%;
         height: 6px;
         background-color: #fe9013;
         border: none;
         border-radius: 5px;
         -moz-appearance: none;
         cursor: pointer;
+        transition: all 1s;
       }
     }
     &__button {
@@ -743,11 +746,12 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
 }
 
 .feedbacks {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 30px;
+  // display: grid;
+  // grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  gap: 34px;
   &__item {
+    flex: 1 0 264px;
     position: relative;
     padding: 14px 15px 19px 16px;
     background-color: $grayLight;
@@ -1050,6 +1054,23 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   }
 }
 
+@media screen and (max-width: 1234px) {
+  .testimonials-section {
+    .testimonials {
+      .feedbacks-wrapper {
+        max-width: 975px;
+      }
+      .feedbacks {
+        display: flex;
+        gap: 34px;
+        &__item {
+          flex: 1 0 289px;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1220px) {
   .backstage-section {
     &::after {
@@ -1064,22 +1085,22 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
         margin-bottom: 31px;
       }
       .feedbacks {
-        &__item {
-          .user {
-            &__name {
-              width: min-content;
-            }
-            &__meta {
-              flex-direction: column;
-              gap: 0;
-            }
-            &__date {
-              &::before {
-                display: none;
-              }
-            }
-          }
-        }
+        // &__item {
+        //   .user {
+        //     &__name {
+        //       width: min-content;
+        //     }
+        //     &__meta {
+        //       flex-direction: column;
+        //       gap: 0;
+        //     }
+        //     &__date {
+        //       &::before {
+        //         display: none;
+        //       }
+        //     }
+        //   }
+        // }
       }
     }
   }
@@ -1217,37 +1238,38 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
         width: 41.637931%;
       }
       .title {
-        margin-bottom: 31px;
+        margin-bottom: 30px;
       }
       .feedbacks {
         display: flex;
         &__item {
+          cursor: pointer;
           & .feedback {
             padding-right: 10px;
           }
-          &.makeNone {
-            display: none;
-          }
-          &.makeDisplay {
-            display: block;
-            &_morePad .feedback {
-              padding-right: 11px;
-            }
-          }
-          .user {
-            &__name {
-              width: auto;
-            }
-            &__meta {
-              flex-direction: row;
-              gap: 16px;
-            }
-            &__date {
-              &::before {
-                display: block;
-              }
-            }
-          }
+          // &.makeNone {
+          //   display: none;
+          // }
+          // &.makeDisplay {
+          //   display: block;
+          //   &_morePad .feedback {
+          //     padding-right: 11px;
+          //   }
+          // }
+          // .user {
+          //   &__name {
+          //     width: auto;
+          //   }
+          //   &__meta {
+          //     flex-direction: row;
+          //     gap: 16px;
+          //   }
+          //   &__date {
+          //     &::before {
+          //       display: block;
+          //     }
+          //   }
+          // }
         }
       }
       .feedback {
@@ -1279,6 +1301,106 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
   }
 }
 
+@media screen and (max-width: 999px) {
+  .testimonials-section {
+    .testimonials {
+      .feedbacks-wrapper {
+        max-width: 840px;
+      }
+      .feedbacks {
+        display: flex;
+        gap: 34px;
+        &__item {
+          flex: 1 0 245px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 858px) {
+  // .testimonials-section {
+  //   .testimonials {
+  //     .feedbacks-wrapper {
+  //       max-width: 840px;
+  //     }
+  //     .feedbacks {
+  //       display: flex;
+  //       gap: 34px;
+  //       &__item {
+  //         flex: 1 0 245px;
+  //       }
+  //     }
+  //   }
+  // }
+
+  .testimonials-section {
+    &::after {
+      bottom: -70px;
+      max-width: 19.4%;
+      right: -7px;
+    }
+    .testimonials {
+      padding-top: 60px;
+      padding-bottom: 79px;
+      .feedbacks-wrapper {
+        position: relative;
+        max-width: 600px;
+      }
+      .feedbacks {
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 42px;
+        &__item {
+          flex-basis: auto;
+          padding: 14px 15px 7px 12px;
+          &:nth-child(5) {
+            padding: 10px 15px 11px 12px;
+            .user {
+              gap: 6px;
+            }
+          }
+          .feedback {
+            height: 37px;
+            padding-left: 6px;
+            //   &:active {
+            //     height: auto;
+            //   }
+            //   &.makeHide {
+            //     display: none;
+            //   }
+            //   &.makeVisible {
+            //     display: block;
+            //   }
+          }
+          // .user {
+          //   &__name {
+          //     width: auto;
+          //   }
+          //   &__meta {
+          //     flex-direction: row;
+          //     gap: 16px;
+          //   }
+          //   &__date {
+          //     &::before {
+          //       display: block;
+          //       left: -10px;
+          //     }
+          //   }
+          // }
+        }
+      }
+      .range {
+        display: none;
+      }
+      &__button {
+        align-self: center;
+        width: 240px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 800px) {
   .header {
     .nav {
@@ -1301,28 +1423,28 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     }
   }
 
-  .testimonials-section {
-    .testimonials {
-      .feedbacks {
-        &__item {
-          .user {
-            &__name {
-              width: min-content;
-            }
-            &__meta {
-              flex-direction: column;
-              gap: 0;
-            }
-            &__date {
-              &::before {
-                display: none;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  // .testimonials-section {
+  //   .testimonials {
+  //     .feedbacks {
+  //       &__item {
+  //         .user {
+  //           &__name {
+  //             width: min-content;
+  //           }
+  //           &__meta {
+  //             flex-direction: column;
+  //             gap: 0;
+  //           }
+  //           &__date {
+  //             &::before {
+  //               display: none;
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 @media screen and (max-width: 768px) {
@@ -1823,66 +1945,66 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
     }
   }
 
-  .testimonials-section {
-    &::after {
-      bottom: -70px;
-      max-width: 19.4%;
-      right: -7px;
-    }
-    .testimonials {
-      padding-top: 60px;
-      padding-bottom: 79px;
-      .feedbacks {
-        flex-direction: column;
-        gap: 18px;
-        margin-bottom: 42px;
-        &__item {
-          padding: 14px 15px 7px 12px;
-          &:nth-child(5) {
-            padding: 10px 15px 11px 12px;
-            .user {
-              gap: 6px;
-            }
-          }
-          .feedback {
-            height: 37px;
-            padding-left: 6px;
-            &:active {
-              height: auto;
-            }
-            &.makeHide {
-              display: none;
-            }
-            &.makeVisible {
-              display: block;
-            }
-          }
-          .user {
-            &__name {
-              width: auto;
-            }
-            &__meta {
-              flex-direction: row;
-              gap: 16px;
-            }
-            &__date {
-              &::before {
-                display: block;
-                left: -10px;
-              }
-            }
-          }
-        }
-      }
-      .range {
-        display: none;
-      }
-      &__button {
-        align-self: center;
-        width: 240px;
-      }
-    }
-  }
+  // .testimonials-section {
+  //   &::after {
+  //     bottom: -70px;
+  //     max-width: 19.4%;
+  //     right: -7px;
+  //   }
+  //   .testimonials {
+  //     padding-top: 60px;
+  //     padding-bottom: 79px;
+  //     .feedbacks {
+  //       flex-direction: column;
+  //       gap: 18px;
+  //       margin-bottom: 42px;
+  //       &__item {
+  //         padding: 14px 15px 7px 12px;
+  //         &:nth-child(5) {
+  //           padding: 10px 15px 11px 12px;
+  //           .user {
+  //             gap: 6px;
+  //           }
+  //         }
+  //         .feedback {
+  //           height: 37px;
+  //           padding-left: 6px;
+  //           &:active {
+  //             height: auto;
+  //           }
+  //           &.makeHide {
+  //             display: none;
+  //           }
+  //           &.makeVisible {
+  //             display: block;
+  //           }
+  //         }
+  //         // .user {
+  //         //   &__name {
+  //         //     width: auto;
+  //         //   }
+  //         //   &__meta {
+  //         //     flex-direction: row;
+  //         //     gap: 16px;
+  //         //   }
+  //         //   &__date {
+  //         //     &::before {
+  //         //       display: block;
+  //         //       left: -10px;
+  //         //     }
+  //         //   }
+  //         // }
+  //       }
+  //     }
+  //     .range {
+  //       display: none;
+  //     }
+  //     &__button {
+  //       align-self: center;
+  //       width: 240px;
+  //     }
+  //   }
+  // }
 
   .footer {
     position: relative;
@@ -2237,26 +2359,167 @@ $maxWidth: (($desktopWidth - 220px * 2) / $desktopWidth) * 100%;
         margin-bottom: 32px;
         &__item {
           padding: 7px 15px 13px 10px;
-          &:nth-child(5) {
-            .feedback {
-              padding-top: 0;
+          // &:nth-child(5) {
+          //   .feedback {
+          //     padding-top: 0;
+          //   }
+          //   .user {
+          //     gap: 4px;
+          //     &__name {
+          //       margin: 0;
+          //     }
+          //   }
+          // }
+          // .feedback {
+          //   padding-top: 1px;
+          // }
+          // .user {
+          //   gap: 6px;
+          //   &__name {
+          //     margin: 2px 0;
+          //   }
+          // }
+        }
+      }
+    }
+  }
+}
+
+.feedbacks-wrapper {
+  width: 102%;
+  overflow: hidden;
+  padding: 2px 1%;
+  .feedbacks {
+    transition: transform 0.5s;
+  }
+}
+
+@media screen and (max-width: 858px) {
+  .overlay_second {
+    display: block;
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    top: 0px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+    &_active {
+      height: 100%;
+      opacity: 1;
+    }
+  }
+  .feedbacks-wrapper {
+    width: 102%;
+    overflow: hidden;
+    padding: 2px 1%;
+    .feedbacks {
+      transition: transform 0.5s;
+      .wrap {
+        background-color: $grayLight;
+        border-radius: 20px;
+        position: relative;
+        z-index: 9998;
+        width: 100%;
+        height: 100%;
+        padding: 14px 15px 19px 16px;
+      }
+      .feedbacks__item_open {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        padding: 2px;
+        width: 267px;
+        height: 391px;
+        background: $pinkGradient;
+        border-radius: 20px;
+        cursor: default;
+        .close-button {
+          position: absolute;
+          top: -16px;
+          right: -33px;
+          z-index: 101;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+          width: 20px;
+          height: 20px;
+          transition: all 2s;
+          cursor: pointer;
+          &:hover {
+            .line {
+              background: #e47209;
+              transition: all 2s;
             }
-            .user {
-              gap: 4px;
-              &__name {
-                margin: 0;
+          }
+          .line {
+            width: 100%;
+            height: 1.5px;
+            background: #f9804b;
+            background-image: $orangeGradient;
+            position: absolute;
+            border-radius: 2px;
+            &:first-child {
+              transform: rotate(45deg);
+            }
+            &:last-child {
+              transform: rotate(-45deg);
+            }
+          }
+        }
+        &::before {
+          content: none;
+        }
+        .user {
+          margin-bottom: 7px;
+          display: flex;
+          gap: 10px;
+          &__name {
+            font-size: 16px;
+            line-height: 120%;
+            color: $black;
+          }
+          &__meta {
+            display: flex;
+            gap: 16px;
+            font-size: 15px;
+            line-height: 120%;
+            color: #bdbdbd;
+            .user__date {
+              position: relative;
+              &::before {
+                content: "\2022";
+                position: absolute;
+                left: -8px;
               }
             }
           }
-          .feedback {
-            padding-top: 1px;
-          }
-          .user {
-            gap: 6px;
-            &__name {
-              margin: 2px 0;
-            }
-          }
+        }
+        .feedback {
+          height: 307px;
+          overflow: scroll;
+          font-size: 15px;
+          line-height: 120%;
+          color: $gray;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .feedbacks-wrapper {
+    .feedbacks {
+      .feedbacks__item_open {
+        .close-button {
+          right: -20px;
         }
       }
     }
