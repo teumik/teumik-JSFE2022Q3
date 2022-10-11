@@ -1,5 +1,6 @@
 // alert('Доброго времени суток! Я хочу пропросить тебя об одной просьбе. Если где-то встретится ошибка, пожалуйста напиши мне, я исправлю ее. Спасибо, что уделяешь время на проверку моей работы! Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik .')
-alert('Доброго времени суток! \nСпасибо за то, что уделяешь время на проверку моей работы. Я хочу попросить тебя об одной моменте. Если есть возможность и желание, проверь мою работу ближе к концу дедлайна. \nСейчас 11.10 14:28 ночи. Сегодня все доделаю и спасибо тебе! \nВсегда на связи: Discord teumik#1795, Telegram и GitHub: teumik')
+// alert('Доброго времени суток! \nСпасибо за то, что уделяешь время на проверку моей работы. Я хочу попросить тебя об одной моменте. Если есть возможность и желание, проверь мою работу ближе к концу дедлайна. \nСейчас 11.10 14:28 ночи. Сегодня все доделаю и спасибо тебе! \nВсегда на связи: Discord teumik#1795, Telegram и GitHub: teumik')
+alert('Доброго времени суток! Я хочу попросить тебя об одном моменте. Если где-то встретится ошибка, пожалуйста напиши мне, я исправлю ее. Спасибо, что уделяешь время на проверку моей работы! Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik .')
 
 import { shuffle } from './shuffle.js';
 
@@ -13,21 +14,35 @@ const overlaySecond = document.querySelector('.overlay_second');
 const closePopupButton = document.querySelector('.close-button');
 const feedbacks = document.querySelector('.feedbacks');
 const range = document.querySelector('.range');
+const logoFooter = document.querySelector('.news__logo');
+const menu = document.querySelector('.burger-menu .menu');
+const logo = document.querySelector('.header .logo');
+const copyright = document.querySelector('.header .copyright');
 
 // LISTENERS
 
 popupButton.addEventListener('click', displayModal);
 overlay.addEventListener('click', displayModal);
 closePopupButton.addEventListener('click', displayModal);
+menu.addEventListener('click', displayModal);
+logo.addEventListener('click', displayModal);
+copyright.addEventListener('click', displayModal);
 range.addEventListener('input', slideFeeds);
 globalThis.addEventListener('resize', logSize);
 globalThis.addEventListener('resize', showFeedPopup);
 feedbacks.addEventListener('click', showFeedPopup);
 overlaySecond.addEventListener('click', showFeedPopup);
+logoFooter.addEventListener('click', scrollTop);
+
+// SCROLL TO TOP
+
+function scrollTop(event) {
+  globalThis.scrollTo(0, 0);
+}
 
 // MODAL POPUP
 
-function displayModal() {
+function displayModal(event) {
   document.body.classList.toggle('open-popup');
 }
 
@@ -115,7 +130,7 @@ function logSize() {
     feedbacks.style.transform = '';
 
     Array.from(feedbacks.children).forEach((el, i) => {
-      if (i >= 5 && i <= 8) return;
+      if (i >= 6 && i <= 8) return;
       el.style.display = 'none';
     })
   } else {
@@ -141,7 +156,7 @@ function showFeedPopup(event) {
     return;
   }
 
-  let isClickOverlay = event.target.classList.contains('overlay_second_active');
+  const isClickOverlay = event.target.classList.contains('overlay_second_active');
 
   if (isClickOverlay) {
     document.querySelector('.feedbacks__item_open').remove();
@@ -150,23 +165,21 @@ function showFeedPopup(event) {
   }
 
   if (event.target.closest('.feedbacks__item')) {
-    let isClickClose = event.target.closest('.close-button');
-    let isClickClone = event.target.closest('.feedbacks__item_open');
-    console.log('pop');
+    const isClickClose = event.target.closest('.close-button');
+    const isClickClone = event.target.closest('.feedbacks__item_open');
 
     if (isClickClone && !isClickClose) return;
 
     if (isClickClose) {
-      console.log('here');
       isClickClose.parentNode.parentNode.remove();
       document.body.style.overflow = '';
     } else {
       const target = event.target.closest('.feedbacks__item');
       const clone = target.cloneNode(true);
 
-      let cross = document.createElement('div');
-      let lineOne = document.createElement('div');
-      let lineTwo = document.createElement('div');
+      const cross = document.createElement('div');
+      const lineOne = document.createElement('div');
+      const lineTwo = document.createElement('div');
 
       cross.className = 'close-button';
       lineOne.className = 'line';
@@ -177,7 +190,7 @@ function showFeedPopup(event) {
 
       clone.append(cross);
 
-      let wrap = document.createElement('div');
+      const wrap = document.createElement('div');
       wrap.className = 'wrap';
       wrap.append(...clone.children);
       clone.append(wrap);
@@ -191,7 +204,59 @@ function showFeedPopup(event) {
 
 // ANIMALS SLIDER
 
+let arrowLeft = document.querySelector('.button-container_left');
+let arrowRight = document.querySelector('.button-container_right');
+let isAnimated = true;
 
-let arr = [1, 2, 3];
-arr = shuffle(arr);
-console.log(arr);
+arrowLeft.addEventListener('click', moveRight);
+arrowRight.addEventListener('click', moveLeft);
+
+function shuffleNode(el) {
+  let shuffled = shuffle(el);
+  return shuffled;
+}
+
+function createNode() {
+  let animals = document.querySelector('.animals .wrap');
+  let clone = animals.cloneNode(true);
+  let parent = document.querySelector('.animals');
+
+  let shuffled = shuffleNode(clone.children);
+  clone.append(...shuffled);
+
+  return { parent, clone };
+}
+
+function moveRight() {
+  if (!isAnimated) return;
+  isAnimated = false;
+
+  let node = createNode();
+  node.parent.prepend(node.clone);
+  node.parent.classList.add('animals_right');
+
+  document.querySelector('.animals_right').addEventListener('animationend', removeRight);
+}
+
+function moveLeft() {
+  if (!isAnimated) return;
+  isAnimated = false;
+
+  let node = createNode();
+  node.parent.append(node.clone);
+  node.parent.classList.add('animals_left');
+
+  document.querySelector('.animals_left').addEventListener('animationend', removeLeft);
+}
+
+function removeRight(event) {
+  document.querySelector('.animals_right').lastElementChild.remove();
+  document.querySelector('.animals').classList.remove('animals_right');
+  isAnimated = true;
+}
+
+function removeLeft(event) {
+  document.querySelector('.animals_left').firstElementChild.remove();
+  document.querySelector('.animals').classList.remove('animals_left');
+  isAnimated = true;
+}
