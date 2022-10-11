@@ -1,5 +1,7 @@
 // alert('Доброго времени суток! Я хочу пропросить тебя об одной просьбе. Если где-то встретится ошибка, пожалуйста напиши мне, я исправлю ее. Спасибо, что уделяешь время на проверку моей работы! Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik .')
-alert('Доброго времени суток! \nСпасибо за то, что уделяешь время на проверку моей работы. Я хочу попросить тебя об одной моменте. Если есть возможность и желание, проверь мою работу ближе к концу дедлайна. \nСейчас 11.10 3:50 ночи. Завтра все доделаю и спасибо тебе! \nВсегда на связи: Discord teumik#1795, Telegram и GitHub: teumik')
+alert('Доброго времени суток! \nСпасибо за то, что уделяешь время на проверку моей работы. Я хочу попросить тебя об одной моменте. Если есть возможность и желание, проверь мою работу ближе к концу дедлайна. \nСейчас 11.10 14:28 ночи. Сегодня все доделаю и спасибо тебе! \nВсегда на связи: Discord teumik#1795, Telegram и GitHub: teumik')
+
+import { shuffle } from './shuffle.js';
 
 const feeds = './feeds.json';
 const response = await fetch(feeds);
@@ -110,6 +112,8 @@ function logSize() {
   if (globalThis.innerWidth <= 858) {
     if (feedbacks.children.length < 4) return;
 
+    feedbacks.style.transform = '';
+
     Array.from(feedbacks.children).forEach((el, i) => {
       if (i >= 5 && i <= 8) return;
       el.style.display = 'none';
@@ -126,6 +130,8 @@ logSize();
 // FEED POPUP FOR TABLET
 
 function showFeedPopup(event) {
+  if (globalThis.innerWidth > 858) return;
+
   if (event.type === 'resize') {
     if (document.querySelector('.feedbacks__item_open')) {
       document.querySelector('.feedbacks__item_open').remove();
@@ -184,3 +190,8 @@ function showFeedPopup(event) {
 }
 
 // ANIMALS SLIDER
+
+
+let arr = [1, 2, 3];
+arr = shuffle(arr);
+console.log(arr);
