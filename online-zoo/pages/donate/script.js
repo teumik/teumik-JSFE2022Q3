@@ -1,6 +1,5 @@
-// alert('Доброго времени суток! Я хочу пропросить тебя об одной просьбе. Если где-то встретится ошибка, пожалуйста напиши мне, я исправлю ее. Спасибо, что уделяешь время на проверку моей работы! Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik .')
-alert('Доброго времени суток! \nСпасибо за то, что уделяешь время на проверку моей работы. Я хочу попросить тебя об одной моменте. Если есть возможность и желание, проверь мою работу ближе к концу дедлайна. \nСейчас 11.10 3:50 ночи. Завтра все доделаю и спасибо тебе! \nВсегда на связи: Discord teumik#1795, Telegram и GitHub: teumik')
-
+// alert('Доброго времени суток! Я хочу пропросить тебя об одной просьбе. Если где-то встретится ошибка, пожалуйста напиши мне, я исправлю ее. Спасибо, что уделяешь время на проверку моей работы! Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik .');
+alert('Доброго времени суток! \nСпасибо за то, что уделяешь время на проверку моей работы. Я хочу попросить тебя об одной моменте. Если есть возможность и желание, проверь мою работу ближе к концу дедлайна. \nСейчас 11.10 3:50 ночи. Завтра все доделаю и спасибо тебе! \nВсегда на связи: Discord teumik#1795, Telegram и GitHub: teumik');
 
 let popupButton = document.querySelector('.burger-button.open');
 let overlay = document.querySelector('.overlay');
@@ -22,7 +21,6 @@ for (input of radioButtons) {
   }
 }
 
-
 function displayModal() {
   document.body.classList.toggle('open-popup');
 }
@@ -32,7 +30,13 @@ function inputsListener(event) {
 }
 
 function checkValue(event) {
+  if (event.target.value !== undefined && event.target.value.toString().length > 4) {
+    event.target.value = event.target.value.slice(0, -1);
+    return;
+  }
+
   for (input of radioButtons) {
+    console.log('miss');
     input.checked = false;
     if (input.value === event.target.value) {
       input.checked = true;
