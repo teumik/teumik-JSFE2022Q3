@@ -1,0 +1,29 @@
+@import "variable";
+
+.field {
+  padding: 0.2em;
+  display: grid;
+  gap: 0.2em;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  border: 2px solid $textColor;
+  border-radius: 5px;
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6em;
+    color: $buttomTextColor;
+    background-color: $cellBackColor;
+    border: 2px solid $textColor;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: $cellBackColorHover;
+    }
+    &:active {
+      background-color: $cellBackColorActive;
+    }
+  }
+}

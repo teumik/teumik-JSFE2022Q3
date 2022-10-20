@@ -1,0 +1,14 @@
+@import "variable";
+
+.field-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: $additionalColor;
+  .size {
+    padding-left: 0.25em;
+    font-size: 1.5em;
+    color: $buttonColorDisabled;
+  }
+}

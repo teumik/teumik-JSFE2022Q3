@@ -1,0 +1,22 @@
+.wrapper {
+  display: grid;
+  align-items: center;
+  grid-template-rows: auto 1fr auto;
+  gap: 2em;
+  margin: auto;
+  padding: 4em 1em;
+  width: 100%;
+  max-width: 800px;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+.top-wrapper {
+  display: grid;
+  gap: 0.5em;
+}
+
+.bottom-wrapper {
+  display: grid;
+  gap: 0.5em;
+}

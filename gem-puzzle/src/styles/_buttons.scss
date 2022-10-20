@@ -1,0 +1,31 @@
+@import "variable";
+
+.buttons {
+  display: flex;
+  gap: 0.8em;
+  font-size: 2em;
+  &__item {
+    flex: 1 1 auto;
+    padding: 0.25em 0.5em;
+    background-color: $buttonColor;
+    color: $buttomTextColor;
+    border-radius: 5px;
+    border: transparent;
+    outline: transparent;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: $buttonColorHover;
+    }
+    &:active {
+      background-color: $buttonColorActive;
+    }
+    &_disabled {
+      background-color: $buttonColorDisabled;
+      cursor: default;
+      &:hover {
+        background-color: $buttonColorDisabledHover;
+      }
+    }
+  }
+}

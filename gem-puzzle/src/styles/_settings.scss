@@ -1,0 +1,38 @@
+@import "variable";
+
+.settings-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2em;
+  color: $additionalColor;
+  .settings {
+    margin: 0;
+    padding: 0 0.5em;
+    display: inline-block;
+    font-size: 1.2em;
+    color: $buttonColorDisabled;
+    list-style: none;
+    &__item {
+      display: inline-block;
+      color: $sizeColor;
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.2s;
+      &:hover {
+        color: $sizeColorHover;
+      }
+      &:active {
+        color: $sizeColorActive;
+      }
+      &_active {
+        color: $buttonColorDisabled;
+        cursor: default;
+        &:hover {
+          color: $buttonColorDisabled;
+        }
+      }
+    }
+  }
+}
