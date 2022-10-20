@@ -10,12 +10,12 @@
   .settings {
     margin: 0;
     padding: 0 0.5em;
-    display: inline-block;
+    display: flex;
+    gap: 0.6em;
     font-size: 1.2em;
     color: $buttonColorDisabled;
     list-style: none;
     &__item {
-      display: inline-block;
       color: $sizeColor;
       text-decoration: underline;
       cursor: pointer;

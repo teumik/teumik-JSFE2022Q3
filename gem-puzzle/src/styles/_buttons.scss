@@ -20,7 +20,7 @@
     &:active {
       background-color: $buttonColorActive;
     }
-    &_disabled {
+    &:disabled {
       background-color: $buttonColorDisabled;
       cursor: default;
       &:hover {
