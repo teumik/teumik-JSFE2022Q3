@@ -22,7 +22,6 @@ node_modules
 build
 .cache
 .temp
-temp
 
 # FILES
 **/.DS_Store
