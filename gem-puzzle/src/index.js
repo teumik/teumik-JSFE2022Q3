@@ -1,4 +1,4 @@
-import './index.html';
+// import './index.html';
 import './index.scss';
 
 import { BasicNode } from './modules/basicNode';

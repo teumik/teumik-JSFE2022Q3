@@ -27,13 +27,18 @@ module.exports = {
   optimization: {
     minimize: !isDev,
     splitChunks: {
-      chunks: 'all',
+      // chunks: 'all',
     },
+  },
+  cache: {
+    type: 'filesystem',
+    cacheDirectory: path.resolve(__dirname, '.cache'),
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html'),
-      // filename: isDev ? '[name].html' : '[name].[contenthash].html', // (NEED CHANGE DEVSERVER)
+      // title: 'Gem Puzzle',
+      template: path.resolve(__dirname, 'src', 'index.html'), // TEMPLATE
+      filename: isDev ? 'index.html' : '[name].[contenthash].html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
@@ -55,7 +60,7 @@ module.exports = {
             options: {
               postcssOptions: {
                 plugins: [
-                  // require('postcss-preset-env')
+                  // require('postcss-preset-env'),
                   'postcss-preset-env',
                 ],
               },
