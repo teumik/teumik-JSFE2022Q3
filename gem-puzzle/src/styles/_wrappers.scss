@@ -1,10 +1,11 @@
 .wrapper {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  grid-template-rows: auto 1fr auto;
   gap: 2em;
   margin: auto;
-  padding: 4em 1em;
+  padding: 1em 1em;
   width: 100%;
   max-width: 800px;
   min-height: 100vh;
@@ -14,9 +15,4 @@
 .top-wrapper {
   display: grid;
   gap: 1em;
-}
-
-.bottom-wrapper {
-  display: grid;
-  gap: 0.5em;
 }

@@ -1,13 +1,27 @@
 @import "variable";
 
-.buttons {
+.menu {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -43%);
+  display: grid;
+  gap: 0.3em;
+  width: max-content;
   font-size: 3em;
-  text-align: center;
+  color: white;
+  transition: top 1.2s;
+  &_open {
+    top: 50%;
+    transition: top 0.8s;
+  }
   &__item {
     padding: 0.25em 1em;
     background-color: $buttonColor;
     color: $buttomTextColor;
     border-radius: 5px;
+    text-align: center;
     border: transparent;
     outline: transparent;
     cursor: pointer;

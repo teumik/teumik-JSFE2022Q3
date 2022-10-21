@@ -9,8 +9,7 @@ function makeField(quantity) {
     el = new BasicNode(undefined, 'field__item', q);
     items.push(el);
   }
-  el = new BasicNode(undefined, 'field__item', undefined);
-  el.style.opacity = '0';
+  el = new BasicNode(undefined, ['field__item', 'field__item_blank'], undefined);
   items.push(el);
   items = _.shuffle(items);
   field.append(...items);

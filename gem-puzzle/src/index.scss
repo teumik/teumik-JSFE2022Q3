@@ -6,6 +6,8 @@
 @import "styles/field-info";
 @import "styles/settings";
 @import "styles/wrappers";
+@import "styles/menu";
+@import "styles/overlay";
 
 * {
   box-sizing: border-box;
@@ -19,14 +21,33 @@ body {
   color: $textColor;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   body {
-    font-size: 0.7em;
+    font-size: 2vmin;
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (min-width: 1000px) and (max-height: 1000px) {
   body {
-    font-size: 0.4em;
+    color: red;
+    font-size: 1.5vmin;
   }
 }
+
+// @media screen and (max-width: 640px) {
+//   body {
+//     font-size: 0.8em;
+//   }
+// }
+
+// @media screen and (max-width: 440px) {
+//   body {
+//     font-size: 0.6em;
+//   }
+// }
+
+// @media screen and (max-width: 350px) {
+//   body {
+//     font-size: 0.4em;
+//   }
+// }
