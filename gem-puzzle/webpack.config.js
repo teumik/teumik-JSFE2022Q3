@@ -38,7 +38,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       // title: 'Gem Puzzle',
       template: path.resolve(__dirname, 'src', 'index.html'), // TEMPLATE
-      filename: isDev ? 'index.html' : '[name].[contenthash].html',
+      // filename: isDev ? 'index.html' : '[name].[contenthash].html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
