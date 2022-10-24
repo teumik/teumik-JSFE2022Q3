@@ -13,11 +13,12 @@
 # npm install image-webpack-loader --save-dev
 # npm i --save lodash
 # npx install-peerdeps --dev eslint-config-airbnb-base
+# npm install file-loader --save-dev
+
 
 # UNCOMMIT FOR
 
 # FOLDERS
-temp
 node_modules
 build
 .cache

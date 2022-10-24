@@ -11,10 +11,10 @@
   width: max-content;
   font-size: 3em;
   color: white;
-  transition: top 1.2s;
+  // transition: top 1.2s;
   &_open {
     top: 50%;
-    transition: top 0.8s;
+    transition: top 0.5s;
   }
   &__item {
     padding: 0.25em 1em;
@@ -31,6 +31,12 @@
     }
     &:active {
       background-color: $buttonColorActive;
+    }
+    &_nosound {
+      background-color: rgb(208, 44, 68);
+      &:hover {
+        background-color: rgb(198, 25, 51);
+      }
     }
   }
 }

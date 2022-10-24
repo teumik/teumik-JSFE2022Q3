@@ -77,6 +77,14 @@ module.exports = {
         },
       },
       {
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        // test: /\.mp3$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'audio/[name].[ext]'
+        }
+      },
+      {
         test: /\.(jpe?g|png|webp|gif|svg)$/i,
         use: [
           {
