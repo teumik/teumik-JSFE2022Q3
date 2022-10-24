@@ -1,6 +1,6 @@
 import { BasicNode } from "../index";
 
-const sizes = [2, 3, 4, 5, 6, 7, 8];
+const sizes = [3, 4, 5, 6, 7, 8];
 const menuNames = ['Continue', 'New Game', 'Size', 'Save', 'Load', 'Scores', 'Sound'];
 const menuAttributes = ['continue', 'newGame', 'size', 'save', 'load', 'scores', 'sound'];
 const menu = new BasicNode('div', 'menu', undefined);

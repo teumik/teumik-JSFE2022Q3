@@ -1,3 +1,5 @@
+allert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что завтра будет доделана уже! Время 01:59. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik .')
+
 import './index.html';
 import './index.scss';
 import clickCells from './assets/audio/click_cells.mp3';
@@ -451,6 +453,3 @@ function setRestart() {
   game.newGame();
   stopwatch.stop();
 }
-
-allert.classList.add('allert_open');
-overlaySecond.classList.add('overlay_restart_open');
