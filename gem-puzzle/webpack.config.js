@@ -81,8 +81,8 @@ module.exports = {
         // test: /\.mp3$/i,
         loader: 'file-loader',
         options: {
-          name: 'audio/[name].[ext]'
-        }
+          name: 'audio/[name].[ext]',
+        },
       },
       {
         test: /\.(jpe?g|png|webp|gif|svg)$/i,
