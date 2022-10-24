@@ -8,6 +8,8 @@
 @import "styles/wrappers";
 @import "styles/menu";
 @import "styles/overlay";
+@import "styles/allert";
+@import "styles/overlay-restart";
 
 * {
   box-sizing: border-box;
@@ -15,6 +17,7 @@
 }
 
 body {
+  position: relative;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
     "Helvetica Neue", sans-serif;
   font-size: 1em;

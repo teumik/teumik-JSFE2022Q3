@@ -8,8 +8,8 @@ import winSound from './assets/audio/win.mp3';
 
 import { BasicNode } from './modules/basicNode';
 export { BasicNode };
-// import { settings } from './modules/settings';
-// export { settings };
+import { allert } from './modules/allert';
+export { allert };
 import { buttonsWrapper } from './modules/buttons';
 export { buttonsWrapper };
 import { moves } from './modules/moves';
@@ -22,6 +22,8 @@ import { menu } from './modules/menu';
 export { menu };
 import { overlay } from './modules/overlay';
 export { overlay };
+import { overlayRestart } from './modules/overlayRestart';
+export { overlayRestart };
 
 import { header } from './modules/header';
 import { makeField } from './modules/field';
@@ -29,6 +31,8 @@ import { footer } from './modules/footer';
 import _ from 'lodash';
 
 // VARIABLE
+
+let isGameStart = false;
 
 let settings = {
   load: false,
@@ -50,6 +54,9 @@ const wrapper = new BasicNode('div', 'wrapper', undefined);
 wrapper.append(header, makeField(settings.field), footer);
 document.body.append(wrapper);
 
+document.body.append(allert);
+document.body.append(overlayRestart);
+
 // GET DOM
 
 const field = document.querySelector('.field');
@@ -59,6 +66,8 @@ const count = document.querySelector('.moves__count');
 const timeContent = document.querySelector('.time__content');
 const options = document.querySelector('.options');
 const fieldSize = document.querySelector('.size');
+const overlaySecond = document.querySelector('.overlay_restart');
+const restart = document.querySelector('.restart');
 
 // LISTENERS
 
@@ -66,10 +75,12 @@ globalThis.addEventListener('resize', resize);
 field.addEventListener('click', detectCell);
 menuButton.addEventListener('click', openMenu);
 menu.addEventListener('click', methodTrigger);
+restart.addEventListener('click', setRestart)
 
 // VARIABLE
 
 let matrix = makeMatrix(Array.from(items).map(item => Number(item.dataset.id)));
+let reference = JSON.parse(JSON.stringify(matrix));
 
 // BEFORELOAD
 
@@ -108,15 +119,15 @@ class Timer {
   }
 
   refresh() {
-    console.log('refresh');
-    console.log(stopwatch);
+    // console.log('refresh');
+    // console.log(stopwatch);
     timeContent.innerHTML = `${String(this.timer.min).padStart(2, '0')}:${String(this.timer.sec).padStart(2, '0')}`;
     // settings.time.min = this.timer.min;
     // settings.time.sec = this.timer.sec;
   }
 
   reset() {
-    console.log('reset');
+    // console.log('reset');
     clearInterval(this.interval);
     this.interval = null;
     if (!settings.load) {
@@ -132,7 +143,7 @@ function playSound(src) {
     let audio = new Audio(src);
     audio.play();
   } else {
-    console.log('Sound turn off');
+    // console.log('Sound turn off');
   }
 }
 
@@ -148,13 +159,16 @@ class Game {
   }
 
   newGame() {
-    console.log('new game');
+    isGameStart = true;
+    // console.log('new game');
     // console.log(settings);
     if (!settings.load) {
       matrix = makeMatrix(Array.from(items).map(item => Number(item.dataset.id)));
       flatter(matrix);
+      reference = JSON.parse(JSON.stringify(matrix));
     } else {
       setPositionItem(matrix);
+      reference = JSON.parse(JSON.stringify(matrix));
     }
     openMenu();
     reset(settings);
@@ -166,28 +180,28 @@ class Game {
     stopwatch.start();
   }
   size() {
-    console.log('size');
+    // console.log('size');
     options.classList.toggle('options_open');
     options.addEventListener('click', setField);
   }
   save() {
-    console.log('save');
+    // console.log('save');
     settings.matrix = matrix;
     settings.time.min = stopwatch.timer.min;
     settings.time.sec = stopwatch.timer.sec;
     localStorage.game = JSON.stringify(settings);
   }
   load() {
-    console.log('load');
+    // console.log('load');
     settings = JSON.parse(localStorage.game);
-    console.log(settings, 'load');
+    // console.log(settings, 'load');
     setField('load');
   }
   scores() {
     console.log('scores');
   }
   sound() {
-    console.log('sound');
+    // console.log('sound');
     settings.sound = !settings.sound;
   }
 }
@@ -286,6 +300,13 @@ function setPositionItem(m) {
       const node = items[v - 1];
       setNodesStyle(node, x, y)
     }
+  }
+
+  let isMatrix = isMatrixCompete(matrix);
+
+  if (isMatrix && isGameStart) {
+    allert.classList.add('allert_open');
+    overlaySecond.classList.add('overlay_restart_open');
   }
 }
 
@@ -410,4 +431,26 @@ function reset(settings) {
   }
 }
 
-// SOMETHINGSHIT
+// WIN
+
+function isMatrixCompete(m) {
+  reference = reference.flat().sort((a, b) => a - b)
+  console.log(...reference);
+  console.log(...matrix.flat());
+  console.log(JSON.stringify(reference) === JSON.stringify(matrix.flat()));
+  return JSON.stringify(reference) === JSON.stringify(matrix.flat());
+}
+
+// RESTART
+
+function setRestart() {
+  allert.classList.remove('allert_open');
+  overlaySecond.classList.remove('overlay_restart_open');
+
+  game = new Game();
+  game.newGame();
+  stopwatch.stop();
+}
+
+allert.classList.add('allert_open');
+overlaySecond.classList.add('overlay_restart_open');
