@@ -28,6 +28,10 @@ import { makeField } from './modules/field';
 import { footer } from './modules/footer';
 import _ from 'lodash';
 
+// PRELOAD
+
+
+
 // MAKE DOM
 
 const wrapper = new BasicNode('div', 'wrapper', undefined);
@@ -36,13 +40,13 @@ document.body.append(wrapper);
 
 // GET DOM
 
-const items = document.querySelectorAll('.field__item');
-const field = document.querySelector('.field');
+let field = document.querySelector('.field');
+let items = document.querySelectorAll('.field__item');
 const menuButton = document.querySelector('.buttons__item');
 const count = document.querySelector('.moves__count');
-// const min = document.querySelector('.time__minutes');
-// const sec = document.querySelector('.time__seconds');
 const timeContent = document.querySelector('.time__content');
+const options = document.querySelector('.options');
+const fieldSize = document.querySelector('.size');
 
 // VARIABLE
 
@@ -65,12 +69,11 @@ class Timer {
       min: 0,
       sec: 0,
     }
-    this.isGo = false;
+    this.isTimerOn = false;
   }
 
   start() {
     this.interval = setInterval(() => {
-      console.log(this.timer);
       if (this.timer.sec >= 59) {
         this.timer.min++;
         this.timer.sec = 0;
@@ -78,13 +81,13 @@ class Timer {
         this.timer.sec++;
       }
       this.refresh();
-      this.isGo = true;
-    }, 1000);
+      this.isTimerOn = true;
+    }, 100);
   }
 
   stop() {
     clearInterval(this.interval);
-    this.isGo = false;
+    this.isTimerOn = false;
   }
 
   refresh() {
@@ -106,15 +109,24 @@ function playSound(src) {
     audio.play();
   } else {
     console.log('Sound turn off');
-    return;
   }
 }
+
+// CHANGE STYLE
+
 
 // GAME
 
 class Game {
+  continue() {
+    openMenu();
+    options.classList.remove('options_open');
+  }
+
   newGame() {
     console.log('new game');
+    console.log(settings);
+
     matrix = makeMatrix(Array.from(items).map(item => Number(item.dataset.id)));
     flatter(matrix);
     openMenu();
@@ -124,6 +136,8 @@ class Game {
   }
   size() {
     console.log('size');
+    options.classList.toggle('options_open');
+    options.addEventListener('click', setField);
   }
   save() {
     console.log('save');
@@ -137,12 +151,30 @@ class Game {
   sound() {
     console.log('sound');
     settings.sound = !settings.sound;
-    // console.log(settings.sound);
-    // console.log(this);
   }
 }
 
-const game = new Game();
+let game = new Game();
+
+// NEW FIELD
+
+function setField(event) {
+  if (event.target.classList.contains('options__item')) {
+    const value = event.target.dataset.value;
+    settings.setFieldValue(Number(value));
+
+    field.replaceChildren(...makeField(settings.field).children);
+    items = document.querySelectorAll('.field__item');
+
+    options.classList.toggle('options_open');
+    fieldSize.innerHTML = `${value}x${value}`;
+
+    game = new Game();
+    game.newGame();
+  }
+}
+
+// TRIGGER
 
 function methodTrigger(event) {
   if (event.target.classList.contains('menu__item')) {
@@ -291,11 +323,12 @@ function openMenu(event) {
 
   overlay.classList.toggle('overlay_open');
   field.classList.toggle('field_open');
+  options.classList.remove('options_open');
 
   overlay.addEventListener('click', openMenu);
 
   if (stopwatch) {
-    if (stopwatch.isGo) {
+    if (stopwatch.isTimerOn) {
       stopwatch.stop();
     } else {
       stopwatch.start();

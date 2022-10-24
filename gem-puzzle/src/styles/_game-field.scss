@@ -1,6 +1,7 @@
 @import "variable";
 
 .field {
+  place-self: center;
   position: relative;
   width: calc(100vw - 2em);
   height: calc(100vw - 2em);

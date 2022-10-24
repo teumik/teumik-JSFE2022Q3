@@ -4,6 +4,9 @@ const settings = {
   time: '00:00',
   matrix: [],
   sound: true,
+  setFieldValue(value) {
+    this.field = value;
+  }
 }
 
 export { settings }
