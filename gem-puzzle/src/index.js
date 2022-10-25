@@ -1,4 +1,4 @@
-alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что сегодня будет доделана уже! Осталось только drag&drop. Время 16:06 25.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
+alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что сегодня будет доделана уже! Осталось только drag&drop. Время 19:02 25.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
 
 import './index.html';
 import './index.scss';
@@ -30,7 +30,6 @@ export { overlayRestart };
 import { header } from './modules/header';
 import { makeField } from './modules/field';
 import { footer } from './modules/footer';
-import _ from 'lodash';
 
 // VARIABLE
 
@@ -318,6 +317,11 @@ function setNodesStyle(node, x, y) {
 
 function flatter(m) {
   matrix = makeMatrix(_.shuffle(m.flat()));
+  let check = isValidShuffle(matrix.flat(), matrix);
+  if (check === 1) {
+    flatter(matrix);
+    return;
+  }
   setPositionItem(matrix);
 }
 
@@ -347,8 +351,8 @@ function detectCell(event) {
 
     const isMatrix = isMatrixCompete(matrix);
 
-    let score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0) + ':' + String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
-    setLocalStorage(score);
+    // let score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0) + ':' + String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
+    // setLocalStorage(score);
 
     if (isMatrix && isGameStart) {
       stopwatch.stop();
@@ -521,14 +525,11 @@ function sortStorage(value) {
 // GET LOCAL STORAGE
 
 const scoresButton = document.querySelector('[data-id="scores"]');
-globalThis.addEventListener('storage', uploadScores)
-
+globalThis.addEventListener('storage', uploadScores);
 
 function uploadScores() {
-  console.log('fuuuuuck');
   let storage = getLocalStorage();
   let table = createScores(storage);
-  console.log(table);
   if (!document.querySelector('.scores')) {
     scoresButton.append(table);
   } else {
@@ -583,3 +584,39 @@ function createScores(scores) {
 
   return table;
 }
+
+// SUFFLE VALIDATION
+
+function isValidShuffle(flat, matrix) {
+  let count = 0;
+  let sum = 0;
+  for (let i = 0; i < flat.length; i++) {
+    if (flat[i] === flat.length) {
+      let row = 0;
+      for (let k = 0; k < matrix.length; k++) {
+        if (row) {
+          break;
+        }
+        for (let n = 0; n < matrix[k].length; n++) {
+          if (matrix[k][n] === flat.length) {
+            row = k + 1;
+            break;
+          }
+        }
+      }
+      sum = row;
+      continue;
+    }
+    for (let j = i; j < flat.length; j++) {
+      if (flat[j] === flat.length) {
+        continue;
+      }
+      if (flat[j] < flat[i]) {
+        count++;
+      };
+    }
+  }
+  return (sum + count) % 2;
+}
+
+console.log(isValidShuffle(matrix.flat(), matrix));
