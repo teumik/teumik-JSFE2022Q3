@@ -5,12 +5,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: grid;
+  justify-items: center;
   gap: 1em;
   padding: 1em;
-  // width: 50%;
-  // height: 50%;
+  width: 100%;
   font-size: 6em;
-  background-color: $buttonColorActive;
   border-radius: 5px;
   transition: top 1s;
   &_open {
@@ -21,6 +20,7 @@
   }
   .restart {
     padding: 0.25em 1em;
+    width: min-content;
     background-color: $buttonColor;
     color: $buttomTextColor;
     text-align: center;

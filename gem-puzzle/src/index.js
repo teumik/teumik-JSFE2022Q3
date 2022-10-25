@@ -1,4 +1,4 @@
-alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что завтра будет доделана уже! Время 01:59. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik .')
+alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что завтра будет доделана уже! Время 04:59 25.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
 
 import './index.html';
 import './index.scss';
@@ -46,6 +46,7 @@ let settings = {
   },
   matrix: [],
   sound: true,
+  scores: [],
 }
 
 // PRELOAD
@@ -87,6 +88,7 @@ let reference = JSON.parse(JSON.stringify(matrix));
 // BEFORELOAD
 
 fieldSize.innerHTML = `${settings.field}x${settings.field}`;
+timeContent.innerHTML = 'Practice'
 
 // TIMER
 
@@ -103,6 +105,7 @@ class Timer {
 
   start() {
     this.refresh();
+    this.isTimerOn = true;
     this.interval = setInterval(() => {
       if (this.timer.sec >= 59) {
         this.timer.min++;
@@ -111,7 +114,6 @@ class Timer {
         this.timer.sec++;
       }
       this.refresh();
-      this.isTimerOn = true;
     }, 1000);
   }
 
@@ -239,6 +241,10 @@ function setField(event) {
       document.querySelector('[data-id="sound"]').classList.add('menu__item_nosound');
     }
 
+    if (stopwatch) {
+      stopwatch.reset();
+    }
+
     settings.load = true;
     game = new Game();
     game.newGame();
@@ -307,8 +313,12 @@ function setPositionItem(m) {
   let isMatrix = isMatrixCompete(matrix);
 
   if (isMatrix && isGameStart) {
+    stopwatch.stop();
+    allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min + ':' + stopwatch.timer.sec} and ${settings.count + 1} moves`;
     allert.classList.add('allert_open');
     overlaySecond.classList.add('overlay_restart_open');
+
+    let data = prepareScore(settings.field, settings.count + 1, `${stopwatch.timer.min + ':' + stopwatch.timer.sec}`);
   }
 }
 
@@ -452,4 +462,60 @@ function setRestart() {
   game = new Game();
   game.newGame();
   stopwatch.stop();
+}
+
+// LOCAL STORAGE
+
+localStorage.clear();
+
+const score = prepareScore(3, 42, `${'12' + ':' + '12'}`, new Date);
+const score2 = prepareScore(3, 42, `${'12' + ':' + '11'}`, new Date);
+const score3 = prepareScore(4, 22, `${'18' + ':' + '12'}`, new Date);
+const score4 = prepareScore(4, 22, `${'18' + ':' + '11'}`, new Date);
+setLocalStorage(score);
+setLocalStorage(score2);
+setLocalStorage(score3);
+setLocalStorage(score4);
+
+function prepareScore(size, count, time, date) {
+  const day = String(date.getDate()).padStart(2, 0);
+  const month = date.getMonth() + 1;
+  const year = String(date.getFullYear()).slice(-2);
+  const fullDate = day + '.' + month + '.' + year;
+  const arr = [size, count, time, fullDate]
+  return arr;
+}
+
+function setLocalStorage(data) {
+  let value;
+  if (!localStorage.getItem('scores')) {
+    value = [];
+    value.push(data);
+  } else {
+    value = JSON.parse(localStorage.getItem('scores'));
+    value.push(data);
+    const sort = sortStorage(value);
+    value = sort;
+    if (value.length >= 10) {
+      value.pop();
+    }
+  }
+  value = JSON.stringify(value);
+  localStorage.setItem('scores', value)
+}
+
+function sortStorage(value) {
+  let arr = value.sort((a, b) => {
+    if (b[0] === a[0]) {
+      if (a[1] === b[1]) {
+        if (parseInt(a[2]) === parseInt(b[2])) {
+          return parseInt(a[2].slice(-2)) - parseInt(b[2].slice(-2));
+        }
+        return parseInt(a[2]) - parseInt(b[2]);
+      }
+      return a[1] - b[1];
+    }
+    return b[0] - a[0];
+  })
+  return arr;
 }
