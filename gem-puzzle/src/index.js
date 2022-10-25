@@ -1,4 +1,4 @@
-alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что завтра будет доделана уже! Время 04:59 25.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
+// alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что завтра будет доделана уже! Время 04:59 25.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
 
 import './index.html';
 import './index.scss';
@@ -123,15 +123,10 @@ class Timer {
   }
 
   refresh() {
-    // console.log('refresh');
-    // console.log(stopwatch);
     timeContent.innerHTML = `${String(this.timer.min).padStart(2, '0')}:${String(this.timer.sec).padStart(2, '0')}`;
-    // settings.time.min = this.timer.min;
-    // settings.time.sec = this.timer.sec;
   }
 
   reset() {
-    // console.log('reset');
     clearInterval(this.interval);
     this.interval = null;
     if (!settings.load) {
@@ -146,8 +141,6 @@ function playSound(src) {
   if (settings.sound) {
     let audio = new Audio(src);
     audio.play();
-  } else {
-    // console.log('Sound turn off');
   }
 }
 
@@ -164,8 +157,6 @@ class Game {
 
   newGame() {
     isGameStart = true;
-    // console.log('new game');
-    // console.log(settings);
     if (!settings.load) {
       matrix = makeMatrix(Array.from(items).map(item => Number(item.dataset.id)));
       flatter(matrix);
@@ -184,28 +175,32 @@ class Game {
     stopwatch.start();
   }
   size() {
-    // console.log('size');
     options.classList.toggle('options_open');
     options.addEventListener('click', setField);
   }
   save() {
-    // console.log('save');
+    if (!stopwatch) {
+      playSound(misclick);
+      return;
+    }
     settings.matrix = matrix;
     settings.time.min = stopwatch.timer.min;
     settings.time.sec = stopwatch.timer.sec;
     localStorage.game = JSON.stringify(settings);
   }
   load() {
-    // console.log('load');
-    settings = JSON.parse(localStorage.game);
-    // console.log(settings, 'load');
+    if (localStorage.game) {
+      settings = JSON.parse(localStorage.game);
+    } else {
+      playSound(misclick);
+      return;
+    }
     setField('load');
   }
   scores() {
     console.log('scores');
   }
   sound() {
-    // console.log('sound');
     settings.sound = !settings.sound;
   }
 }
@@ -299,7 +294,7 @@ function makeMatrix(items) {
 
 // SET POSITION
 
-setPositionItem(matrix);
+// setPositionItem(matrix);
 
 function setPositionItem(m) {
   for (let y = 0; y < m.length; y++) {
@@ -308,17 +303,6 @@ function setPositionItem(m) {
       const node = items[v - 1];
       setNodesStyle(node, x, y)
     }
-  }
-
-  let isMatrix = isMatrixCompete(matrix);
-
-  if (isMatrix && isGameStart) {
-    stopwatch.stop();
-    allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min + ':' + stopwatch.timer.sec} and ${settings.count + 1} moves`;
-    allert.classList.add('allert_open');
-    overlaySecond.classList.add('overlay_restart_open');
-
-    let data = prepareScore(settings.field, settings.count + 1, `${stopwatch.timer.min + ':' + stopwatch.timer.sec}`);
   }
 }
 
@@ -336,6 +320,8 @@ function flatter(m) {
   matrix = makeMatrix(_.shuffle(m.flat()));
   setPositionItem(matrix);
 }
+
+flatter(matrix);
 
 // CLICK ON CELL
 
@@ -358,6 +344,22 @@ function detectCell(event) {
     settings.count++;
     refreshStats(settings);
     playSound(clickCells);
+
+    const isMatrix = isMatrixCompete(matrix);
+
+    let score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0) + ':' + String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
+    setLocalStorage(score);
+
+    if (isMatrix && isGameStart) {
+      stopwatch.stop();
+      playSound(winSound);
+      allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min + ':' + stopwatch.timer.sec} and ${settings.count} moves`;
+      allert.classList.add('allert_open');
+      overlaySecond.classList.add('overlay_restart_open');
+
+      let score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0) + ':' + String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
+      setLocalStorage(score);
+    }
   } else {
     playSound(misclick);
   }
@@ -447,9 +449,6 @@ function reset(settings) {
 
 function isMatrixCompete(m) {
   reference = reference.flat().sort((a, b) => a - b)
-  console.log(...reference);
-  console.log(...matrix.flat());
-  console.log(JSON.stringify(reference) === JSON.stringify(matrix.flat()));
   return JSON.stringify(reference) === JSON.stringify(matrix.flat());
 }
 
@@ -464,18 +463,16 @@ function setRestart() {
   stopwatch.stop();
 }
 
-// LOCAL STORAGE
+// SET LOCAL STORAGE
 
-localStorage.clear();
-
-const score = prepareScore(3, 42, `${'12' + ':' + '12'}`, new Date);
-const score2 = prepareScore(3, 42, `${'12' + ':' + '11'}`, new Date);
-const score3 = prepareScore(4, 22, `${'18' + ':' + '12'}`, new Date);
-const score4 = prepareScore(4, 22, `${'18' + ':' + '11'}`, new Date);
-setLocalStorage(score);
-setLocalStorage(score2);
-setLocalStorage(score3);
-setLocalStorage(score4);
+// let s1 = prepareScore(3, 4, '12:23', new Date());
+// let s2 = prepareScore(3, 4, '12:23', new Date());
+// // let s3 = prepareScore(3, 4, '12:23', new Date());
+// // let s4 = prepareScore(3, 4, '12:23', new Date());
+// setLocalStorage(s1);
+// setLocalStorage(s2);
+// // setLocalStorage(s3);
+// // setLocalStorage(s4);
 
 function prepareScore(size, count, time, date) {
   const day = String(date.getDate()).padStart(2, 0);
@@ -496,12 +493,13 @@ function setLocalStorage(data) {
     value.push(data);
     const sort = sortStorage(value);
     value = sort;
-    if (value.length >= 10) {
+    if (value.length > 10) {
       value.pop();
     }
   }
   value = JSON.stringify(value);
-  localStorage.setItem('scores', value)
+  localStorage.setItem('scores', value);
+  uploadScores();
 }
 
 function sortStorage(value) {
@@ -518,4 +516,70 @@ function sortStorage(value) {
     return b[0] - a[0];
   })
   return arr;
+}
+
+// GET LOCAL STORAGE
+
+const scoresButton = document.querySelector('[data-id="scores"]');
+globalThis.addEventListener('storage', uploadScores)
+
+
+function uploadScores() {
+  console.log('fuuuuuck');
+  let storage = getLocalStorage();
+  let table = createScores(storage);
+  console.log(table);
+  if (!document.querySelector('.scores')) {
+    scoresButton.append(table);
+  } else {
+    scoresButton.firstElementChild.replaceChildren(...table.children);
+  }
+}
+uploadScores();
+
+const scoresContainer = document.querySelector('.scores');
+scoresButton.addEventListener('click', openScores);
+
+function openScores() {
+  scoresContainer.classList.toggle('scores_open');
+}
+
+function getLocalStorage() {
+  let value = JSON.parse(localStorage.getItem('scores'));
+  return value;
+}
+
+// CREATE SCORES NODE
+
+function createScores(scores) {
+
+  const columns = ['#', 'Size', 'Count', 'Time', 'Date'];
+  const table = new BasicNode(undefined, 'scores', undefined);
+  let rows = new BasicNode(undefined, 'row', undefined);
+  let cells;
+
+  for (let name of columns) {
+    cells = new BasicNode(undefined, 'row__cell', `${name}`);
+    rows.append(cells);
+  }
+
+  table.append(rows);
+
+  let n = 1;
+
+  if (scores) {
+    for (let row of scores) {
+      rows = new BasicNode(undefined, 'row', undefined);
+      cells = new BasicNode(undefined, 'row__cell', `${n}`);
+      rows.append(cells);
+      n++;
+      for (let cell of row) {
+        cells = new BasicNode(undefined, 'row__cell', `${cell}`);
+        rows.append(cells);
+      }
+      table.append(rows);
+    }
+  }
+
+  return table;
 }

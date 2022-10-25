@@ -1,0 +1,46 @@
+.scores {
+  position: absolute;
+  z-index: 11;
+  bottom: calc(100% + 0.3em);
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: grid;
+  height: 0;
+  max-height: 592%;
+  width: 200%;
+  font-size: 0.6em;
+  background-color: $cellBackColor;
+  border-radius: 5px;
+  overflow: hidden;
+  opacity: 0;
+  transition: height 0.3s, opacity 0.3s;
+  &_open {
+    height: 344%;
+    opacity: 1;
+    overflow: scroll;
+  }
+  .row {
+    padding: 0 1em;
+    display: grid;
+    grid-template-columns: 0.5fr repeat(4, 1fr);
+    justify-items: start;
+    &:first-child {
+      position: sticky;
+      top: 0;
+      padding-top: 0.5em;
+      height: max-content;
+      margin-bottom: 0.5em;
+      border-bottom: 0.1em solid $tableColor;
+      background-color: $cellBackColor;
+    }
+    &:last-child {
+      margin-bottom: 0.5em;
+    }
+    &__cell {
+      padding: 0.2em;
+      &:first-child {
+        color: $tableColor;
+      }
+    }
+  }
+}
