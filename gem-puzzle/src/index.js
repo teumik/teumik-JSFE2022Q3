@@ -38,7 +38,7 @@ let isGameStart = false;
 
 let settings = {
   load: false,
-  field: 3,
+  field: 4,
   count: 0,
   time: {
     min: 0,
