@@ -1,4 +1,4 @@
-import { BasicNode } from "../index";
+import { BasicNode } from './basicNode';
 
 const buttonsWrapper = new BasicNode('div', 'buttons', undefined);
 const buttons = new BasicNode('button', 'buttons__item', 'Menu');

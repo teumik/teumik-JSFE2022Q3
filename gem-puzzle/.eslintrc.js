@@ -12,5 +12,13 @@
 //   },
 //   rules: {
 //     'max-classes-per-file': ['error', 2],
+//     'import/prefer-default-export': 'off',
+//     'no-plusplus': ['error', {
+//       allowForLoopAfterthoughts: true,
+//     },
+//     ],
+//     'no-use-before-define': ['error', {
+//       functions: false,
+//     }],
 //   },
 // };

@@ -1,4 +1,4 @@
-import { BasicNode } from "../index";
+import { BasicNode } from './basicNode';
 
 const moves = new BasicNode(undefined, 'moves', undefined);
 const span = new BasicNode('span', undefined, 'Moves:');

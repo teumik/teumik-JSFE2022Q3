@@ -1,9 +1,8 @@
-import { BasicNode } from "../index";
-import _ from 'lodash';
+import { BasicNode } from './basicNode';
 
 function makeField(q) {
   const quantity = q * q;
-  let items = [];
+  const items = [];
   let el;
   const field = new BasicNode('main', 'field', undefined);
   for (let i = 1; i <= quantity; i++) {
@@ -13,10 +12,9 @@ function makeField(q) {
       el = new BasicNode(undefined, 'field__item', i);
     }
     el.setAttribute('data-id', i);
-    // el.setAttribute('draggable', true);
-    el.style.width = 100 / Math.sqrt(quantity) + '%';
-    el.style.height = 100 / Math.sqrt(quantity) + '%';
-    el.style.fontSize = 24 / q + 'em';
+    el.style.width = `${100 / Math.sqrt(quantity)}%`;
+    el.style.height = `${100 / Math.sqrt(quantity)}%`;
+    el.style.fontSize = `${24 / q}em`;
     items.push(el);
   }
   field.append(...items);

@@ -1,6 +1,4 @@
-// alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что сегодня будет доделана уже! Осталось только drag&drop (сложно). Время 14:48 26.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
-alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! \nЯ доделал Drag&Drop. Если ошибки обнаружатся не мной, напиши мне, чтобы я все исправил. \nСпасибо! \nВремя 22:16 26.10. Всегда на связи: \nDiscord teumik#1795, \nTelegram и GitHub: teumik ')
-
+import _ from 'lodash';
 import './index.html';
 import './index.scss';
 import clickCells from './assets/audio/click_cells.mp3';
@@ -8,29 +6,29 @@ import misclick from './assets/audio/misclick.mp3';
 import menuClick from './assets/audio/click_menu.mp3';
 import menuSound from './assets/audio/menu.mp3';
 import winSound from './assets/audio/win.mp3';
-
 import { BasicNode } from './modules/basicNode';
-export { BasicNode };
 import { allert } from './modules/allert';
-export { allert };
 import { buttonsWrapper } from './modules/buttons';
-export { buttonsWrapper };
-import { moves } from './modules/moves';
-export { moves };
-import { time } from './modules/time';
-export { time };
+// import { moves } from './modules/moves';
+// import { time } from './modules/time';
 import { fieldInfo, size } from './modules/fieldInfo';
-export { fieldInfo, size };
 import { menu } from './modules/menu';
-export { menu };
-import { overlay } from './modules/overlay';
-export { overlay };
+// import { overlay } from './modules/overlay';
 import { overlayRestart } from './modules/overlayRestart';
-export { overlayRestart };
-
 import { header } from './modules/header';
 import { makeField } from './modules/field';
 import { footer } from './modules/footer';
+
+export { BasicNode };
+export { allert };
+export { buttonsWrapper };
+export { fieldInfo, size };
+export { overlayRestart };
+
+// export { moves };
+// export { time };
+// export { menu };
+// export { overlay };
 
 // VARIABLE
 
@@ -47,9 +45,7 @@ let settings = {
   matrix: [],
   sound: true,
   scores: [],
-}
-
-// PRELOAD
+};
 
 // MAKE DOM
 
@@ -82,13 +78,13 @@ restart.addEventListener('click', setRestart)
 
 // VARIABLE
 
-let matrix = makeMatrix(Array.from(items).map(item => Number(item.dataset.id)));
+let matrix = makeMatrix(Array.from(items).map((item) => Number(item.dataset.id)));
 let reference = JSON.parse(JSON.stringify(matrix));
 
 // BEFORELOAD
 
 fieldSize.innerHTML = `${settings.field}x${settings.field}`;
-timeContent.innerHTML = 'Practice'
+timeContent.innerHTML = 'Practice';
 
 // TIMER
 
@@ -99,7 +95,7 @@ class Timer {
     this.timer = {
       min: 0,
       sec: 0,
-    }
+    };
     this.isTimerOn = false;
   }
 
@@ -139,13 +135,10 @@ class Timer {
 
 function playSound(src) {
   if (settings.sound) {
-    let audio = new Audio(src);
+    const audio = new Audio(src);
     audio.play();
   }
 }
-
-// CHANGE STYLE
-
 
 // GAME
 
@@ -158,7 +151,7 @@ class Game {
   newGame() {
     isGameStart = true;
     if (!settings.load) {
-      matrix = makeMatrix(Array.from(items).map(item => Number(item.dataset.id)));
+      matrix = makeMatrix(Array.from(items).map((item) => Number(item.dataset.id)));
       flatter(matrix);
       reference = JSON.parse(JSON.stringify(matrix));
     } else {
@@ -174,10 +167,12 @@ class Game {
     }
     stopwatch.start();
   }
+
   size() {
     options.classList.toggle('options_open');
     options.addEventListener('click', setField);
   }
+
   save() {
     if (!stopwatch) {
       playSound(misclick);
@@ -188,6 +183,7 @@ class Game {
     settings.time.sec = stopwatch.timer.sec;
     localStorage.game = JSON.stringify(settings);
   }
+
   load() {
     if (localStorage.game) {
       settings = JSON.parse(localStorage.game);
@@ -197,8 +193,10 @@ class Game {
     }
     setField('load');
   }
+
   scores() {
   }
+
   sound() {
     settings.sound = !settings.sound;
   }
@@ -262,9 +260,9 @@ function methodTrigger(event) {
 
 // RESIZE
 
-function resize(event) {
+function resize() {
   if (field.offsetHeight !== field.offsetWidth) {
-    field.style.width = field.offsetHeight + 'px';
+    field.style.width = `${field.offsetHeight}px`;
   }
 }
 
@@ -272,20 +270,20 @@ resize();
 
 // MATRIX FROM ITEMS
 
-function makeMatrix(items) {
-  const size = Math.sqrt(items.length);
-  let m = [];
-  for (let i = 0; i < size; i++) {
+function makeMatrix(arr) {
+  const sizeField = Math.sqrt(arr.length);
+  const m = [];
+  for (let i = 0; i < sizeField; i++) {
     m.push([]);
   }
   let x = 0;
   let y = 0;
-  for (let i = 0; i < items.length; i++) {
-    if (x >= size) {
+  for (let i = 0; i < arr.length; i++) {
+    if (x >= sizeField) {
       x = 0;
       y++;
     }
-    m[y][x] = items[i];
+    m[y][x] = arr[i];
     x++;
   }
   return m;
@@ -293,14 +291,12 @@ function makeMatrix(items) {
 
 // SET POSITION
 
-// setPositionItem(matrix);
-
 function setPositionItem(m) {
   for (let y = 0; y < m.length; y++) {
     for (let x = 0; x < m[y].length; x++) {
       const v = m[y][x];
       const node = items[v - 1];
-      setNodesStyle(node, x, y)
+      setNodesStyle(node, x, y);
     }
   }
 }
@@ -317,7 +313,7 @@ function setNodesStyle(node, x, y) {
 
 function flatter(m) {
   matrix = makeMatrix(_.shuffle(m.flat()));
-  let check = isValidShuffle(matrix.flat(), matrix);
+  const check = isValidShuffle(matrix.flat(), matrix);
   if (settings.field === 4 && check === 1) {
     flatter(matrix);
     return;
@@ -355,17 +351,14 @@ function detectCell(event) {
 
     const isMatrix = isMatrixCompete(matrix);
 
-    // let score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0) + ':' + String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
-    // setLocalStorage(score);
-
     if (isMatrix && isGameStart) {
       stopwatch.stop();
       playSound(winSound);
-      allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min + ':' + stopwatch.timer.sec} and ${settings.count} moves`;
+      allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min}:${stopwatch.timer.sec} and ${settings.count} moves`;
       allert.classList.add('allert_open');
       overlaySecond.classList.add('overlay_restart_open');
 
-      let score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0) + ':' + String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
+      const score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0)}:${String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
       setLocalStorage(score);
     }
   } else {
@@ -458,7 +451,7 @@ function reset(settings) {
 // WIN
 
 function isMatrixCompete(m) {
-  reference = reference.flat().sort((a, b) => a - b)
+  reference = reference.flat().sort((a, b) => a - b);
   return JSON.stringify(reference) === JSON.stringify(matrix.flat());
 }
 
@@ -480,7 +473,7 @@ function prepareScore(size, count, time, date) {
   const month = date.getMonth() + 1;
   const year = String(date.getFullYear()).slice(-2);
   const fullDate = day + '.' + month + '.' + year;
-  const arr = [size, count, time, fullDate]
+  const arr = [size, count, time, fullDate];
   return arr;
 }
 
@@ -504,18 +497,18 @@ function setLocalStorage(data) {
 }
 
 function sortStorage(value) {
-  let arr = value.sort((a, b) => {
+  const arr = value.sort((a, b) => {
     if (b[0] === a[0]) {
       if (a[1] === b[1]) {
-        if (parseInt(a[2]) === parseInt(b[2])) {
-          return parseInt(a[2].slice(-2)) - parseInt(b[2].slice(-2));
+        if (parseInt(a[2], 10) === parseInt(b[2], 10)) {
+          return parseInt(a[2].slice(-2), 10) - parseInt(b[2].slice(-2), 10);
         }
-        return parseInt(a[2]) - parseInt(b[2]);
+        return parseInt(a[2], 10) - parseInt(b[2], 10);
       }
       return a[1] - b[1];
     }
     return b[0] - a[0];
-  })
+  });
   return arr;
 }
 
@@ -525,8 +518,8 @@ const scoresButton = document.querySelector('[data-id="scores"]');
 globalThis.addEventListener('storage', uploadScores);
 
 function uploadScores() {
-  let storage = getLocalStorage();
-  let table = createScores(storage);
+  const storage = getLocalStorage();
+  const table = createScores(storage);
   if (!document.querySelector('.scores')) {
     scoresButton.append(table);
   } else {
@@ -543,28 +536,23 @@ function openScores() {
 }
 
 function getLocalStorage() {
-  let value = JSON.parse(localStorage.getItem('scores'));
+  const value = JSON.parse(localStorage.getItem('scores'));
   return value;
 }
 
 // CREATE SCORES NODE
 
 function createScores(scores) {
-
   const columns = ['#', 'Size', 'Count', 'Time', 'Date'];
   const table = new BasicNode(undefined, 'scores', undefined);
   let rows = new BasicNode(undefined, 'row', undefined);
   let cells;
-
   for (let name of columns) {
     cells = new BasicNode(undefined, 'row__cell', `${name}`);
     rows.append(cells);
   }
-
   table.append(rows);
-
   let n = 1;
-
   if (scores) {
     for (let row of scores) {
       rows = new BasicNode(undefined, 'row', undefined);
@@ -610,7 +598,7 @@ function isValidShuffle(flat, matrix) {
       }
       if (flat[j] < flat[i]) {
         count++;
-      };
+      }
     }
   }
   return (sum + count) % 2;
@@ -625,10 +613,9 @@ function ballTracker(event) {
     return;
   }
 
-  let test = event;
-  let context = event.target;
+  const context = event.target;
   const parent = context.offsetParent;
-  let parentWidth = parent.offsetWidth;
+  const parentWidth = parent.offsetWidth;
   const parentHeight = parent.offsetHeight;
 
   const shiftX = event.clientX - context.getBoundingClientRect().left;
@@ -640,19 +627,19 @@ function ballTracker(event) {
   shift = Number(shift.toFixed(4));
   context.style.zIndex = 8;
 
-  let tempTop = context.style.top;
-  let tempLeft = context.style.left;
+  const tempTop = context.style.top;
+  const tempLeft = context.style.left;
 
   moveAt.call(context, event.pageX, event.pageY);
 
   function moveAt(x, y) {
-    let parentClearWidth = parentWidth - parent.clientLeft * 2;
+    const parentClearWidth = parentWidth - parent.clientLeft * 2;
     const parentClearHeight = parentHeight - parent.clientLeft * 2;
     const shiftLeft = x - parent.getBoundingClientRect().left - parent.clientLeft - shiftX;
     const shiftTop = y - parent.getBoundingClientRect().top - parent.clientTop - shiftY;
 
-    const left = shiftLeft * 100 / parentClearWidth;
-    const top = shiftTop * 100 / parentClearHeight;
+    const left = (shiftLeft * 100) / parentClearWidth;
+    const top = (shiftTop * 100) / parentClearHeight;
 
     if ((coords.yt !== coords.yb) && (coords.xt !== coords.xb)) {
       return;
@@ -664,7 +651,7 @@ function ballTracker(event) {
         return;
       } if (top >= targetTop) {
         context.style.top = targetTop;
-        return
+        return;
       }
       context.style.top = top + '%';
       return;
@@ -676,7 +663,7 @@ function ballTracker(event) {
         return;
       } if (top <= targetTop) {
         context.style.top = targetTop;
-        return
+        return;
       }
       context.style.top = top + '%';
       return;
@@ -688,7 +675,7 @@ function ballTracker(event) {
         return;
       } if (left >= targetLeft) {
         context.style.left = targetLeft;
-        return
+        return;
       }
       context.style.left = left + '%';
       return;
@@ -710,16 +697,15 @@ function ballTracker(event) {
   document.addEventListener('mousemove', moveBy);
 
   function moveBy(event) {
-    context.style.transition = 'none'
+    context.style.transition = 'none';
     moveAt.call(context, event.pageX, event.pageY);
   }
 
   document.addEventListener('mouseup', moveEnd);
 
   function moveEnd(event) {
-
     if (event.target !== context) {
-      let blankItem = field.children[field.children.length - 1];
+      const blankItem = field.children[field.children.length - 1];
       const target = Number(context.dataset.id);
       const blank = Number(field.children.length);
       const buttonCoords = detectMatrixPosition(target, matrix);
@@ -740,11 +726,11 @@ function ballTracker(event) {
         if (isMatrix && isGameStart) {
           stopwatch.stop();
           playSound(winSound);
-          allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min + ':' + stopwatch.timer.sec} and ${settings.count} moves`;
+          allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min}:${stopwatch.timer.sec} and ${settings.count} moves`;
           allert.classList.add('allert_open');
           overlaySecond.classList.add('overlay_restart_open');
 
-          let score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0) + ':' + String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
+          const score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0)}:${String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
           setLocalStorage(score);
         }
       } else {
@@ -765,11 +751,11 @@ function newDetect(event) {
   const blank = Number(field.children.length);
   const buttonCoords = detectMatrixPosition(target, matrix);
   const blankCoords = detectMatrixPosition(blank, matrix);
-  let coords = {
+  const coords = {
     xb: buttonCoords.x,
     xt: blankCoords.x,
     yb: buttonCoords.y,
     yt: blankCoords.y,
-  }
+  };
   return coords;
 }

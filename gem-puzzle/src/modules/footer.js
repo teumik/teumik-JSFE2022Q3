@@ -1,6 +1,5 @@
-import { BasicNode } from "../index";
-import { fieldInfo } from "../index";
-// import { settingsWrapper } from "../index";
+import { BasicNode } from './basicNode';
+import { fieldInfo } from './fieldInfo';
 
 const footer = new BasicNode('footer', 'bottom-wrapper', undefined);
 footer.append(fieldInfo);

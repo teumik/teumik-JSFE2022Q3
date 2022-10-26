@@ -1,9 +1,9 @@
-import { BasicNode } from "../index";
-import { buttonsWrapper } from "../index";
-import { moves } from "../index";
-import { time } from "../index";
-import { menu } from "../index";
-import { overlay } from "../index";
+import { BasicNode } from './basicNode';
+import { buttonsWrapper } from './buttons';
+import { moves } from './moves';
+import { time } from './time';
+import { menu } from './menu';
+import { overlay } from './overlay';
 
 const header = new BasicNode('header', 'top-wrapper', undefined);
 const info = new BasicNode(undefined, 'game-info', undefined);
