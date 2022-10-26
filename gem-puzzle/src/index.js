@@ -1,4 +1,5 @@
-alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что сегодня будет доделана уже! Осталось только drag&drop (сложно). Время 04:17 26.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
+// alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что сегодня будет доделана уже! Осталось только drag&drop (сложно). Время 14:48 26.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
+alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! \nЯ доделал Drag&Drop но могут быть легкие баги, которые допиливаю. Если они обнаружатся не мной, напиши мне, чтобы я все исправил. \nСпасибо! \nВремя 14:48 26.10. Всегда на связи: \nDiscord teumik#1795, \nTelegram и GitHub: teumik ')
 
 import './index.html';
 import './index.scss';
@@ -30,6 +31,8 @@ export { overlayRestart };
 import { header } from './modules/header';
 import { makeField } from './modules/field';
 import { footer } from './modules/footer';
+import { ContextConsumer } from 'react-is';
+import { functions } from 'lodash';
 
 // VARIABLE
 
@@ -622,3 +625,132 @@ function isValidShuffle(flat, matrix) {
 }
 
 // DRAG QUEEN
+
+field.addEventListener('mousedown', ballTracker);
+
+function ballTracker(event) {
+  if (!event.target.classList.contains('field__item')) {
+    return;
+  }
+
+  const context = event.target;
+  const parent = context.offsetParent;
+  const parentWidth = parent.offsetWidth;
+  const parentHeight = parent.offsetHeight;
+
+  let shiftX = event.clientX - context.getBoundingClientRect().left;
+  let shiftY = event.clientY - context.getBoundingClientRect().top;
+  let targetLeft = parseInt(context.style.left);
+  let targetTop = parseInt(context.style.top);
+  let shift = 100 / settings.field;
+
+  context.style.zIndex = 8;
+
+  let coords = newDetect(context);
+  console.log(coords);
+
+  moveAt.call(context, event.pageX, event.pageY);
+
+  function moveAt(x, y) {
+    const parentClearWidth = parentWidth - parent.clientLeft * 2;
+    const parentClearHeight = parentHeight - parent.clientLeft * 2;
+    const shiftLeft = x - parent.getBoundingClientRect().left - parent.clientLeft - shiftX;
+    const shiftTop = y - parent.getBoundingClientRect().top - parent.clientTop - shiftY;
+
+    const left = shiftLeft * 100 / parentClearWidth;
+    const top = shiftTop * 100 / parentClearHeight;
+
+    // if (top <= (targetTop - shift)) {
+    //   top = targetTop - shift;
+    // } else if (top >= (targetTop + shift)) {
+    //   top = targetTop + shift;
+    // }
+
+    // if (left <= (targetLeft - shift)) {
+    //   left = targetLeft - shift;
+    // } else if (left >= (targetLeft + shift)) {
+    //   left = targetLeft + shift;
+    // }
+
+    if ((coords.yt !== coords.yb) && (coords.xt !== coords.xb)) {
+      return;
+    }
+
+    if ((coords.yt - coords.yb) === -1) {
+      if (top <= (targetTop - shift)) {
+        context.style.top = targetTop - shift + '%';
+        return;
+      } if (top >= targetTop) {
+        context.style.top = targetTop;
+        return
+      }
+      context.style.top = top + '%';
+      return;
+    }
+
+    if ((coords.yt - coords.yb) === 1) {
+      if (top >= (targetTop + shift)) {
+        context.style.top = targetTop + shift + '%';
+        return;
+      } if (top <= targetTop) {
+        context.style.top = targetTop;
+        return
+      }
+      context.style.top = top + '%';
+      return;
+    }
+
+    if ((coords.xt - coords.xb) === -1) {
+      if (left <= (targetLeft - shift)) {
+        context.style.left = targetLeft - shift + '%';
+        return;
+      } if (left >= targetLeft) {
+        context.style.left = targetLeft;
+        return
+      }
+      context.style.left = left + '%';
+      return;
+    }
+
+    if ((coords.xt - coords.xb) === 1) {
+      if (left >= (targetLeft + shift)) {
+        context.style.left = targetLeft + shift + '%';
+        return;
+      } if (left <= targetLeft) {
+        context.style.left = targetLeft;
+        return
+      }
+      context.style.left = left + '%';
+      return;
+    }
+  }
+
+  document.addEventListener('mousemove', moveBy);
+
+  function moveBy(event) {
+    moveAt.call(context, event.pageX, event.pageY);
+  }
+
+  document.addEventListener('mouseup', moveEnd);
+
+  function moveEnd(event) {
+    document.removeEventListener('mousemove', moveBy);
+  }
+}
+
+function newDetect(event) {
+  const item = event;
+  const target = Number(item.dataset.id);
+  const blank = Number(field.children.length);
+  const buttonCoords = detectMatrixPosition(target, matrix);
+  const blankCoords = detectMatrixPosition(blank, matrix);
+
+  let coords = {
+    xb: buttonCoords.x,
+    xt: blankCoords.x,
+    yb: buttonCoords.y,
+    yt: blankCoords.y,
+  }
+
+  return coords;
+}
