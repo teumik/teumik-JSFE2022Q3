@@ -1,4 +1,4 @@
-alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что сегодня будет доделана уже! Осталось только drag&drop. Время 19:02 25.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
+// alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что сегодня будет доделана уже! Осталось только drag&drop. Время 19:02 25.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
 
 import './index.html';
 import './index.scss';
@@ -409,6 +409,8 @@ function openMenu(event) {
   const overlay = document.querySelector('.overlay');
 
   menu.classList.toggle('menu_open');
+  scoresContainer.classList.remove('scores_open');
+
 
   if (menu.classList.contains('menu_open')) {
     playSound(menuSound);
@@ -619,4 +621,4 @@ function isValidShuffle(flat, matrix) {
   return (sum + count) % 2;
 }
 
-console.log(isValidShuffle(matrix.flat(), matrix));
+// DRAG QUEEN

@@ -13,6 +13,7 @@ function makeField(q) {
       el = new BasicNode(undefined, 'field__item', i);
     }
     el.setAttribute('data-id', i);
+    // el.setAttribute('draggable', true);
     el.style.width = 100 / Math.sqrt(quantity) + '%';
     el.style.height = 100 / Math.sqrt(quantity) + '%';
     el.style.fontSize = 24 / q + 'em';
