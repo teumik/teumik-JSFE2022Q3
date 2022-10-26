@@ -1,5 +1,5 @@
 // alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что сегодня будет доделана уже! Осталось только drag&drop (сложно). Время 14:48 26.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
-alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! \nЯ доделал Drag&Drop но могут быть легкие баги, которые допиливаю. Если они обнаружатся не мной, напиши мне, чтобы я все исправил. \nСпасибо! \nВремя 14:48 26.10. Всегда на связи: \nDiscord teumik#1795, \nTelegram и GitHub: teumik ')
+// alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! \nЯ доделал Drag&Drop но могут быть легкие баги, которые допиливаю. Если они обнаружатся не мной, напиши мне, чтобы я все исправил. \nСпасибо! \nВремя 14:48 26.10. Всегда на связи: \nDiscord teumik#1795, \nTelegram и GitHub: teumik ')
 
 import './index.html';
 import './index.scss';
@@ -321,7 +321,11 @@ function setNodesStyle(node, x, y) {
 function flatter(m) {
   matrix = makeMatrix(_.shuffle(m.flat()));
   let check = isValidShuffle(matrix.flat(), matrix);
-  if (check === 1) {
+  if (settings.field === 4 && check === 1) {
+    flatter(matrix);
+    return;
+  }
+  if (settings.field === 3 && check === 0) {
     flatter(matrix);
     return;
   }
@@ -647,7 +651,6 @@ function ballTracker(event) {
   context.style.zIndex = 8;
 
   let coords = newDetect(context);
-  console.log(coords);
 
   moveAt.call(context, event.pageX, event.pageY);
 
@@ -671,6 +674,15 @@ function ballTracker(event) {
     // } else if (left >= (targetLeft + shift)) {
     //   left = targetLeft + shift;
     // }
+
+    let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+
+    let isClick = elemBelow.classList.contains('field') || elemBelow.classList.contains('field__item');
+
+    if (isClick) {
+      let click = new Event('click');
+      field.dispatchEvent(click);
+    }
 
     if ((coords.yt !== coords.yb) && (coords.xt !== coords.xb)) {
       return;
