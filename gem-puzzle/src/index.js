@@ -1,5 +1,5 @@
 // alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! Если у тебя есть возможно, я попрошу проверить мою работу ближе к концу срока. Я очень хочу завершить ее и обещаю, что сегодня будет доделана уже! Осталось только drag&drop (сложно). Время 14:48 26.10. Всегда на связи: Discord teumik#1795, Telegram и GitHub: teumik ')
-alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! \nЯ доделал Drag&Drop но могут быть легкие баги, которые допиливаю. Если они обнаружатся не мной, напиши мне, чтобы я все исправил. \nСпасибо! \nВремя 16:17 26.10. Всегда на связи: \nDiscord teumik#1795, \nTelegram и GitHub: teumik ')
+alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! \nЯ доделал Drag&Drop. Если ошибки обнаружатся не мной, напиши мне, чтобы я все исправил. \nСпасибо! \nВремя 22:16 26.10. Всегда на связи: \nDiscord teumik#1795, \nTelegram и GitHub: teumik ')
 
 import './index.html';
 import './index.scss';
@@ -31,8 +31,6 @@ export { overlayRestart };
 import { header } from './modules/header';
 import { makeField } from './modules/field';
 import { footer } from './modules/footer';
-import { ContextConsumer } from 'react-is';
-import { functions } from 'lodash';
 
 // VARIABLE
 
@@ -40,7 +38,7 @@ let isGameStart = false;
 
 let settings = {
   load: false,
-  field: 4,
+  field: 3,
   count: 0,
   time: {
     min: 0,
@@ -200,7 +198,6 @@ class Game {
     setField('load');
   }
   scores() {
-    console.log('scores');
   }
   sound() {
     settings.sound = !settings.sound;
@@ -342,7 +339,7 @@ function detectCell(event) {
   if (item.classList.contains('field__item_blank')) return;
 
   const target = Number(item.dataset.id);
-  const blank = Number(this.children.length);
+  const blank = Number(field.children.length);
 
   const buttonCoords = detectMatrixPosition(target, matrix);
   const blankCoords = detectMatrixPosition(blank, matrix);
@@ -477,15 +474,6 @@ function setRestart() {
 }
 
 // SET LOCAL STORAGE
-
-// let s1 = prepareScore(3, 4, '12:23', new Date());
-// let s2 = prepareScore(3, 4, '12:23', new Date());
-// // let s3 = prepareScore(3, 4, '12:23', new Date());
-// // let s4 = prepareScore(3, 4, '12:23', new Date());
-// setLocalStorage(s1);
-// setLocalStorage(s2);
-// // setLocalStorage(s3);
-// // setLocalStorage(s4);
 
 function prepareScore(size, count, time, date) {
   const day = String(date.getDate()).padStart(2, 0);
@@ -637,52 +625,34 @@ function ballTracker(event) {
     return;
   }
 
-  const context = event.target;
+  let test = event;
+  let context = event.target;
   const parent = context.offsetParent;
-  const parentWidth = parent.offsetWidth;
+  let parentWidth = parent.offsetWidth;
   const parentHeight = parent.offsetHeight;
 
-  let shiftX = event.clientX - context.getBoundingClientRect().left;
-  let shiftY = event.clientY - context.getBoundingClientRect().top;
-  let targetLeft = parseInt(context.style.left);
-  let targetTop = parseInt(context.style.top);
+  const shiftX = event.clientX - context.getBoundingClientRect().left;
+  const shiftY = event.clientY - context.getBoundingClientRect().top;
+  const targetLeft = Number(context.style.left.slice(0, -1));
+  const targetTop = Number(context.style.top.slice(0, -1));
+  const coords = newDetect(context);
   let shift = 100 / settings.field;
-
+  shift = Number(shift.toFixed(4));
   context.style.zIndex = 8;
 
-  let coords = newDetect(context);
+  let tempTop = context.style.top;
+  let tempLeft = context.style.left;
 
   moveAt.call(context, event.pageX, event.pageY);
 
   function moveAt(x, y) {
-    const parentClearWidth = parentWidth - parent.clientLeft * 2;
+    let parentClearWidth = parentWidth - parent.clientLeft * 2;
     const parentClearHeight = parentHeight - parent.clientLeft * 2;
     const shiftLeft = x - parent.getBoundingClientRect().left - parent.clientLeft - shiftX;
     const shiftTop = y - parent.getBoundingClientRect().top - parent.clientTop - shiftY;
 
     const left = shiftLeft * 100 / parentClearWidth;
     const top = shiftTop * 100 / parentClearHeight;
-
-    // if (top <= (targetTop - shift)) {
-    //   top = targetTop - shift;
-    // } else if (top >= (targetTop + shift)) {
-    //   top = targetTop + shift;
-    // }
-
-    // if (left <= (targetLeft - shift)) {
-    //   left = targetLeft - shift;
-    // } else if (left >= (targetLeft + shift)) {
-    //   left = targetLeft + shift;
-    // }
-
-    let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-
-    let isClick = elemBelow.classList.contains('field') || elemBelow.classList.contains('field__item');
-
-    if (isClick) {
-      let click = new Event('click');
-      field.dispatchEvent(click);
-    }
 
     if ((coords.yt !== coords.yb) && (coords.xt !== coords.xb)) {
       return;
@@ -740,13 +710,52 @@ function ballTracker(event) {
   document.addEventListener('mousemove', moveBy);
 
   function moveBy(event) {
+    context.style.transition = 'none'
     moveAt.call(context, event.pageX, event.pageY);
   }
 
   document.addEventListener('mouseup', moveEnd);
 
   function moveEnd(event) {
+
+    if (event.target !== context) {
+      let blankItem = field.children[field.children.length - 1];
+      const target = Number(context.dataset.id);
+      const blank = Number(field.children.length);
+      const buttonCoords = detectMatrixPosition(target, matrix);
+      const blankCoords = detectMatrixPosition(blank, matrix);
+      const isValid = validateSwap(buttonCoords, blankCoords);
+      if (isValid) {
+        swapMatrixItem(buttonCoords, blankCoords, matrix);
+        context.style.top = blankItem.style.top;
+        context.style.left = blankItem.style.left;
+        blankItem.style.top = tempTop;
+        blankItem.style.left = tempLeft;
+        settings.count++;
+        refreshStats(settings);
+        playSound(clickCells);
+
+        const isMatrix = isMatrixCompete(matrix);
+
+        if (isMatrix && isGameStart) {
+          stopwatch.stop();
+          playSound(winSound);
+          allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min + ':' + stopwatch.timer.sec} and ${settings.count} moves`;
+          allert.classList.add('allert_open');
+          overlaySecond.classList.add('overlay_restart_open');
+
+          let score = prepareScore(settings.field, settings.count, `${String(stopwatch.timer.min).padStart(2, 0) + ':' + String(stopwatch.timer.sec).padStart(2, 0)}`, new Date());
+          setLocalStorage(score);
+        }
+      } else {
+        playSound(misclick);
+      }
+    }
+
+    context.style.transition = '';
+    context.style.zIndex = '';
     document.removeEventListener('mousemove', moveBy);
+    document.removeEventListener('mouseup', moveEnd);
   }
 }
 
@@ -756,13 +765,11 @@ function newDetect(event) {
   const blank = Number(field.children.length);
   const buttonCoords = detectMatrixPosition(target, matrix);
   const blankCoords = detectMatrixPosition(blank, matrix);
-
   let coords = {
     xb: buttonCoords.x,
     xt: blankCoords.x,
     yb: buttonCoords.y,
     yt: blankCoords.y,
   }
-
   return coords;
 }
