@@ -1,3 +1,5 @@
+alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! \nЯ доделал Drag&Drop. Если ошибки обнаружатся не мной, напиши мне, чтобы я все исправил. \nСпасибо! \nВремя 22:16 26.10. Всегда на связи: \nDiscord teumik#1795, \nTelegram и GitHub: teumik ');
+
 import _ from 'lodash';
 import './index.html';
 import './index.scss';
