@@ -35,10 +35,11 @@ export { overlayRestart };
 // VARIABLE
 
 let isGameStart = false;
+let isLoadGame = true;
 
 let settings = {
   load: false,
-  field: 4,
+  field: 3,
   count: 0,
   time: {
     min: 0,
@@ -136,7 +137,7 @@ class Timer {
 // SOUND
 
 function playSound(src) {
-  if (settings.sound) {
+  if (settings.sound && !isLoadGame) {
     const audio = new Audio(src);
     audio.play();
   }
@@ -356,7 +357,7 @@ function detectCell(event) {
     if (isMatrix && isGameStart) {
       stopwatch.stop();
       playSound(winSound);
-      allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min}:${stopwatch.timer.sec} and ${settings.count} moves`;
+      allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${String(stopwatch.timer.min).padStart(2, 0)}:${String(stopwatch.timer.sec).padStart(2, 0)} and ${settings.count} moves`;
       allert.classList.add('allert_open');
       overlaySecond.classList.add('overlay_restart_open');
 
@@ -462,10 +463,10 @@ function isMatrixCompete(m) {
 function setRestart() {
   allert.classList.remove('allert_open');
   overlaySecond.classList.remove('overlay_restart_open');
-
   game = new Game();
   game.newGame();
-  stopwatch.stop();
+  openMenu();
+  stopwatch.start();
 }
 
 // SET LOCAL STORAGE
@@ -728,7 +729,7 @@ function ballTracker(event) {
         if (isMatrix && isGameStart) {
           stopwatch.stop();
           playSound(winSound);
-          allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${stopwatch.timer.min}:${stopwatch.timer.sec} and ${settings.count} moves`;
+          allert.firstElementChild.innerHTML = `Hooray! You solved the puzzle in ${String(stopwatch.timer.min).padStart(2, 0)}:${String(stopwatch.timer.sec).padStart(2, 0)} and ${settings.count} moves`;
           allert.classList.add('allert_open');
           overlaySecond.classList.add('overlay_restart_open');
 
@@ -761,3 +762,10 @@ function newDetect(event) {
   };
   return coords;
 }
+
+// START ON LOAD
+
+game.newGame();
+openMenu();
+stopwatch.start();
+isLoadGame = false;
