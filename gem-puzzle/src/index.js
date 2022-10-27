@@ -1,4 +1,4 @@
-alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! \nЯ доделал Drag&Drop. Если ошибки обнаружатся не мной, напиши мне, чтобы я все исправил. \nСпасибо! \nВремя 22:16 26.10. Всегда на связи: \nDiscord teumik#1795, \nTelegram и GitHub: teumik ');
+// alert('Доброго времени суток! Спасибо, что тратишь свое время на проверку моей работы! \nЯ доделал Drag&Drop. Если ошибки обнаружатся не мной, напиши мне, чтобы я все исправил. \nСпасибо! \nВремя 22:16 26.10. Всегда на связи: \nDiscord teumik#1795, \nTelegram и GitHub: teumik ');
 
 import _ from 'lodash';
 import './index.html';
@@ -70,6 +70,7 @@ const options = document.querySelector('.options');
 const fieldSize = document.querySelector('.size');
 const overlaySecond = document.querySelector('.overlay_restart');
 const restart = document.querySelector('.restart');
+const loadButton = document.querySelector('.menu__item[data-id="load"');
 
 // LISTENERS
 
@@ -88,6 +89,16 @@ let reference = JSON.parse(JSON.stringify(matrix));
 
 fieldSize.innerHTML = `${settings.field}x${settings.field}`;
 timeContent.innerHTML = 'Practice';
+
+// SAVE CHECKER
+
+function checkSaveAvailable() {
+  if (!localStorage.getItem('game')) {
+    loadButton.classList.add('menu__item_disabled');
+  }
+}
+
+checkSaveAvailable();
 
 // TIMER
 
@@ -181,6 +192,7 @@ class Game {
       playSound(misclick);
       return;
     }
+    loadButton.classList.remove('menu__item_disabled');
     settings.matrix = matrix;
     settings.time.min = stopwatch.timer.min;
     settings.time.sec = stopwatch.timer.sec;
@@ -519,6 +531,7 @@ function sortStorage(value) {
 
 const scoresButton = document.querySelector('[data-id="scores"]');
 globalThis.addEventListener('storage', uploadScores);
+globalThis.addEventListener('storage', checkSaveAvailable);
 
 function uploadScores() {
   const storage = getLocalStorage();
@@ -529,6 +542,7 @@ function uploadScores() {
     scoresButton.firstElementChild.replaceChildren(...table.children);
   }
 }
+
 uploadScores();
 
 const scoresContainer = document.querySelector('.scores');

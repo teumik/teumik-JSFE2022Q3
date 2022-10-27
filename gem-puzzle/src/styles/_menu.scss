@@ -37,6 +37,15 @@
         background-color: rgb(198, 25, 51);
       }
     }
+    &_disabled {
+      background-color: $additionalColor;
+      &:hover {
+        background-color: $additionalColor;
+      }
+      &:active {
+        background-color: $additionalColor;
+      }
+    }
   }
 }
 
