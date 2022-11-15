@@ -1,26 +1,40 @@
 @font-face {
-  font-family: 'Poppins', sans-serif;
-  src: url('./assets/font/Poppins-Bold.ttf');
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Black.ttf');
+  font-weight: 900;
 }
 
 @font-face {
-  font-family: 'Poppins', sans-serif;
-  src: url('./assets/font/Poppins-SemiBold.ttf');
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Bold.ttf');
+  font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Poppins', sans-serif;
-  src: url('./assets/font/Poppins-Regular.ttf');
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-SemiBold.ttf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Regular.ttf');
+  font-weight: 400;
 }
 
 @font-face {
   font-family: 'Bird Stencil';
-  src: url('./assets/font/BirdStencil.ttf');
+  src: url('./assets/fonts/BirdStencil.ttf');
 }
 
 @font-face {
   font-family: 'Nature';
-  src: url('./assets/font/Nature.ttf');
+  src: url('./assets/fonts/Nature.ttf');
+}
+
+%poppinsBlack {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
 }
 
 %poppinsBold {
@@ -40,10 +54,8 @@
 
 %birdStencil {
   font-family: 'Bird Stencil';
-  font-weight: initial;
 }
 
 %nature {
   font-family: 'Nature';
-  font-weight: initial;
 }

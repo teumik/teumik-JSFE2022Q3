@@ -1,0 +1,67 @@
+@import './variables';
+@import './fontFaces';
+
+.footer {
+  padding: 1.5rem 3rem;
+  background: $blockBackgroundColor;
+  border-radius: 1rem;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+
+  &__item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      justify-self: left;
+    }
+
+    &:last-child {
+      justify-self: right;
+    }
+  }
+
+  &__link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.info__svg {
+  width: 100%;
+  height: 100%;
+  max-height: 6.4rem;
+  fill: $headTextColor;
+  transition: fill $s;
+
+  &_git {
+    fill: $headTextColor;
+    stroke: transparent;
+  }
+
+  &_rss {
+    max-height: 5rem;
+
+    .st7 {
+      fill: $headTextColor;
+      transition: fill $s;
+    }
+
+    &:hover {
+      .st7 {
+        fill: $accentGreenColor;
+      }
+    }
+  }
+
+  &:hover {
+    fill: $accentGreenColor;
+  }
+}

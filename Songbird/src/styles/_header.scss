@@ -1,8 +1,6 @@
 @import './variables';
 @import './fontFaces';
 
-$s: 0.5s;
-
 .header {
   padding: 1.5rem 3rem;
   background: $blockBackgroundColor;
@@ -14,12 +12,11 @@ $s: 0.5s;
   justify-content: flex-end;
   align-items: center;
   gap: 2rem;
-  @extend %poppinsSemiBold;
+  @extend %poppinsRegular;
 
   &__item {
     position: relative;
     z-index: 10;
-    height: 100%;
     color: $subTextColor;
     cursor: pointer;
     transition: color $s;
@@ -37,19 +34,23 @@ $s: 0.5s;
       transition: width $s;
     }
 
-    &_active {
-      color: inherit;
-
-      &::after {
-        content: none;
-      }
-    }
-
     &:hover {
       color: inherit;
 
       &::after {
         width: 60%;
+      }
+    }
+
+    &_active {
+      color: $accentGreenColor;
+
+      &:hover {
+        color: $accentGreenColor;
+      }
+
+      &:not(:first-child)::after {
+        content: none;
       }
     }
   }

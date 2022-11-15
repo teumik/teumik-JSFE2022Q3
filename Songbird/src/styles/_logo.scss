@@ -1,13 +1,14 @@
 @import './variables';
 @import './fontFaces';
 
-
 .logo {
+  margin: 0;
+  padding: 0;
   margin-right: auto;
   position: relative;
   z-index: 10;
   @extend %nature;
-  font-size: 2em;
+  font-size: 1.5em;
   color: inherit;
 
   &__parrot {
@@ -15,8 +16,13 @@
     top: 0.2em;
     padding-left: 0.1em;
     @extend %birdStencil;
+    font-weight: 100;
     font-size: inherit;
     color: inherit;
+    transition: color $s;
+  }
+
+  .logo__link_color {
     transition: color $s;
   }
 
@@ -41,6 +47,10 @@
     }
 
     .logo__parrot {
+      color: $parrotColor;
+    }
+
+    .logo__link_color {
       color: $parrotColor;
     }
   }
