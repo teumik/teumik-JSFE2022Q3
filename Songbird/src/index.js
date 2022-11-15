@@ -1,3 +1,9 @@
 import './index.scss';
 
-console.log('F*ck you Tony!');
+const app = document.querySelector('#app');
+
+function allowTransition() {
+  app.classList.remove('prevent-transition');
+}
+
+globalThis.addEventListener('load', allowTransition);

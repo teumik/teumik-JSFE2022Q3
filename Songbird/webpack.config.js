@@ -30,6 +30,9 @@ module.exports = {
       // chunks: 'all',
     },
   },
+  experiments: {
+    topLevelAwait: true,
+  },
   cache: {
     type: 'filesystem',
     cacheDirectory: path.resolve(__dirname, '.cache'),

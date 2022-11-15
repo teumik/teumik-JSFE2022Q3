@@ -1,0 +1,56 @@
+@import './variables';
+@import './fontFaces';
+
+$s: 0.5s;
+
+.header {
+  padding: 1.5rem 3rem;
+  background: $blockBackgroundColor;
+  border-radius: 1rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  @extend %poppinsSemiBold;
+
+  &__item {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    color: $subTextColor;
+    cursor: pointer;
+    transition: color $s;
+
+    &:not(:first-child)::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      left: 50%;
+      bottom: -0.4rem;
+      width: 0;
+      height: 0.2rem;
+      background-color: $accentGreenColor;
+      transform: translate(-50%);
+      transition: width $s;
+    }
+
+    &_active {
+      color: inherit;
+
+      &::after {
+        content: none;
+      }
+    }
+
+    &:hover {
+      color: inherit;
+
+      &::after {
+        width: 60%;
+      }
+    }
+  }
+}
