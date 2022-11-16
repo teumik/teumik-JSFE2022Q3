@@ -59,11 +59,16 @@
 @media screen and (max-width: 500px) {
   .menu {
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+    gap: 1rem;
 
-    &__item:first-child {
-      width: 100%;
-      text-align: center;
+    &__item {
+
+      &:first-child {
+        width: 100%;
+        text-align: center;
+      }
     }
+
   }
 }

@@ -38,6 +38,7 @@
     font-size: 3.2rem;
     text-transform: uppercase;
     background: $blockBackgroundColorHover;
+    outline: 0.2rem solid $accentGreenColor;
     border-radius: 0.5rem;
     transition: color $s, background $s;
 
