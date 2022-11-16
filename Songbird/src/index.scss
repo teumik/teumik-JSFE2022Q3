@@ -3,9 +3,13 @@
 @import './styles/fontFaces';
 @import './styles/header';
 @import './styles/logo';
+@import './styles/wrapper';
 @import './styles/welcome';
+@import './styles/result';
+@import './styles/quiz';
 @import './styles/footer';
 @import './styles/svgRss';
+@import './styles/buttons';
 
 // text-transform: uppercase;
 
@@ -26,10 +30,12 @@ body {
 }
 
 #app {
+  margin: auto;
+  max-width: 1600px;
   min-height: 100vh;
   padding: 2rem;
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   flex-direction: column;
   justify-content: space-between;
 }

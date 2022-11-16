@@ -1,7 +1,8 @@
 @import './variables';
 @import './fontFaces';
 
-.welcome {
+
+.result {
   padding: 1rem 2rem;
   margin-bottom: auto;
   flex-grow: 1;
@@ -9,27 +10,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assets/image/bird_rain.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/image/bird_sun.jpg');
   background-size: cover;
   background-position: 25% top;
   border-radius: 1rem;
 
-  &__header {
+  &__message {
     margin: 0;
     @extend %poppinsBlack;
     font-size: 7.6rem;
+    color: $headTextColor;
     text-align: center;
+    text-transform: uppercase;
+
+    &_win {
+      display: none;
+    }
   }
 
-  &__text {
+  &__score {
     margin: 0;
     @extend %poppinsBold;
     font-size: 3.2rem;
     text-align: center;
-
-    &_color {
-      color: $parrotColor;
-    }
   }
 
   &__button {
@@ -45,6 +48,29 @@
     &:hover {
       color: $blockBackgroundColor;
       background: $accentGreenColor;
+    }
+  }
+
+  &_win {
+    .result__message {
+      color: $parrotColor;
+
+      &_loss {
+        display: none;
+      }
+
+      &_win {
+        display: block;
+      }
+    }
+
+    .result__button {
+      background: $parrotColor;
+      border: 0.2rem solid transparent;
+
+      &:hover {
+        background: $accentGreenColor;
+      }
     }
   }
 }

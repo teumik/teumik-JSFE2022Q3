@@ -22,7 +22,7 @@
               class="logo__parrot">A</span><span class="logo__link_color">y</span></a>
         </li>
         <li class="menu__item menu__item_active">
-          <button class="menu__button">Welcome</button>
+          <button class="menu__button">Main</button>
         </li>
         <li class="menu__item ">
           <button class="menu__button">Quiz</button>
@@ -35,10 +35,91 @@
 
     <main class="welcome">
       <h1 class="welcome__header">Songbird Quiz</h1>
-      <div class="wrapper">
+      <div class="wrapper__main">
         <p class="welcome__text">Guess which bird is <span class="welcome__text_color">yelling</span></p>
-        <button class="welcome__button">Start</button>
+        <button class="buttons welcome__button">Start</button>
       </div>
+    </main>
+
+    <main class="result result_win">
+      <h2 class="result__message result__message_win">You win</h2>
+      <h2 class="result__message result__message_loss">Try again</h2>
+      <div class="wrapper__main">
+        <p class="result__score">Score: <span class="result__point">30</span></p>
+        <button class="buttons result__button">Restart</button>
+      </div>
+    </main>
+
+    <main class="quiz">
+      <section class="quiz__item quiz__questions questions">
+        <ul class="questions__list">
+          <li>Warm Up</li>
+          <li>Sparrows</li>
+          <li>Forests</li>
+          <li>Songbirds</li>
+          <li>Carnivore</li>
+          <li>Seabird</li>
+        </ul>
+        <p class="questions__score">Score: <span class="questions__count">0</span></p>
+      </section>
+      <article class="main__unknown unknown">
+        <div class="wrapper__unknown">
+          <div class="unknown__image"></div>
+          <div class="unknown__caption caption">
+            <h2 class="caption__header">?</h2>
+            <audio class="caption__audio" controls>
+              <source
+                src="https://www.xeno-canto.org/sounds/uploaded/XIQVMQVUPP/XC518684-Grands%20corbeaux%2009012020%20Suzon.mp3">
+            </audio>
+          </div>
+        </div>
+      </article>
+      <section class="quiz__item quiz__main main">
+        <ul class="main__choices choices">
+          <li class="choices__option">
+            <input class="choices__input" type="radio" name="birds" id="1">
+            <label class="choices__label" for="1">Raven</label>
+          </li>
+          <li class="choices__option">
+            <input class="choices__input" type="radio" name="birds" id="2">
+            <label class="choices__label" for="2">Shadoof</label>
+          </li>
+          <li class="choices__option">
+            <input class="choices__input" type="radio" name="birds" id="3">
+            <label class="choices__label" for="3">Swallow</label>
+          </li>
+          <li class="choices__option">
+            <input class="choices__input" type="radio" name="birds" id="4">
+            <label class="choices__label" for="4">Nightjar</label>
+          </li>
+          <li class="choices__option">
+            <input class="choices__input" type="radio" name="birds" id="5">
+            <label class="choices__label" for="5">Cuckoo</label>
+          </li>
+          <li class="choices__option">
+            <input class="choices__input" type="radio" name="birds" id="6">
+            <label class="choices__label" for="6">Tit</label>
+          </li>
+        </ul>
+        <article class="main__description description">
+          <div class="wrapper__description">
+            <img class="description__image" src="https://live.staticflickr.com//65535//49298804222_474cfe8682.jpg">
+            <div class="description__caption caption">
+              <h2 class="caption__header">Raven</h2>
+              <h3 class="caption__subheader">Corvus corax</h3>
+              <audio class="caption__audio" controls>
+                <source
+                  src="https://www.xeno-canto.org/sounds/uploaded/XIQVMQVUPP/XC518684-Grands%20corbeaux%2009012020%20Suzon.mp3">
+              </audio>
+            </div>
+          </div>
+          <p class="description__text">Raven is a large bird. The body length reaches 70 centimeters, the wingspan is up
+            to one and a half meters.
+            Ravens inhabit the vicinity of the Tower. There is a belief in England that the day the black crows fly away
+            from the Tower, the monarchy will collapse.</p>
+        </article>
+      </section>
+      <button class="buttons quiz__item quiz__button">Next</button>
     </main>
 
     <footer class="footer">
