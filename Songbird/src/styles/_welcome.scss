@@ -53,3 +53,9 @@
   justify-items: center;
   gap: 3rem;
 }
+
+@media screen and (max-width: 1000px) {
+  .welcome {
+    background-position: 25%;
+  }
+}

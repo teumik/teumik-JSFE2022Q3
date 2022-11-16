@@ -22,36 +22,44 @@
     transition: color $s;
   }
 
-  .logo__link_color {
-    transition: color $s;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    top: -0.1em;
-    width: 0;
+  .logo__link {
+    position: relative;
+    display: inline-block;
     height: 100%;
-    background: $nationalGeographicColor;
-    border-radius: 0.2rem;
-    opacity: 0;
-    transition: width $s, opacity $s;
+
+    &_color {
+      transition: color $s;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: -0.1em;
+      width: 0;
+      height: 100%;
+      background: $nationalGeographicColor;
+      border-radius: 0.2rem;
+      opacity: 0;
+      transition: width $s, opacity $s;
+    }
   }
 
   &:hover {
-    &::before {
-      width: 0.9em;
-      opacity: 1;
-    }
-
     .logo__parrot {
       color: $parrotColor;
     }
 
-    .logo__link_color {
-      color: $parrotColor;
+    .logo__link {
+      &_color {
+        color: $parrotColor;
+      }
+
+      &::before {
+        width: 0.9em;
+        opacity: 1;
+      }
     }
   }
 }

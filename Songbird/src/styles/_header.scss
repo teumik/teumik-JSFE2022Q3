@@ -2,7 +2,7 @@
 @import './fontFaces';
 
 .header {
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 2rem;
   background: $blockBackgroundColor;
   border-radius: 1rem;
 }
@@ -52,6 +52,18 @@
       &:not(:first-child)::after {
         content: none;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__item:first-child {
+      width: 100%;
+      text-align: center;
     }
   }
 }
