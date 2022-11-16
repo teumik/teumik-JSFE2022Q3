@@ -42,6 +42,7 @@
   transition: fill $s;
 
   &_git {
+    max-width: 6.3rem;
     fill: $headTextColor;
     stroke: transparent;
   }
