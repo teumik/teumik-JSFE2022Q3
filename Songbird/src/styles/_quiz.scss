@@ -8,7 +8,7 @@
     place-self: center;
     padding: 0.5rem 4rem;
     @extend %poppinsSemiBold;
-    font-size: 3.2rem;
+    // font-size: 3.2rem;
     text-transform: uppercase;
     background: $blockBackgroundColorLight;
     border: 0.2rem solid $accentGreenColor;
@@ -45,10 +45,10 @@
       flex-shrink: 1;
       min-width: max-content;
       width: 50%;
-      padding: 1.5rem 3rem;
+      padding: 1.5rem 2rem;
       background: $blockBackgroundColorLight;
       border-radius: 1rem;
-      font-size: 3rem;
+      // font-size: 3rem;
     }
 
     &__description {
@@ -56,6 +56,43 @@
       gap: 1rem;
       flex-shrink: 2;
     }
+  }
+}
+
+.choices {
+  &__option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__input {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 0.2rem solid $mainTextColor;
+    cursor: pointer;
+    transition: background $s, border-color $s;
+
+    &_correct {
+      border-color: $accentGreenColor;
+      background: $accentGreenColor;
+    }
+
+    &_incorrect {
+      border-color: $parrotColor;
+      background: $parrotColor;
+    }
+
+    &:checked {
+      background: $mainTextColor;
+    }
+  }
+
+  &__label {
+    cursor: pointer;
   }
 }
 
@@ -84,6 +121,28 @@
     color: $parrotColor;
     white-space: nowrap;
   }
+
+  &__level {
+    position: relative;
+    color: $mainTextColor;
+
+    &_active {
+      color: $headTextColor;
+
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: 10;
+        left: 50%;
+        bottom: -0.4rem;
+        width: 60%;
+        height: 0.2rem;
+        background: $accentGreenColor;
+        transform: translate(-50%);
+        transition: width $s;
+      }
+    }
+  }
 }
 
 
@@ -95,27 +154,61 @@
 
   &__image {
     width: 40%;
-    object-fit: cover;
-    border-radius: 1rem;
+    // object-fit: cover;
+    // border: 1px solid red;
+    border-radius: 0.5rem;
   }
 
   &__caption {
     flex-grow: 1;
+    gap: 1rem;
   }
 
   &__text {
+    position: relative;
     color: $mainTextColor;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1rem;
+      left: 0;
+      width: 100%;
+      height: 0.2rem;
+      background-color: $nationalGeographicColor;
+      border-radius: 0.1rem;
+    }
+  }
+}
+
+.description {
+  &__caption {
+    gap: 0;
+
+    .player {
+      margin-top: 2rem;
+    }
   }
 }
 
 .unknown {
+  height: 100%;
+
   &__image {
+    flex-basis: 100px;
     width: 20%;
-    min-width: 128px;
-    max-width: 200px;
+    // height: 100%;
+    // border: 1px solid red;
+    // min-height: 10rem;
+    // min-width: 10rem;
+    // max-width: 20rem;
+    // width: 20%;
+    // min-width: 128px;
+    // max-width: 200px;
     background: url('./assets/image/unknown.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: top center;
   }
 }
 
@@ -143,12 +236,12 @@
 .wrapper__description,
 .wrapper__unknown {
   display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
+  // align-items: stretch;
+  // flex-wrap: wrap;
   gap: 2rem;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .wrapper__description {
     flex-direction: column;
   }
@@ -156,13 +249,13 @@
   .description {
     &__image {
       width: 100%;
-      max-height: 200px;
-      object-position: top;
+      // max-height: 200px;
+      // object-position: top;
     }
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .quiz {
     display: flex;
     flex-direction: column;
@@ -189,12 +282,12 @@
 
   .description {
     &__image {
-      width: 100%;
+      // width: 100%;
     }
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .wrapper__unknown {
     flex-direction: column;
   }
@@ -210,15 +303,15 @@
 
   .unknown {
     &__image {
-      width: 100%;
-      min-height: 128px;
+      // width: 100%;
+      // min-height: 128px;
       margin: auto;
     }
-  }
 
-  .caption {
-    &__header {
-      margin: auto;
+    .caption {
+      &__header {
+        margin: auto;
+      }
     }
   }
 }

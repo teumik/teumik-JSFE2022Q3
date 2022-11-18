@@ -12,13 +12,13 @@
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/image/bird_sun.jpg');
   background-size: cover;
-  background-position: 25% top;
+  background-position: 50% top;
   border-radius: 1rem;
 
   &__message {
     margin: 0;
     @extend %poppinsBlack;
-    font-size: 7.6rem;
+    // font-size: 7.6rem;
     color: $headTextColor;
     text-align: center;
     text-transform: uppercase;
@@ -31,14 +31,14 @@
   &__score {
     margin: 0;
     @extend %poppinsBold;
-    font-size: 3.2rem;
+    // font-size: 3.2rem;
     text-align: center;
   }
 
   &__button {
     padding: 0.5rem 4rem;
     @extend %poppinsSemiBold;
-    font-size: 3.2rem;
+    // font-size: 3.2rem;
     text-transform: uppercase;
     background: $blockBackgroundColorLight;
     border: 0.2rem solid $accentGreenColor;

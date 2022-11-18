@@ -1,0 +1,332 @@
+.player {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 1rem;
+  align-self: end;
+  font-size: 1.2rem;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__button {
+    width: 100%;
+    height: 100%;
+    max-width: 3rem;
+    max-height: 3rem;
+
+    svg {
+      fill: $headTextColor;
+      transition: fill $s;
+    }
+
+    &:hover {
+      svg {
+        fill: $nationalGeographicColor;
+      }
+    }
+
+    &.play {
+      position: relative;
+      top: -15%;
+      max-width: 2rem;
+      max-height: 2rem;
+    }
+  }
+
+  &__line {
+    flex-grow: 1;
+    height: 0.5em;
+    background: $mainTextColor;
+    border-radius: 0.5em;
+  }
+}
+
+// LINE
+
+.line {
+  display: flex;
+  align-items: center;
+
+  &__progress {
+    position: relative;
+    height: 100%;
+    width: 30%;
+    background: $headTextColor;
+    border-radius: 0.5em;
+  }
+
+  &__thumb {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    flex-grow: 0;
+    width: 1em;
+    height: 1em;
+    background: $nationalGeographicColor;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+    cursor: pointer;
+    transition: width $s, height $s;
+
+    &:hover {
+      width: 1.4em;
+      height: 1.4em;
+    }
+  }
+}
+
+// BUTTON STATE
+
+.play {
+  &__stop {
+    display: none;
+  }
+
+  &__go {
+    display: block;
+  }
+}
+
+.play_pause {
+  .play__stop {
+    display: block;
+  }
+
+  .play__go {
+    display: none;
+  }
+}
+
+.volume {
+  &__off {
+    display: none;
+  }
+
+  &__on {
+    display: block;
+  }
+}
+
+.volume_mute {
+  .volume__off {
+    display: block;
+  }
+
+  .volume__on {
+    display: none;
+  }
+}
+
+// .player {
+//   height: 100%;
+//   margin-top: 1rem;
+//   align-self: end;
+//   display: flex;
+//   align-items: center;
+//   gap: 1rem;
+//   font-size: 1.2rem;
+
+//   &__wrapper {
+//     height: 100%;
+//     width: 100%;
+//     flex-grow: 1;
+//     // display: flex;
+//     // display: grid;
+//     // grid-template-columns: 1fr 20fr;
+//     align-items: center;
+
+//     &:last-child {
+//       width: auto;
+//       flex-grow: 0;
+//     }
+//   }
+
+//   &__button {
+//     // width: 40px;
+//     max-width: 48px;
+//     height: 100%;
+//     padding: 0.5em;
+
+//     // border: 1px solid greenyellow;
+
+//     svg {
+//       width: 100%;
+//       height: 100%;
+//     }
+//   }
+
+//   &__line {
+//     // width: 100%;
+//     flex-grow: 1;
+//     height: 0.5em;
+//     background: $mainTextColor;
+//     border-radius: 0.5em;
+//   }
+// }
+
+// .line {
+//   display: flex;
+//   align-items: center;
+
+//   &__progress {
+//     position: relative;
+//     height: 100%;
+//     width: 30%;
+//     background: $headTextColor;
+//     border-radius: 0.5em;
+//   }
+
+//   &__thumb {
+//     position: absolute;
+//     right: 0;
+//     top: 50%;
+//     flex-grow: 0;
+//     width: 1em;
+//     height: 1em;
+//     background: $nationalGeographicColor;
+//     border-radius: 50%;
+//     transform: translate(50%, -50%);
+//     cursor: pointer;
+//     transition: width $s, height $s;
+
+//     &:hover {
+//       width: 1.2em;
+//       height: 1.2em;
+//     }
+//   }
+// }
+
+// .start {
+
+//   .pause {
+//     width: 100%;
+//     height: 100%;
+//     // width: 2em;
+//     // height: 2em;
+//     // display: none;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 0.6em;
+//     border: 1px solid red;
+
+//     svg {
+//       fill: $headTextColor;
+//     }
+
+//     // &__line {
+//     //   width: 30%;
+//     //   // width: 10px;
+//     //   height: 100%;
+//     //   // width: 0.6em;
+//     //   background: $headTextColor;
+//     //   border-radius: 0.3em;
+//     //   transition: background $s;
+
+//     //   border: 1px solid blue;
+//     // }
+//   }
+
+//   .play {
+//     // width: 2em;
+//     // height: 2em;
+//     border: 1px solid red;
+
+//     svg {
+//       path {
+//         fill: $headTextColor;
+//         transition: fill $s;
+//       }
+//     }
+//   }
+
+//   &:hover {
+//     .pause {
+//       &__line {
+//         background: $nationalGeographicColor;
+//       }
+//     }
+
+//     .play {
+//       svg {
+//         path {
+//           fill: $nationalGeographicColor;
+//         }
+//       }
+//     }
+//   }
+
+//   &_stop {
+//     .pause {
+//       display: flex;
+//     }
+
+//     .play {
+//       // display: none;
+//     }
+//   }
+// }
+
+// .volume {
+//   display: flex;
+//   align-items: center;
+//   gap: 0.5em;
+
+//   &__on,
+//   &__off {
+//     // width: 3em;
+//     // height: 3em;
+
+//     svg {
+//       fill: $headTextColor;
+//       transition: fill $s;
+//     }
+//   }
+
+//   .volume__off {
+//     display: none;
+//   }
+
+//   .volume__on {
+//     display: block;
+//   }
+
+//   &_mute {
+//     .volume__off {
+//       display: block;
+//     }
+
+//     .volume__on {
+//       display: none;
+//     }
+//   }
+
+//   &:hover {
+
+//     .volume__on,
+//     .volume__off {
+
+//       svg {
+//         fill: $nationalGeographicColor;
+//       }
+//     }
+//   }
+// }
+
+// .volume__line {
+//   height: 0.5em;
+//   min-width: 10rem;
+//   width: 30%;
+//   flex-shrink: 1;
+//   background: $mainTextColor;
+//   border-radius: 0.5em;
+
+//   .line__progress {
+//     width: 30%;
+//   }
+// }
+
+// @media screen and (max-width: 800px) {}

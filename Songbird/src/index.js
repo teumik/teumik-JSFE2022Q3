@@ -11,7 +11,7 @@ function allowTransition() {
 
 globalThis.addEventListener('load', allowTransition);
 
-console.log(birdsData);
+console.log(birdsData.en[4][5]);
 console.log(langs);
 
 // function play() {
@@ -22,3 +22,17 @@ console.log(langs);
 // const restart = document.querySelector('.result__button');
 
 // restart.addEventListener('click', play);
+
+const playButton = document.querySelector('.play');
+const volumeButton = document.querySelector('.volume');
+
+function startSound() {
+  this.classList.toggle('play_pause');
+}
+
+function setVolume() {
+  this.classList.toggle('volume_mute');
+}
+
+playButton.addEventListener('click', startSound);
+volumeButton.addEventListener('click', setVolume);
