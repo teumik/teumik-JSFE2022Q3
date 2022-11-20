@@ -17,7 +17,7 @@
 
   &__message {
     margin: 0;
-    @extend %poppinsBlack;
+    @extend %InterTightBlack;
     color: $headTextColor;
     text-align: center;
     text-transform: uppercase;
@@ -29,13 +29,13 @@
 
   &__score {
     margin: 0;
-    @extend %poppinsBold;
+    @extend %InterTightBold;
     text-align: center;
   }
 
   &__button {
     padding: 0.5rem 4rem;
-    @extend %poppinsSemiBold;
+    @extend %InterTightSemiBold;
     text-transform: uppercase;
     background: $blockBackgroundColorLight;
     border: 0.2rem solid $accentGreenColor;

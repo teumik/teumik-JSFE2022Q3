@@ -16,13 +16,13 @@
 
   &__header {
     margin: 0;
-    @extend %poppinsBlack;
+    @extend %InterTightBlack;
     text-align: center;
   }
 
   &__text {
     margin: 0;
-    @extend %poppinsBold;
+    @extend %InterTightBold;
     text-align: center;
 
     &_color {
@@ -32,7 +32,7 @@
 
   &__button {
     padding: 0.5rem 4rem;
-    @extend %poppinsSemiBold;
+    @extend %InterTightSemiBold;
     text-transform: uppercase;
     background: $blockBackgroundColorLight;
     border: 0.2rem solid $accentGreenColor;

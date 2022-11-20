@@ -14,7 +14,7 @@
 @import './styles/toggle';
 
 html {
-  @extend %poppinsRegular;
+  @extend %InterTightRegular;
   font-size: 62.5%;
   color: $headTextColor;
   background: $mainBackgroundColor;

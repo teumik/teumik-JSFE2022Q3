@@ -22,10 +22,6 @@ export function changeLang() {
       if (node) {
         if (typeof inner === 'string') {
           node.innerHTML = inner;
-          // console.log(node);
-          // [...node].forEach((el) => {
-          //   el.innerHTML = inner;
-          // });
         } else {
           [...node.children].forEach((el, i) => {
             el.innerHTML = inner[i];

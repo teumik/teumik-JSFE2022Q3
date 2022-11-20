@@ -34,12 +34,20 @@ function translateHelper() {
   const choices = document.querySelector('.game__choices');
   const guessLevel = birdsData[getLang()][getLevel()];
   const guessBird = guessLevel[getBirdId()];
-  if (getDefaultBird().isGuess) {
-    getDefaultBird().name.innerHTML = guessBird.name;
+  if (getDefaultBird()) {
+    if (getDefaultBird().isGuess) {
+      getDefaultBird().name.innerHTML = guessBird.name;
+    }
+    if (getCurrentBird().id) {
+      insertCorrectAnswers(getCurrentBird(), guessLevel[getCurrentBird().id - 1]);
+    }
   }
-  if (getCurrentBird().id) {
-    insertCorrectAnswers(getCurrentBird(), guessLevel[getCurrentBird().id - 1]);
-  }
+  // if (getDefaultBird().isGuess) {
+  //   getDefaultBird().name.innerHTML = guessBird.name;
+  // }
+  // if (getCurrentBird().id) {
+  //   insertCorrectAnswers(getCurrentBird(), guessLevel[getCurrentBird().id - 1]);
+  // }
   translateOptions(choices, guessLevel);
 }
 

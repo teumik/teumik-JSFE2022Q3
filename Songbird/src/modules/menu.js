@@ -48,8 +48,8 @@ function checkPage(event) {
   }
 }
 
-// showPage('welcome');
+showPage('welcome');
 // showPage('gallery');
-showPage('quiz');
+// showPage('quiz');
 
 globalThis.addEventListener('click', checkPage);

@@ -3,6 +3,7 @@ import './modules/menu';
 import './modules/playerControls';
 import './modules/langSettings';
 import './modules/toggle';
+import './modules/localStorage';
 
 const app = document.querySelector('#app');
 
