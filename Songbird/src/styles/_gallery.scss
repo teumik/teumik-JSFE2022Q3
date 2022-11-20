@@ -1,0 +1,83 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &__header {
+    margin: 1rem;
+    @extend %poppinsBlack;
+    color: $nationalGeographicColor;
+    text-align: center;
+  }
+
+  &__text {
+    margin: 0 2rem 2rem;
+    text-align: center;
+    @extend %poppinsBold;
+
+    &_color {
+      color: $parrotColor;
+    }
+  }
+
+  &__birds {
+    flex-grow: 1;
+    background: $blockBackgroundColorLight;
+    border-radius: 1rem;
+  }
+}
+
+.birds {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  &__item {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .wrapper__description {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .description {
+    &__image {
+      width: 100%;
+      max-height: 20rem;
+      object-fit: cover;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .birds {
+
+    &__item {
+      display: grid;
+      grid-template-rows: repeat(2, min-content);
+    }
+
+    .wrapper__description {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, min-content);
+      text-align: center;
+    }
+
+    .description {
+      &__image {
+        width: 50%;
+        height: 20rem;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .birds {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

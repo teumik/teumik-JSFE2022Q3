@@ -22,5 +22,11 @@ module.exports = {
       {
         allowForLoopAfterthoughts: true,
       }],
+    'no-param-reassign': [
+      'error',
+      {
+        props: false,
+      }],
+    'guard-for-in': 0,
   },
 };

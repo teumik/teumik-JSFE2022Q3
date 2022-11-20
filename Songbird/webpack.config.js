@@ -82,9 +82,17 @@ module.exports = {
       {
         test: /\.(ogg|mp3|wav|mpe?g)$/i,
         // test: /\.mp3$/i,
+        // use: [{
+        //   loader: 'file-loader',
+        //   options: {
+        //     // name: 'audio/[name].[ext]',
+        //     name: 'assets/[name].[ext]',
+        //   },
+        // }],
         loader: 'file-loader',
         options: {
-          name: 'audio/[name].[ext]',
+          filename: 'audio/[name][ext]',
+          // name: 'assets/[hash].[ext]',
         },
       },
       {

@@ -17,15 +17,12 @@
   &__header {
     margin: 0;
     @extend %poppinsBlack;
-    // font-size: 7.6rem;
     text-align: center;
-    // word-wrap: break-word;
   }
 
   &__text {
     margin: 0;
     @extend %poppinsBold;
-    // font-size: 3.2rem;
     text-align: center;
 
     &_color {
@@ -36,7 +33,6 @@
   &__button {
     padding: 0.5rem 4rem;
     @extend %poppinsSemiBold;
-    // font-size: 3.2rem;
     text-transform: uppercase;
     background: $blockBackgroundColorLight;
     border: 0.2rem solid $accentGreenColor;
