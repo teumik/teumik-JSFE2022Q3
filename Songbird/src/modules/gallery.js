@@ -51,8 +51,9 @@ function makeGalleryitem(levels) {
 function setGallery() {
   const mainNode = document.querySelector('.main');
   const target = mainNode.querySelector('.gallery__birds');
+  if (!target) return;
   const result = makeGalleryitem(birdsData[getLang()]);
-  target.append(...result);
+  target.replaceChildren(...result);
 }
 
 export default setGallery;

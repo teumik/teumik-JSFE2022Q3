@@ -19,7 +19,7 @@ const langs = {
     },
     quiz: {
       suborders: ['Warm Up', 'Sparrows', 'Forests', 'Songbirds', 'Carnivore', 'Seabird'],
-      defaultQuestion: '***',
+      // defaultQuestion: '***',
       defaultMessage: 'Listen to the audio and select a bird',
       quizScore: 'Score: ',
       quizButton: 'Next',
@@ -51,7 +51,7 @@ const langs = {
     },
     quiz: {
       suborders: ['Разминка', 'Воробиные', 'Лесные', 'Певчие', 'Хищные', 'Морские'],
-      defaultQuestion: '***',
+      // defaultQuestion: '***',
       defaultMessage: 'Прослушайте аудио и выберите птицу',
       quizScore: 'Очки: ',
       quizButton: 'Далее',

@@ -58,6 +58,7 @@ function setOptions(choices) {
 
 function initNodesAnswer(answer) {
   return {
+    id: null,
     audio: answer.querySelector('.audio'),
     name: answer.querySelector('.caption__header'),
     image: answer.querySelector('.description__image'),
@@ -68,6 +69,7 @@ function initNodesAnswer(answer) {
 
 function initNodesDefault(main) {
   return {
+    id: null,
     audio: main.querySelector('.audio'),
     name: main.querySelector('.caption__header'),
     image: main.querySelector('.unknown__image'),
@@ -76,18 +78,24 @@ function initNodesDefault(main) {
 
 function insertCorrectAnswers(elems, answer) {
   for (const el in elems) {
-    if (el === 'image') {
-      elems[el].src = answer[el];
-    } else if (el === 'audio') {
-      elems[el].src = answer[el];
-    } else {
-      elems[el].innerHTML = answer[el];
+    if (typeof elems[el] !== 'boolean') {
+      if (el === 'image') {
+        elems[el].src = answer[el];
+      } else if (el === 'id') {
+        elems[el] = answer[el];
+      } else if (el === 'audio') {
+        elems[el].src = answer[el];
+      } else {
+        elems[el].innerHTML = answer[el];
+      }
     }
   }
 }
 
 function setGuessBird(answer) {
   nodesData.elemsDefault.audio.src = answer.audio;
+  nodesData.elemsDefault.id = answer.id;
+  nodesData.elemsDefault.isGuess = false;
   game.birdId = answer.id;
   console.log(game.birdId, 'Bird', '<>', game.levelCount + 1, 'Level');
 }
@@ -102,6 +110,8 @@ function getAnswerNode() {
 }
 
 function startGame() {
+  game = new Game();
+
   const { answerNode, mainNode, choices } = getAnswerNode();
   setOptions(choices);
 
@@ -110,7 +120,7 @@ function startGame() {
   const elemsAnswer = initNodesAnswer(answerNode);
   const elemsDefault = initNodesDefault(mainNode);
   const target = mainNode.querySelector('.game__description');
-  target.innerHTML = langsDictionary[getLang()].quiz.defaultMessage;
+  target.firstChild.innerHTML = langsDictionary[getLang()].quiz.defaultMessage;
 
   nodesData.answerNode = answerNode;
   nodesData.mainNode = mainNode;
@@ -129,6 +139,7 @@ function createArticleNode() {
   const article = document.createElement('article');
   article.classList.add('game__description', 'description');
   const p = document.createElement('p');
+  p.dataset.lang = 'defaultMessage';
   p.innerHTML = langsDictionary[getLang()].quiz.defaultMessage;
   article.append(p);
   return article;
@@ -191,7 +202,8 @@ function checkAnswer(event) {
     if (Number(datasetAnswer) === game.birdId) {
       close.classList.add('choices__option_correct');
       close.firstElementChild.classList.add('choices__input_correct');
-      insertCorrectAnswers(nodesData.elemsDefault, nodesData.answer);
+      insertCorrectAnswers(nodesData.elemsDefault, index);
+      nodesData.elemsDefault.isGuess = true;
       game.win();
     } else {
       if (close.classList.contains('choices__option_incorrect')) return;
@@ -205,4 +217,26 @@ function checkAnswer(event) {
 
 globalThis.addEventListener('click', checkAnswer);
 
+function getLevel() {
+  return game.levelCount;
+}
+
+function getBirdId() {
+  return game.birdId - 1;
+}
+
+function getCurrentBird() {
+  return nodesData.elemsAnswer;
+}
+
+function getDefaultBird() {
+  return nodesData.elemsDefault;
+}
+
 export default startGame;
+export {
+  getLevel,
+  getBirdId,
+  getCurrentBird,
+  getDefaultBird,
+};

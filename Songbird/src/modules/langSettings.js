@@ -17,18 +17,19 @@ export function changeLang() {
     for (const prop in dictionary[block]) {
       const attribite = prop;
       const inner = dictionary[block][prop];
-      const node = document.querySelectorAll(`[data-lang="${attribite}"]`);
+      const node = document.querySelector(`[data-lang="${attribite}"]`);
 
       if (node) {
         if (typeof inner === 'string') {
+          node.innerHTML = inner;
           // console.log(node);
-          [...node].forEach((el) => {
-            el.innerHTML = inner;
-          });
-        } else {
-          // [...node.children].forEach((el, i) => {
-          //   el.innerHTML = inner[i];
+          // [...node].forEach((el) => {
+          //   el.innerHTML = inner;
           // });
+        } else {
+          [...node.children].forEach((el, i) => {
+            el.innerHTML = inner[i];
+          });
         }
       }
     }
