@@ -4,6 +4,7 @@ import './modules/playerControls';
 import './modules/langSettings';
 import './modules/toggle';
 import './modules/localStorage';
+import './modules/clickLinks';
 
 const app = document.querySelector('#app');
 

@@ -7,6 +7,7 @@ import {
   getDefaultBird,
 } from './quiz';
 import birdsData from '../libs/birds';
+import { playClickSound } from './sounds';
 
 function insertCorrectAnswers(current, bird) {
   for (const prop in current) {
@@ -42,18 +43,13 @@ function translateHelper() {
       insertCorrectAnswers(getCurrentBird(), guessLevel[getCurrentBird().id - 1]);
     }
   }
-  // if (getDefaultBird().isGuess) {
-  //   getDefaultBird().name.innerHTML = guessBird.name;
-  // }
-  // if (getCurrentBird().id) {
-  //   insertCorrectAnswers(getCurrentBird(), guessLevel[getCurrentBird().id - 1]);
-  // }
   translateOptions(choices, guessLevel);
 }
 
 function toggleLang(event) {
   const toggle = event.target.closest('.toggle');
   if (toggle) {
+    playClickSound();
     toggle.classList.toggle('toggle_active');
     [...toggle.children].forEach((node) => {
       if (!node.classList.contains('toggle__lang_active')) {

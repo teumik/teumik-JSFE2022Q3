@@ -1,6 +1,7 @@
 import startGame from './quiz';
 import setGallery from './gallery';
 import { changeLang } from './langSettings';
+import { playClickSound } from './sounds';
 
 function changeMenuStatus(dataName) {
   const menuItems = document.querySelectorAll('.menu__item');
@@ -44,6 +45,7 @@ function showPage(dataName) {
 function checkPage(event) {
   const dataName = event.target.dataset.name;
   if (dataName) {
+    playClickSound();
     showPage(dataName);
   }
 }

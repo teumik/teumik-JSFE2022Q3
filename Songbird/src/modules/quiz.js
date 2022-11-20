@@ -5,6 +5,12 @@ import shuffle from './shuffle';
 import showResult from './result';
 import defaultImage from '../assets/image/unknown.jpg';
 import setQuestion from './question';
+import {
+  playClickSound,
+  playWinSound,
+  playIncorrectSound,
+  playCorrectSound,
+} from './sounds';
 
 const nodesData = {};
 
@@ -158,10 +164,13 @@ function resetDefaultNode() {
 }
 
 function next() {
+  playClickSound();
+
   if (!game.isWin) return;
 
   if (game.isWin && (game.levelCount === (birdsData[getLang()].length - 1))) {
     showResult(game.totalScore, birdsData[getLang()].length);
+    playWinSound();
     game = new Game();
     return;
   }
@@ -205,8 +214,11 @@ function checkAnswer(event) {
       insertCorrectAnswers(nodesData.elemsDefault, index);
       nodesData.elemsDefault.isGuess = true;
       game.win();
+      playCorrectSound();
     } else {
       if (close.classList.contains('choices__option_incorrect')) return;
+
+      playIncorrectSound();
 
       close.classList.add('choices__option_incorrect');
       close.firstElementChild.classList.add('choices__input_incorrect');

@@ -36,6 +36,10 @@
       transition: width $s;
     }
 
+    &:first-child {
+      cursor: default;
+    }
+
     &:last-child {
       align-self: center;
 
