@@ -1,14 +1,14 @@
 import birdsData from '../libs/birds';
 import { getLang } from './langSettings';
-
-// const birdsMatrix = birdsData[getLang()];
+import { AudioComponent } from './sounds';
 
 function insertCorrectAnswers(node, bird) {
   for (const el in node) {
     if (el === 'image') {
       node[el].src = bird[el];
-    } else if (el === 'audio') {
-      node[el].src = bird[el];
+    } else if (el === 'wrap') {
+      const { audio, name, id } = bird;
+      node.audio = new AudioComponent(audio, name, id, node[el]);
     } else {
       node[el].innerHTML = bird[el];
     }
@@ -17,11 +17,11 @@ function insertCorrectAnswers(node, bird) {
 
 function initNodesDefault(node) {
   return {
-    audio: node.querySelector('.audio'),
     name: node.querySelector('.caption__header'),
     image: node.querySelector('.description__image'),
     species: node.querySelector('.caption__subheader'),
     description: node.querySelector('.description__text'),
+    wrap: node.querySelector('.player'),
   };
 }
 

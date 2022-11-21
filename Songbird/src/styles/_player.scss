@@ -1,3 +1,13 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
 .player {
   width: 100%;
   display: grid;
@@ -40,6 +50,21 @@
     background: $mainTextColor;
     border-radius: 0.5em;
   }
+
+  &__duration {
+    position: relative;
+    top: -1rem;
+    padding-left: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+
+    &_spin {
+      animation: spin 2s infinite;
+    }
+  }
 }
 
 // LINE
@@ -51,7 +76,7 @@
   &__progress {
     position: relative;
     height: 100%;
-    width: 30%;
+    width: 0%;
     background: $headTextColor;
     border-radius: 0.5em;
   }
@@ -67,11 +92,11 @@
     border-radius: 50%;
     transform: translate(50%, -50%);
     cursor: pointer;
-    transition: width $s, height $s;
+    // transition: width $s, height $s;
 
     &:hover {
-      width: 1.4em;
-      height: 1.4em;
+      // width: 1.4em;
+      // height: 1.4em;
     }
   }
 }

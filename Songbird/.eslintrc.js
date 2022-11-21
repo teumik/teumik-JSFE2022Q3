@@ -28,5 +28,6 @@ module.exports = {
         props: false,
       }],
     'guard-for-in': 0,
+    'no-new': 0,
   },
 };

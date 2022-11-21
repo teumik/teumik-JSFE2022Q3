@@ -1,0 +1,66 @@
+<div class="player__wrapper">
+  <button class="player__button play">
+    <div class="play__stop">
+      <svg viewBox="0 0 55 76">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M37.84 2.53506e-08H50.94C51.9801 0.0154884 52.9733 0.435567 53.7089 1.17113C54.4444 1.90669 54.8645 2.89987 54.88 3.94V70.88C54.8645 71.9201 54.4444 72.9133 53.7089 73.6489C52.9733 74.3844 51.9801 74.8045 50.94 74.82H37.84C36.7999 74.8045 35.8067 74.3844 35.0711 73.6489C34.3356 72.9133 33.9155 71.9201 33.9 70.88V3.94C33.9155 2.89987 34.3356 1.90669 35.0711 1.17113C35.8067 0.435567 36.7999 0.0154884 37.84 2.53506e-08ZM3.94 2.53506e-08H17C18.0506 -0.000118168 19.059 0.413063 19.8074 1.15028C20.5559 1.8875 20.9842 2.88957 21 3.94V70.88C20.9842 71.9304 20.5559 72.9325 19.8074 73.6697C19.059 74.4069 18.0506 74.8201 17 74.82H3.94C2.89988 74.8045 1.90669 74.3844 1.17113 73.6489C0.435565 72.9133 0.0154883 71.9201 0 70.88V3.94C0.0154883 2.89987 0.435565 1.90669 1.17113 1.17113C1.90669 0.435567 2.89988 0.0154884 3.94 2.53506e-08Z" />
+      </svg>
+    </div>
+    <div class="play__go">
+      <svg viewBox="0 0 55 76">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M50.8552 44.2489C56.2314 40.6703 56.2118 36.6886 50.8552 33.5233L8.81557 1.87065C4.45786 -0.951877 -0.115294 0.711398 0.00221767 6.59839L0.178485 68.7747C0.550604 75.1657 4.09553 76.9096 9.31499 73.956L50.8552 44.2489Z" />
+      </svg>
+    </div>
+  </button>
+  <div class="player__line line line_duration">
+    <div class="line__progress">
+      <div class="line__thumb"></div>
+    </div>
+  </div>
+</div>
+<div class="player__wrapper">
+  <button class="player__button volume">
+    <div class="volume__off">
+      <svg viewBox="0 0 24 24">
+        <g data-name="Layer 2">
+          <g data-name="volume-off">
+            <path d="m16.91 14.08 1.44 1.44a6 6 0 0 0-.07-7.15 1 1 0 1 0-1.56 1.26 4 4 0 0 1 .19 4.45z" />
+            <path
+              d="M21 12a6.51 6.51 0 0 1-1.78 4.39l1.42 1.42A8.53 8.53 0 0 0 23 12a8.75 8.75 0 0 0-3.36-6.77 1 1 0 1 0-1.28 1.54A6.8 6.8 0 0 1 21 12zm-6 .17V4a1 1 0 0 0-1.57-.83L9 6.2zM4.74 7.57H2a1 1 0 0 0-1 1v6.86a1 1 0 0 0 1 1h5l6.41 4.4A1.06 1.06 0 0 0 14 21a1 1 0 0 0 1-1v-2.17zm-.03-4.28a1 1 0 0 0-1.42 1.42l16 16a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z" />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="volume__on">
+      <svg viewBox="0 0 24 24">
+        <g data-name="Layer 2">
+          <g data-name="volume-up">
+            <path
+              d="M18.28 8.37a1 1 0 1 0-1.56 1.26 4 4 0 0 1 0 4.74A1 1 0 0 0 17.5 16a1 1 0 0 0 .78-.37 6 6 0 0 0 0-7.26z" />
+            <path
+              d="M19.64 5.23a1 1 0 1 0-1.28 1.54A6.8 6.8 0 0 1 21 12a6.8 6.8 0 0 1-2.64 5.23 1 1 0 0 0-.13 1.41A1 1 0 0 0 19 19a1 1 0 0 0 .64-.23A8.75 8.75 0 0 0 23 12a8.75 8.75 0 0 0-3.36-6.77zm-5.17-2.11a1 1 0 0 0-1 0L7 7.57H2a1 1 0 0 0-1 1v6.86a1 1 0 0 0 1 1h5l6.41 4.4A1.06 1.06 0 0 0 14 21a1 1 0 0 0 1-1V4a1 1 0 0 0-.53-.88z" />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </button>
+  <div class="player__line line line_volume">
+    <div class="line__progress">
+      <div class="line__thumb"></div>
+    </div>
+  </div>
+</div>
+<div class="player__duration">
+  <div class="player__duration_current">00:00</div>
+  <div class="player__duration_total player__duration_spin">&#8634;</div>
+</div>
+
+<main class="main welcome">
+  <h1 data-lang="header" class="welcome__header">Songbird Quiz</h1>
+  <div class="wrapper__main">
+    <p data-lang="text" class="welcome__text">Guess which bird is <span data-lang="textColor"
+        class="welcome__text_color">yelling</span></p>
+    <button data-lang="welcomeButton" data-name="quiz" class="buttons welcome__button">Start</button>
+  </div>
+</main>

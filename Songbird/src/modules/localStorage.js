@@ -16,6 +16,8 @@ function saveLang() {
 function loadLang() {
   const storageLang = getLocalStorage('lang');
   const node = document.querySelector(`[data-lang-id="${storageLang}"]`);
+  if (!node) return;
+
   const toggle = node.parentElement;
   setLang(storageLang);
 
