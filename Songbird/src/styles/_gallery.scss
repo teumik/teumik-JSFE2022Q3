@@ -37,6 +37,11 @@
     border-radius: 1rem;
   }
 
+  .wrapper__image {
+    width: unset;
+    max-height: 15rem;
+  }
+
   .wrapper__description {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -59,6 +64,10 @@
       grid-template-rows: repeat(2, min-content);
     }
 
+    .wrapper__image {
+      max-height: 100%;
+    }
+
     .wrapper__description {
       display: grid;
       grid-template-columns: 1fr;
@@ -68,9 +77,8 @@
 
     .description {
       &__image {
-        width: 50%;
-        height: 20rem;
-        object-fit: cover;
+        max-width: 100%;
+        width: 40%;
       }
     }
   }
@@ -80,5 +88,16 @@
   .birds {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+
+    .wrapper__image {
+      max-height: 20rem;
+    }
+
+    .description {
+      &__image {
+        max-width: unset;
+        width: unset;
+      }
+    }
   }
 }

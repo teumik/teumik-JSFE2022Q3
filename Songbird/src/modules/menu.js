@@ -51,5 +51,7 @@ function checkPage(event) {
 }
 
 showPage('welcome');
+// showPage('quiz');
+// showPage('gallery');
 
 globalThis.addEventListener('click', checkPage);
