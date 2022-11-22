@@ -37,6 +37,7 @@ function translateHelper() {
   const guessBird = guessLevel[getBirdId()];
   if (getDefaultBird()) {
     if (getDefaultBird().isGuess) {
+      if (!guessBird) return;
       getDefaultBird().name.innerHTML = guessBird.name;
     }
     if (getCurrentBird().id) {

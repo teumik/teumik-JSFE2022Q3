@@ -67,8 +67,6 @@
   }
 }
 
-// LINE
-
 .line {
   display: flex;
   align-items: center;
@@ -92,16 +90,8 @@
     border-radius: 50%;
     transform: translate(50%, -50%);
     cursor: pointer;
-    // transition: width $s, height $s;
-
-    &:hover {
-      // width: 1.4em;
-      // height: 1.4em;
-    }
   }
 }
-
-// BUTTON STATE
 
 .play {
   &__stop {

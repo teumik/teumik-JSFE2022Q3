@@ -22,18 +22,19 @@
 
   &__birds {
     flex-grow: 1;
-    background: $blockBackgroundColorLight;
-    border-radius: 1rem;
   }
 }
 
 .birds {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 
   &__item {
     display: grid;
     grid-template-rows: 1fr 1fr;
+    background: $blockBackgroundColorLight;
+    border-radius: 1rem;
   }
 
   .wrapper__description {

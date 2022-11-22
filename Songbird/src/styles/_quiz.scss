@@ -157,7 +157,6 @@
       z-index: 10;
       left: 50%;
       bottom: -0.4rem;
-      // width: 60%;
       width: 0;
       height: 0.2rem;
       background: $accentGreenColor;
@@ -170,15 +169,7 @@
 
       &::after {
         content: '';
-        // position: absolute;
-        // z-index: 10;
-        // left: 50%;
-        // bottom: -0.4rem;
         width: 60%;
-        // height: 0.2rem;
-        // background: $accentGreenColor;
-        // transform: translate(-50%);
-        // transition: width $s;
       }
     }
   }

@@ -50,8 +50,6 @@ function checkPage(event) {
   }
 }
 
-// showPage('welcome');
-// showPage('gallery');
-showPage('quiz');
+showPage('welcome');
 
 globalThis.addEventListener('click', checkPage);

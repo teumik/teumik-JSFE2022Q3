@@ -10,7 +10,6 @@
 .menu {
   display: flex;
   justify-content: flex-end;
-  // align-items: center;
   gap: 2rem;
   @extend %InterTightRegular;
 
@@ -94,6 +93,5 @@
         right: 0;
       }
     }
-
   }
 }

@@ -2,17 +2,12 @@ import correctSound from '../assets/sound/correct.mp3';
 import incorrectSound from '../assets/sound/incorrect.mp3';
 import clickSound from '../assets/sound/click.mp3';
 import winSound from '../assets/sound/win.mp3';
-import birdsData from '../libs/birds';
-import { getLang } from './langSettings';
-// import { toggleVolume } from './playerControls';
 
 function soundLoader(src) {
   const audio = new Audio(src);
   audio.preload = 'metadata';
   return audio;
 }
-
-// TEST
 
 export class AudioComponent {
   constructor(src, name, id, target) {
@@ -38,6 +33,7 @@ export class AudioComponent {
     this.currentDurationState = 0;
     this.totalDurationState = 0;
     this.audio = new Audio(src);
+    this.audio.preload = 'metadata';
 
     this.refreshVolumeState();
 
@@ -56,8 +52,6 @@ export class AudioComponent {
     this.timeUpdateEventHandler = this.setCurrentDurationWidth.bind(context);
     this.audio.ontimeupdate = this.timeUpdateEventHandler;
 
-    // return this.player;
-    // div.append(this.player);
     target.replaceWith(this.player);
   }
 
@@ -144,6 +138,7 @@ export class AudioComponent {
   }
 
   convertTime(d) {
+    console.log(this, 'Annoying ESLint');
     const min = Math.floor(d / 60);
     const sec = d % 60;
     const mm = min.toString().padStart(2, 0);
@@ -207,9 +202,12 @@ export class AudioComponent {
   }
 
   playSound(event) {
-    if (event.type === 'ended') {
-      this.currentDurationState = 0;
-      this.refreshPlayState();
+    console.log(this.id, 'BirdID', '<>', this.name, 'Bird Name');
+    if (event) {
+      if (event.type === 'ended') {
+        this.currentDurationState = 0;
+        this.refreshPlayState();
+      }
     }
     if (this.isPlay) {
       this.audio.pause();
@@ -222,22 +220,6 @@ export class AudioComponent {
     }
   }
 }
-
-// const levels = birdsData[getLang()];
-// const elems = [];
-
-// levels.forEach((level, row) => {
-//   level.forEach((bird) => {
-//     // const comp = new AudioComponent(bird.audio, bird.name, bird.id * (row + 1));
-//     // elems.push(comp);
-//   });
-// });
-
-// console.log(elems);
-
-// document.body.prepend(...elems);
-
-// TEST
 
 export function playCorrectSound() {
   soundLoader(correctSound).play();

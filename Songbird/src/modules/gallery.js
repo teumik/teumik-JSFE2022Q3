@@ -2,17 +2,39 @@ import birdsData from '../libs/birds';
 import { getLang } from './langSettings';
 import { AudioComponent } from './sounds';
 
+let allPlayers = [];
+
+function stopAllPlayers(players) {
+  function stopPlayers(event) {
+    const menuItem = event.target.closest('.menu__item');
+
+    if (!menuItem) return;
+
+    players.forEach((el) => {
+      if (el.isPlay) {
+        el.playSound();
+      }
+    });
+  }
+
+  globalThis.addEventListener('click', stopPlayers);
+}
+
 function insertCorrectAnswers(node, bird) {
+  allPlayers = [];
   for (const el in node) {
     if (el === 'image') {
       node[el].src = bird[el];
     } else if (el === 'wrap') {
       const { audio, name, id } = bird;
       node.audio = new AudioComponent(audio, name, id, node[el]);
+      const elem = node.audio;
+      allPlayers.push(elem);
     } else {
       node[el].innerHTML = bird[el];
     }
   }
+  stopAllPlayers(allPlayers);
 }
 
 function initNodesDefault(node) {

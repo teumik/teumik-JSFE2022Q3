@@ -10,6 +10,7 @@ import {
   playWinSound,
   playIncorrectSound,
   playCorrectSound,
+  AudioComponent,
 } from './sounds';
 
 const nodesData = {};
@@ -90,8 +91,8 @@ function insertCorrectAnswers(elems, answer) {
       } else if (el === 'id') {
         elems[el] = answer[el];
       } else if (el === 'audio') {
-        elems[el].src = answer[el];
-      } else {
+        // elems[el].src = answer[el];
+      } else if (el !== 'player') {
         elems[el].innerHTML = answer[el];
       }
     }
@@ -99,7 +100,9 @@ function insertCorrectAnswers(elems, answer) {
 }
 
 function setGuessBird(answer) {
-  nodesData.elemsDefault.audio.src = answer.audio;
+  const defaultPlayer = nodesData.mainNode.querySelector('.unknown__caption .player');
+  const { audio, name, id } = answer;
+  nodesData.elemsDefault.player = new AudioComponent(audio, name, id, defaultPlayer);
   nodesData.elemsDefault.id = answer.id;
   nodesData.elemsDefault.isGuess = false;
   game.birdId = answer.id;
@@ -159,7 +162,7 @@ function replaceArticleNode() {
 }
 
 function resetDefaultNode() {
-  nodesData.elemsDefault.name.innerHTML = '?';
+  nodesData.elemsDefault.name.innerHTML = '***';
   nodesData.elemsDefault.image.src = defaultImage;
 }
 
@@ -170,7 +173,9 @@ function next() {
 
   if (game.isWin && (game.levelCount === (birdsData[getLang()].length - 1))) {
     showResult(game.totalScore, birdsData[getLang()].length);
+
     playWinSound();
+
     game = new Game();
     return;
   }
@@ -192,7 +197,19 @@ function next() {
 
 function checkAnswer(event) {
   if (event.target.dataset.id === 'next') {
+    if (nodesData.currentPlayer) {
+      if (nodesData.currentPlayer.isPlay) {
+        nodesData.currentPlayer.playSound();
+      }
+    }
+
+    if (nodesData.elemsDefault.player.isPlay) {
+      nodesData.elemsDefault.player.playSound();
+    }
+
     next();
+
+    return;
   }
 
   const close = event.target.closest('.choices__option');
@@ -201,8 +218,18 @@ function checkAnswer(event) {
     return;
   }
 
+  if (nodesData.currentPlayer) {
+    if (nodesData.currentPlayer.isPlay) {
+      nodesData.currentPlayer.playSound();
+    }
+  }
+
   const datasetAnswer = close.dataset.answer;
   const index = birdsData[getLang()][game.levelCount][datasetAnswer - 1];
+  const replacer = nodesData.answerNode.querySelector('.player');
+
+  const { audio, name, id } = index;
+  nodesData.currentPlayer = new AudioComponent(audio, name, id, replacer);
 
   insertCorrectAnswers(nodesData.elemsAnswer, index);
   nodesData.target.replaceWith(nodesData.answerNode);
@@ -215,6 +242,10 @@ function checkAnswer(event) {
       nodesData.elemsDefault.isGuess = true;
       game.win();
       playCorrectSound();
+
+      if (nodesData.elemsDefault.player.isPlay) {
+        nodesData.elemsDefault.player.playSound();
+      }
     } else {
       if (close.classList.contains('choices__option_incorrect')) return;
 
