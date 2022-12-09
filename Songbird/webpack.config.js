@@ -18,7 +18,7 @@ module.exports = {
   },
   entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     clean: true,
     filename: isDev ? '[name].js' : '[name].[contenthash].js',
     chunkFilename: '[name].chunk.js',
