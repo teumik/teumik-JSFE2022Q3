@@ -8,7 +8,7 @@
     "watch": "webpack --watch",
     "serve": "webpack serve --open",
     "nodemon": "nodemon --esm ./src/index.ts",
-    "eslint": "npx eslint src"
+    "eslint": "npx eslint src --fix"
   },
   "dependencies": {
     "postcss-preset-env": "^7.8.3"

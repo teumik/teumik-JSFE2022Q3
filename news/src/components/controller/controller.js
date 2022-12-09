@@ -6,12 +6,12 @@ class AppController extends AppLoader {
       {
         endpoint: 'sources',
       },
-      callback,
+      callback
     );
   }
 
   getNews(e, callback) {
-    let { target } = e;
+    let { target, } = e;
     const newsContainer = e.currentTarget;
 
     while (target !== newsContainer) {
@@ -26,7 +26,7 @@ class AppController extends AppLoader {
                 sources: sourceId,
               },
             },
-            callback,
+            callback
           );
         }
         return;

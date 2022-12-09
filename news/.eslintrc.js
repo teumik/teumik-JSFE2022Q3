@@ -8,7 +8,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx',],
       },
     },
   },
@@ -27,21 +27,29 @@ module.exports = {
   ],
   rules: {
     indent: 'off',
-    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/indent': ['error', 2,],
     'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': ['error'],
+    '@typescript-eslint/no-shadow': ['error',],
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': ['error', {
+      arrays: 'always',
+      objects: 'always',
+      imports: 'never',
+      exports: 'never',
+      functions: 'never',
+    },],
     semi: 'off',
     '@typescript-eslint/semi': 'warn',
     '@typescript-eslint/member-delimiter-style': 'warn',
     quotes: 'off',
-    '@typescript-eslint/quotes': ['warn', 'single'],
+    '@typescript-eslint/quotes': ['warn', 'single',],
     'padding-line-between-statements': 'off',
     '@typescript-eslint/padding-line-between-statements': [
       'warn',
       {
         blankLine: 'always',
         prev: '*',
-        next: ['interface', 'type', 'function'],
+        next: ['interface', 'type', 'function',],
       },
     ],
     'lines-between-class-members': [
@@ -61,11 +69,12 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-explicit-any': 'error',
+    'class-methods-use-this': 'off',
 
     /**
     * Temporery properties
     */
-    'max-classes-per-file': ['error', 5],
+    'max-classes-per-file': ['error', 5,],
     '@typescript-eslint/no-var-requires': 'off',
     'no-console': 'off',
   },
