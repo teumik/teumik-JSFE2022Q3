@@ -1,5 +1,6 @@
 import './global.css';
 import App from './components/app/app';
+import { type } from 'os';
 
 const app = new App();
 app.start();
@@ -79,8 +80,28 @@ export interface IAppController extends ILoader {
   getNews: GetNews;
 }
 
-export type Draw = (data: INewsResponse[]) => void;
+export type DrawSources = (data: INewsResponse[]) => void;
 
 export interface ISources {
-  draw: Draw;
+  draw: DrawSources;
+}
+
+export interface INewsItem {
+  author: string | null;
+  content: string;
+  publishedAt: string;
+  source: {
+    id: string;
+    name: string;
+  };
+  title: string;
+  url: string;
+  urlToImage: string;
+  description: string;
+}
+
+export type DrawNews = (data: INewsItem[]) => void;
+
+export interface INews {
+  draw: DrawNews;
 }
