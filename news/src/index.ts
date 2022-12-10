@@ -78,3 +78,9 @@ export type GetNews = (event: MouseEvent, callback: Callback) => void;
 export interface IAppController extends ILoader {
   getNews: GetNews;
 }
+
+export type Draw = (data: INewsResponse[]) => void;
+
+export interface ISources {
+  draw: Draw;
+}
