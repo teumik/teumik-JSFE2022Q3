@@ -35,7 +35,7 @@ export type Endpoint = 'everything' | 'top-headlines' | 'sources';
 
 export interface IEndpoint {
   endpoint: Endpoint;
-  options: IOptions;
+  options?: IOptions;
 }
 
 export interface IFetchResponse {
@@ -71,4 +71,10 @@ export interface ILoader {
   errorHandler: ErrorHandler;
   makeUrl: MakeUrl;
   load: Load;
+}
+
+export type GetNews = (event: MouseEvent, callback: Callback) => void;
+
+export interface IAppController extends ILoader {
+  getNews: GetNews;
 }
