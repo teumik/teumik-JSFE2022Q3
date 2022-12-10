@@ -1,6 +1,5 @@
 import './global.css';
 import App from './components/app/app';
-import { type } from 'os';
 
 const app = new App();
 app.start();
@@ -23,7 +22,7 @@ export interface INewsResponse {
   country: string;
 }
 
-type Status = 'error' | 'ok';
+export type Status = 'error' | 'ok';
 
 export interface IResponse {
   status: Status;
@@ -104,4 +103,17 @@ export type DrawNews = (data: INewsItem[]) => void;
 
 export interface INews {
   draw: DrawNews;
+}
+
+export type NewsItems = {
+  status: Status;
+  totalResults: number;
+  articles: INewsItem[];
+};
+
+export interface IAppView {
+  news: INews;
+  sources: ISources;
+  drawNews: (data: NewsItems) => void;
+  drawSources: (data: IResponse) => void;
 }
