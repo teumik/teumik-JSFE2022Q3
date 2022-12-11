@@ -1,0 +1,88 @@
+.rss .item__svg .st0 {
+  fill: #ffffff;
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+.rss .item__svg .st1 {
+  fill: #ffffff;
+  transition: fill 0.3s, stroke 0.3s;
+  clip-path: url(#SVGID_2_);
+}
+
+.rss .item__svg .st2 {
+  fill: #17181c;
+  clip-path: url(#SVGID_4_);
+}
+
+.rss .item__svg .st2 path {
+  fill: #ffffff;
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+.rss .item__svg .st3 {
+  clip-path: url(#SVGID_6_);
+}
+
+.rss .item__svg .st4 {
+  clip-path: url(#SVGID_8_);
+}
+
+.rss .item__svg .st5 {
+  fill: #ffffff;
+  stroke: #ffffff;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+.rss .item__svg .st6 {
+  clip-path: url(#SVGID_8_);
+}
+
+.rss .item__svg .st6,
+.rss .item__svg .st7 {
+  stroke: #ffffff;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+.rss .item__svg .st8,
+.rss .item__svg .st9 {
+  clip-path: url(#SVGID_10_);
+}
+
+.rss .item__svg .st9 {
+  fill: #ffffff;
+  stroke: #ffffff;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+.item:hover .item__svg .st0 {
+  fill: #3fcc59;
+}
+
+.item:hover .item__svg .st1 {
+  fill: #3fcc59;
+}
+
+.item:hover .item__svg .st2 path {
+  fill: #3fcc59;
+}
+
+.item:hover .item__svg .st5 {
+  fill: #3fcc59;
+  stroke: #3fcc59;
+}
+
+.item:hover .item__svg .st6,
+.item:hover .item__svg .st7 {
+  stroke: #3fcc59;
+}
+
+.item:hover .item__svg .st9 {
+  fill: #3fcc59;
+  stroke: #3fcc59;
+}

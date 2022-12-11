@@ -1,4 +1,5 @@
 import './global.css';
+import './components/view/footer/footer.css';
 import App from './components/app/app';
 
 const app = new App();

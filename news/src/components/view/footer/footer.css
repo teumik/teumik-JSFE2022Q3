@@ -1,0 +1,52 @@
+@import url('./rss_svg.css');
+
+.footer {
+  padding: 0;
+  margin: 0;
+  height: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  gap: 10%;
+  list-style: none;
+}
+
+.footer .copyright {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+.footer .copyright a {
+  color: #444;
+}
+
+.footer .copyright a:hover {
+  color: #555;
+}
+
+.footer .copyright:before {
+  content: '©';
+}
+
+.item__svg {
+  height: 48px;
+  fill: #ffffff;
+  transition: fill 0.3s, stroke 0.3s;
+}
+
+.item:hover .item__svg {
+  fill: #3fcc59;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer__item:nth-child(2) {
+    order: 1;
+  }
+}
