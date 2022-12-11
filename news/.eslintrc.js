@@ -69,13 +69,14 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-explicit-any': 'error',
-    'class-methods-use-this': 'off',
 
     /**
     * Temporery properties
     */
-    'max-classes-per-file': ['error', 5],
+
     '@typescript-eslint/no-var-requires': 'off',
     'no-console': 'off',
+    'no-debugger': 'off',
+    'class-methods-use-this': 'off',
   },
 };
