@@ -40,7 +40,6 @@ export interface IEndpoint {
 
 export interface IFetchResponse {
   ok: boolean;
-  // status: 200 | 401 | 404 | 429 | 500; // TODO: Why it's don't work?
   status: number;
   statusText: string;
   json: PromiseResponse;
@@ -77,6 +76,7 @@ export type GetNews = (event: MouseEvent, callback: Callback) => void;
 
 export interface IAppController extends ILoader {
   getNews: GetNews;
+  getSources: (data: Callback) => void;
 }
 
 export type DrawSources = (data: INewsResponse[]) => void;
@@ -109,11 +109,17 @@ export type NewsItems = {
   status: Status;
   totalResults: number;
   articles: INewsItem[];
-};
+} & IResponse;
 
 export interface IAppView {
   news: INews;
   sources: ISources;
   drawNews: (data: NewsItems) => void;
   drawSources: (data: IResponse) => void;
+}
+
+export interface IApp {
+  controller: IAppController;
+  view: IAppView;
+  start: () => void;
 }
