@@ -1,11 +1,10 @@
 import './sources.css';
 import {
-  INewsResponse,
-  ISources
+  INewsResponse
 } from '../../../index';
 
-class Sources implements ISources {
-  draw(data: INewsResponse[]) {
+class Sources {
+  public draw(data: INewsResponse[]) {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 

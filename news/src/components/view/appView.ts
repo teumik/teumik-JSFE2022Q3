@@ -1,28 +1,25 @@
 import News from './news/news';
 import Sources from './sources/sources';
 import {
-  INews,
-  ISources,
   IResponse,
-  NewsItems,
-  IAppView
+  NewsItems
 } from '../../index';
 
-export class AppView implements IAppView {
-  news: INews;
-  sources: ISources;
+export class AppView {
+  private news: News;
+  private sources: Sources;
 
   constructor() {
     this.news = new News();
     this.sources = new Sources();
   }
 
-  drawNews(data: NewsItems) {
+  public drawNews(data: NewsItems) {
     const values = data?.articles ? data?.articles : [];
     this.news.draw(values);
   }
 
-  drawSources(data: IResponse) {
+  public drawSources(data: IResponse) {
     const values = data?.sources ? data?.sources : [];
     this.sources.draw(values);
   }

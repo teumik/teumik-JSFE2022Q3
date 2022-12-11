@@ -1,11 +1,10 @@
 import './news.css';
 import {
-  INews,
   INewsItem
 } from '../../../index';
 
-class News implements INews {
-  draw(data: INewsItem[]) {
+class News {
+  public draw(data: INewsItem[]) {
     const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
     const fragment = document.createDocumentFragment();

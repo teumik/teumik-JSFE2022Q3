@@ -64,28 +64,6 @@ export type Load = (
 
 export type IUrlOptions = IApiKey | IOptions;
 
-export interface ILoader {
-  baseLink: string;
-  options: IApiKey;
-  getResp: Resp;
-  errorHandler: ErrorHandler;
-  makeUrl: MakeUrl;
-  load: Load;
-}
-
-export type GetNews = (event: MouseEvent, callback: Callback) => void;
-
-export interface IAppController extends ILoader {
-  getNews: GetNews;
-  getSources: (data: Callback) => void;
-}
-
-export type DrawSources = (data: INewsResponse[]) => void;
-
-export interface ISources {
-  draw: DrawSources;
-}
-
 export interface INewsItem {
   author: string | null;
   content: string;
@@ -100,27 +78,7 @@ export interface INewsItem {
   description: string;
 }
 
-export type DrawNews = (data: INewsItem[]) => void;
-
-export interface INews {
-  draw: DrawNews;
-}
-
-export type NewsItems = {
-  status: Status;
+export interface NewsItems extends IResponse {
   totalResults: number;
   articles: INewsItem[];
-} & IResponse;
-
-export interface IAppView {
-  news: INews;
-  sources: ISources;
-  drawNews: (data: NewsItems) => void;
-  drawSources: (data: IResponse) => void;
-}
-
-export interface IApp {
-  controller: IAppController;
-  view: IAppView;
-  start: () => void;
 }
