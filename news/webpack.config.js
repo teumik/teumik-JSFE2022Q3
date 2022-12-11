@@ -34,12 +34,12 @@ const config = {
       },
       {
         test: /\.(ts|tsx)$/i,
-        exclude: ['/node_modules/',],
+        exclude: ['/node_modules/'],
         loader: 'ts-loader',
       },
       {
         test: /\.(s[ac]|c)ss$/i,
-        use: [stylesHandler, 'css-loader', 'sass-loader',],
+        use: [stylesHandler, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(svg|png|jpe?g|gif|webp)$/i,
@@ -65,7 +65,7 @@ const config = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js', '...',],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
   },
 };
 
