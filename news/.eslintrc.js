@@ -74,7 +74,6 @@ module.exports = {
     * Temporery properties
     */
 
-    '@typescript-eslint/no-var-requires': 'off',
     'no-console': 'off',
     'no-debugger': 'off',
     'class-methods-use-this': 'off',
