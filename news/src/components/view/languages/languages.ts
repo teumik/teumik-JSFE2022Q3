@@ -13,11 +13,18 @@ class LangMenu {
     this.container = document.querySelector('.languages') as HTMLDivElement;
   }
 
-  toggle() {
+  changeState(event: MouseEvent) {
     document.querySelector('.languages__items')?.classList.toggle('languages__items_visible');
+    const { target } = event;
+    const { langId } = (target as HTMLElement).dataset;
+    if (langId) {
+      document.querySelectorAll('.languages__item').forEach((el) => el.classList.remove('languages__item_active'));
+      (target as HTMLElement).classList.add('languages__item_active');
+      LangMenu.lang = langId;
+    }
   }
 
-  draw(data: Response): void {
+  drawMenuItems(data: Response): void {
     if (data.sources) {
       const frag = document.createDocumentFragment();
       [...new Set(data.sources.map((el: NewsSourceResponse) => el.language))].forEach((el) => {

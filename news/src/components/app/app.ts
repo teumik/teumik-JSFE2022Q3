@@ -9,7 +9,7 @@ import {
 class App {
   private readonly controller: AppController;
   private readonly view: AppView;
-  lang: LangMenu;
+  private readonly lang: LangMenu;
 
   constructor() {
     this.controller = new AppController();
@@ -23,28 +23,21 @@ class App {
         this.view.drawNews(data as NewsResponse);
       }));
     this.controller.getSources((data) => {
-      this.lang.draw(data as Response);
+      this.lang.drawMenuItems(data as Response);
       this.view.drawSources(data as Response);
     });
     this.lang.container.addEventListener('click', (event) => {
-      this.lang.toggle();
-      const { target } = event;
-      const { langId } = (target as HTMLElement).dataset;
-      if (langId) {
-        document.querySelectorAll('.languages__item').forEach((el) => el.classList.remove('languages__item_active'));
-        (target as HTMLElement).classList.add('languages__item_active');
-        LangMenu.lang = langId;
-        this.controller.getSources((data) => {
-          this.view.drawSources(data as Response);
-        }, LangMenu.lang);
-      }
+      this.lang.changeState(event);
+      this.controller.getSources((data) => {
+        this.view.drawSources(data as Response);
+      }, LangMenu.lang);
     });
     document.addEventListener('click', (event) => {
       const { target } = event;
       const close = (target as HTMLElement).closest('.languages');
       const menu = document.querySelector('.languages__items_visible');
       if (menu && !close) {
-        this.lang.toggle();
+        this.lang.changeState(event);
       }
     });
 
