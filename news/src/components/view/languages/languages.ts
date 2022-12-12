@@ -7,13 +7,13 @@ import {
 
 class LangMenu {
   static lang: string;
-  container: HTMLDivElement;
+  public container: HTMLDivElement;
 
   constructor() {
     this.container = document.querySelector('.languages') as HTMLDivElement;
   }
 
-  changeState(event: MouseEvent) {
+  public changeState(event: MouseEvent) {
     document.querySelector('.languages__items')?.classList.toggle('languages__items_visible');
     const { target } = event;
     const { langId } = (target as HTMLElement).dataset;
@@ -24,7 +24,7 @@ class LangMenu {
     }
   }
 
-  drawMenuItems(data: Response): void {
+  public drawMenuItems(data: Response): void {
     if (data.sources) {
       const frag = document.createDocumentFragment();
       [...new Set(data.sources.map((el: NewsSourceResponse) => el.language))].forEach((el) => {
