@@ -1,54 +1,60 @@
 import {
-  IApiKey,
-  IEndpoint,
-  IFetchResponse,
-  IOptions,
-  Endpoint,
-  IUrlOptions,
+  Endpoints,
+  GetResponse,
+  Options,
+  EndpointsHeader,
   Method,
-  Callback
+  Callback,
+  NewsResponse,
+  Response,
+  StatusCodes
 } from '../../index';
 
 class Loader {
   private baseLink: string;
-  private options: IApiKey;
+  private readonly options: Pick<Options, 'apiKey'>;
 
-  constructor(baseLink: string, options: IApiKey) {
+  constructor(baseLink: string, options: Pick<Options, 'apiKey'>) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
   public getResp(
-    { endpoint, options = {} }: IEndpoint,
+    { endpoint, options = {} }: Partial<Endpoints>,
     callback = () => {
       console.error('No callback for GET response');
     }
   ) {
-    this.load('GET', endpoint, callback, options);
+    this.load('GET', endpoint as EndpointsHeader, callback, options);
   }
 
-  private errorHandler(res: IFetchResponse): IFetchResponse {
+  private errorHandler(res: GetResponse): GetResponse {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404) { console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`); }
+      if (res.status === 401 || res.status === 404) { console.log(`Sorry, but there is ${res.status}: ${StatusCodes[res.status]} error: ${res.statusText}`); }
       throw Error(res.statusText);
     }
 
     return res;
   }
 
-  private makeUrl(options: IOptions, endpoint: Endpoint): string {
+  private makeUrl(options: Options, endpoint: EndpointsHeader): string {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
     Object.keys(urlOptions).forEach((key) => {
-      url += `${key}=${urlOptions[key as keyof IUrlOptions]}&`;
+      url += `${key}=${urlOptions[key as keyof Options]}&`;
     });
 
     return url.slice(0, -1);
   }
 
-  private load(method: Method, endpoint: Endpoint, callback: Callback, options = {}) {
-    fetch(this.makeUrl(options, endpoint), { method })
+  private load(
+    method: Method,
+    endpoint: EndpointsHeader,
+    callback: Callback<Response | NewsResponse>,
+    options = {}
+  ) {
+    fetch(this.makeUrl(options as Options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
       .then((data) => callback(data))

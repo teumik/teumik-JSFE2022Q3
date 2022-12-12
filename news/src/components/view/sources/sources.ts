@@ -1,10 +1,10 @@
 import './sources.css';
 import {
-  INewsResponse
+  NewsSourceResponse
 } from '../../../index';
 
 class Sources {
-  public draw(data: INewsResponse[]) {
+  public draw(data: Readonly<NewsSourceResponse[]>) {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 

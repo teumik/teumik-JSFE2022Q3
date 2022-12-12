@@ -5,15 +5,12 @@ import App from './components/app/app';
 const app = new App();
 app.start();
 
-export interface IApiKey {
+export interface Options {
+  sources: string;
   apiKey: string;
 }
 
-export interface IOptions {
-  sources?: string;
-}
-
-export interface INewsResponse {
+export interface NewsSourceResponse {
   id: string;
   name: string;
   description: string;
@@ -23,48 +20,35 @@ export interface INewsResponse {
   country: string;
 }
 
-export type Status = 'error' | 'ok';
-
-export interface IResponse {
-  status: Status;
-  sources: INewsResponse[];
+export interface Response {
+  status: 'error' | 'ok';
+  sources: NewsSourceResponse[];
 }
 
-export type PromiseResponse = () => Promise<IResponse>;
+export type EndpointsHeader = 'everything' | 'top-headlines' | 'sources';
 
-export type Endpoint = 'everything' | 'top-headlines' | 'sources';
-
-export interface IEndpoint {
-  endpoint: Endpoint;
-  options?: IOptions;
+export interface Endpoints {
+  endpoint: EndpointsHeader;
+  options: Partial<Options>;
 }
 
-export interface IFetchResponse {
+export enum StatusCodes {
+  'Unauthorized' = 401,
+  'Not Found' = 404
+}
+
+export interface GetResponse {
   ok: boolean;
   status: number;
   statusText: string;
-  json: PromiseResponse;
+  json: () => Promise<Response>;
 }
 
-export type Callback = (response?: IResponse) => void;
-
-export type Resp = (endpoint: IEndpoint, callback: Callback) => void;
-
-export type ErrorHandler = (response: IFetchResponse) => void;
-
-export type MakeUrl = (options: IOptions, endpoint: Endpoint) => string;
+export type Callback<T> = (response?: T) => void;
 
 export type Method = 'GET';
 
-export type Load = (
-  method: Method,
-  endpoint: Endpoint,
-  callback: Callback,
-  options: IOptions) => void;
-
-export type IUrlOptions = IApiKey | IOptions;
-
-export interface INewsItem {
+export interface NewsPost {
   author: string | null;
   content: string;
   publishedAt: string;
@@ -78,7 +62,7 @@ export interface INewsItem {
   description: string;
 }
 
-export interface NewsItems extends IResponse {
+export interface NewsResponse extends Pick<Response, 'status'> {
   totalResults: number;
-  articles: INewsItem[];
+  articles: NewsPost[];
 }

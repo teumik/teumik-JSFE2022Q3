@@ -1,13 +1,13 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 import {
-  IResponse,
-  NewsItems
+  Response,
+  NewsResponse
 } from '../../index';
 
 class App {
-  private controller: AppController;
-  private view: AppView;
+  private readonly controller: AppController;
+  private readonly view: AppView;
 
   constructor() {
     this.controller = new AppController();
@@ -16,9 +16,9 @@ class App {
 
   public start() {
     (document.querySelector('.sources') as HTMLElement)
-      .addEventListener('click', (e) => this.controller.getNews(e, (data) => this.view.drawNews(data as NewsItems)));
+      .addEventListener('click', (e) => this.controller.getNews(e, (data) => this.view.drawNews(data as NewsResponse)));
     this.controller.getSources((data) => {
-      this.view.drawSources(data as IResponse);
+      this.view.drawSources(data as Response);
     });
   }
 }
