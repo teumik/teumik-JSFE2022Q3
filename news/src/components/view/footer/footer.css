@@ -3,7 +3,6 @@
 .footer {
   padding: 0;
   margin: 0;
-  height: 100px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
@@ -44,6 +43,7 @@
   .footer {
     display: flex;
     flex-direction: column;
+    gap: 1em;
   }
 
   .footer__item:nth-child(2) {

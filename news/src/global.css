@@ -2,6 +2,10 @@ body {
   color: #fff;
   background: #17181c;
   font-family: sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
@@ -11,4 +15,8 @@ header {
 header h1 {
   font-size: 40px;
   font-weight: 800;
+}
+
+.main {
+  flex-grow: 1;
 }
