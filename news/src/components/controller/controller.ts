@@ -6,10 +6,13 @@ import {
 } from '../../index';
 
 class AppController extends AppLoader {
-  public getSources(callback: Callback<Response | NewsResponse>) {
+  public getSources(callback: Callback<Response | NewsResponse>, lang = '') {
     super.getResp(
       {
         endpoint: 'sources',
+        options: {
+          language: lang,
+        },
       },
       callback
     );

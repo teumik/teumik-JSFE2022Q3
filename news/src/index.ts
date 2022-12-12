@@ -1,13 +1,17 @@
 import './global.css';
 import './components/view/footer/footer.css';
+import './components/view/languages/languages.css';
 import App from './components/app/app';
 
 const app = new App();
 app.start();
 
+export default app;
+
 export interface Options {
   sources: string;
   apiKey: string;
+  language: string;
 }
 
 export interface NewsSourceResponse {
@@ -65,4 +69,22 @@ export interface NewsPost {
 export interface NewsResponse extends Pick<Response, 'status'> {
   totalResults: number;
   articles: NewsPost[];
+}
+
+export enum LanguagesDictionary {
+  ar = 'Arabic',
+  de = 'German',
+  en = 'English',
+  es = 'Spanish',
+  fr = 'French',
+  he = 'Hebrew',
+  it = 'Italian',
+  nl = 'Dutch',
+  no = 'Norwegian',
+  pt = 'Portuguese',
+  ru = 'Russian',
+  se = 'Northern Sami',
+  sv = 'Swedish',
+  ud = 'Urdu',
+  zh = 'Chinese'
 }

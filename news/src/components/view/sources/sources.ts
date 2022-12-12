@@ -17,7 +17,13 @@ class Sources {
       fragment.append(sourceClone);
     });
 
-    (document.querySelector('.sources') as HTMLElement).append(fragment);
+    const target = document.querySelector('.sources') as HTMLElement;
+
+    if (target) {
+      target.replaceChildren(fragment);
+    } else {
+      (document.querySelector('.sources') as HTMLElement).append(fragment);
+    }
   }
 }
 
