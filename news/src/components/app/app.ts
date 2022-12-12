@@ -1,6 +1,7 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 import LangMenu from '../view/languages/languages';
+import Search from '../view/search/search';
 import {
   Response,
   NewsResponse
@@ -10,11 +11,13 @@ class App {
   private readonly controller: AppController;
   private readonly view: AppView;
   private readonly lang: LangMenu;
+  private readonly search: Search;
 
   constructor() {
     this.controller = new AppController();
     this.view = new AppView();
     this.lang = new LangMenu();
+    this.search = new Search();
   }
 
   public start() {
@@ -31,6 +34,7 @@ class App {
       const { target } = event;
       const { langId } = (target as HTMLElement).dataset;
       if (langId) {
+        this.search.onReset();
         this.controller.getSources((data) => {
           this.view.drawSources(data as Response);
         }, LangMenu.lang);
@@ -44,9 +48,14 @@ class App {
         this.lang.changeState(event);
       }
     });
-
     globalThis.addEventListener('load', () => {
       (this.lang.container.lastElementChild as HTMLElement).hidden = false;
+    });
+    this.search.input.addEventListener('input', (event) => {
+      this.search.onInput(event as InputEvent);
+    });
+    this.search.button.addEventListener('click', () => {
+      this.search.onReset();
     });
   }
 }
