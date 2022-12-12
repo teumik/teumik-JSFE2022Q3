@@ -28,9 +28,13 @@ class App {
     });
     this.lang.container.addEventListener('click', (event) => {
       this.lang.changeState(event);
-      this.controller.getSources((data) => {
-        this.view.drawSources(data as Response);
-      }, LangMenu.lang);
+      const { target } = event;
+      const { langId } = (target as HTMLElement).dataset;
+      if (langId) {
+        this.controller.getSources((data) => {
+          this.view.drawSources(data as Response);
+        }, LangMenu.lang);
+      }
     });
     document.addEventListener('click', (event) => {
       const { target } = event;
