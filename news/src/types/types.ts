@@ -1,7 +1,7 @@
 export interface Options {
-  sources: string;
-  apiKey: string;
-  language: string;
+  sources?: string;
+  apiKey?: string;
+  language?: string;
 }
 
 export interface NewsSourceResponse {
@@ -51,7 +51,7 @@ export interface NewsPost {
   description: string;
 }
 
-export interface NewsResponse extends Pick<Response, 'status'> {
+export interface NewsResponse extends Response {
   totalResults: number;
   articles: NewsPost[];
 }
