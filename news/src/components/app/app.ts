@@ -30,14 +30,17 @@ class App {
       this.view.drawSources(data as Response);
     });
     this.lang.container.addEventListener('click', (event) => {
-      this.lang.changeState(event);
       const { target } = event;
-      const { langId } = (target as HTMLElement).dataset;
+      const { langId } = (target as HTMLDivElement).dataset;
       if (langId) {
+        this.lang.lang = langId;
+        this.lang.changeStateItem(target as HTMLDivElement, langId);
         this.search.onReset();
         this.controller.getSources((data) => {
           this.view.drawSources(data as Response);
-        }, LangMenu.lang);
+        }, this.lang.lang);
+      } else {
+        this.lang.changeStateMenu();
       }
     });
     document.addEventListener('click', (event) => {
@@ -45,7 +48,7 @@ class App {
       const close = (target as HTMLElement).closest('.languages');
       const menu = document.querySelector('.languages__items_visible');
       if (menu && !close) {
-        this.lang.changeState(event);
+        this.lang.changeStateMenu();
       }
     });
     globalThis.addEventListener('load', () => {

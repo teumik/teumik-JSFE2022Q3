@@ -6,22 +6,32 @@ import {
 } from '../../../index';
 
 class LangMenu {
-  static lang: string;
+  private langValue: string;
   public container: HTMLDivElement;
 
   constructor() {
     this.container = document.querySelector('.languages') as HTMLDivElement;
+    this.langValue = '';
   }
 
-  public changeState(event: MouseEvent) {
-    document.querySelector('.languages__items')?.classList.toggle('languages__items_visible');
-    const { target } = event;
-    const { langId } = (target as HTMLElement).dataset;
-    if (langId) {
-      document.querySelectorAll('.languages__item').forEach((el) => el.classList.remove('languages__item_active'));
-      (target as HTMLElement).classList.add('languages__item_active');
-      LangMenu.lang = langId;
+  set lang(value: string) {
+    this.langValue = value;
+  }
+
+  get lang() {
+    return this.langValue;
+  }
+
+  public changeStateMenu() {
+    this.container.querySelector('.languages__items')?.classList.toggle('languages__items_visible');
+  }
+
+  public changeStateItem(target: HTMLDivElement, langId: string) {
+    if (langId && target) {
+      this.container.querySelectorAll('.languages__item').forEach((el) => el.classList.remove('languages__item_active'));
+      target.classList.add('languages__item_active');
     }
+    this.changeStateMenu();
   }
 
   public drawMenuItems(data: Response): void {
