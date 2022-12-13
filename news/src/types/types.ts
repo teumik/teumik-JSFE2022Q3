@@ -16,7 +16,7 @@ export interface NewsSourceResponse {
 
 export interface Response {
   status: 'error' | 'ok';
-  sources: NewsSourceResponse[];
+  sources?: NewsSourceResponse[];
 }
 
 export type EndpointsHeader = 'everything' | 'top-headlines' | 'sources';
@@ -26,14 +26,7 @@ export interface Endpoints {
   options: Partial<Options>;
 }
 
-export interface GetResponse {
-  ok: boolean;
-  status: number;
-  statusText: string;
-  json: () => Promise<Response>;
-}
-
-export type Callback<T> = (response?: T) => void;
+export type Callback<T> = (response: T) => void;
 
 export type Method = 'GET';
 
@@ -52,6 +45,13 @@ export interface NewsPost {
 }
 
 export interface NewsResponse extends Response {
-  totalResults: number;
-  articles: NewsPost[];
+  totalResults?: number;
+  articles?: NewsPost[];
+}
+
+export interface GetResponse {
+  ok: boolean;
+  status: number;
+  statusText: string;
+  json: () => Promise<NewsResponse>;
 }

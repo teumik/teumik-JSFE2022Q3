@@ -1,9 +1,9 @@
 import './search.css';
 
 export default class Search {
-  input;
-  source;
-  button;
+  input: HTMLInputElement;
+  source: HTMLCollection;
+  button: HTMLButtonElement;
 
   constructor() {
     this.input = document.querySelector('.search__input') as HTMLInputElement;
@@ -11,14 +11,17 @@ export default class Search {
     this.button = document.querySelector('.search__button') as HTMLButtonElement;
   }
 
-  onInput(event: InputEvent) {
+  onInput(event: Event) {
+    if (!(event instanceof InputEvent)) return;
     const { value } = event.target as HTMLInputElement;
     Array.from(this.source).forEach((el) => {
-      const collectionElement = el as HTMLElement;
-      collectionElement.hidden = true;
-      if ((collectionElement.innerText).toLocaleUpperCase().trim()
-        .includes(value.trim().toLocaleUpperCase())) {
-        collectionElement.hidden = false;
+      if (el instanceof HTMLDivElement) {
+        const collectionElement = el;
+        collectionElement.hidden = true;
+        if ((collectionElement.innerText).toLocaleUpperCase().trim()
+          .includes(value.trim().toLocaleUpperCase())) {
+          collectionElement.hidden = false;
+        }
       }
     });
   }
@@ -26,8 +29,10 @@ export default class Search {
   onReset() {
     this.input.value = '';
     Array.from(this.source).forEach((el) => {
-      const collectionElement = el;
-      (collectionElement as HTMLElement).hidden = false;
+      if (el instanceof HTMLDivElement) {
+        const collectionElement = el;
+        collectionElement.hidden = false;
+      }
     });
   }
 }

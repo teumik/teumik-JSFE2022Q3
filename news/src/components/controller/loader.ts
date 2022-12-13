@@ -6,7 +6,6 @@ import {
   Method,
   Callback,
   NewsResponse,
-  Response,
   StatusCodes
 } from '../../index';
 
@@ -20,13 +19,13 @@ class Loader {
   }
 
   public getResp(
-    { endpoint, options = {} }: Partial<Endpoints>,
-    callback: Callback<Response | NewsResponse>
+    { endpoint, options = {} }: Endpoints,
+    callback: Callback<NewsResponse>
   ) {
     if (callback === undefined) {
       throw new Error('No callback for GET response');
     }
-    this.load('GET', endpoint as EndpointsHeader, callback, options);
+    this.load('GET', endpoint, callback, options);
   }
 
   private errorHandler(res: GetResponse): GetResponse {
@@ -55,10 +54,10 @@ class Loader {
   private load(
     method: Method,
     endpoint: EndpointsHeader,
-    callback: Callback<Response | NewsResponse>,
+    callback: Callback<NewsResponse>,
     options = {}
   ) {
-    fetch(this.makeUrl(options as Options, endpoint), { method })
+    fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
       .then((data) => {

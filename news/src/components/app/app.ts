@@ -22,12 +22,12 @@ class App {
 
   public start() {
     (document.querySelector('.sources') as HTMLElement)
-      .addEventListener('click', (e) => this.controller.getNews(e, (data) => {
-        this.view.drawNews(data as NewsResponse);
+      .addEventListener('click', (e) => this.controller.getNews(e, (data: NewsResponse) => {
+        this.view.drawNews(data);
       }));
-    this.controller.getSources((data) => {
-      this.lang.drawMenuItems(data as Response);
-      this.view.drawSources(data as Response);
+    this.controller.getSources((data: Response) => {
+      this.lang.drawMenuItems(data);
+      this.view.drawSources(data);
     });
     this.lang.container.addEventListener('click', (event) => {
       const { target } = event;
@@ -36,8 +36,8 @@ class App {
         this.lang.lang = langId;
         this.lang.changeStateItem(target as HTMLDivElement, langId);
         this.search.onReset();
-        this.controller.getSources((data) => {
-          this.view.drawSources(data as Response);
+        this.controller.getSources((data: Response) => {
+          this.view.drawSources(data);
         }, this.lang.lang);
       } else {
         this.lang.changeStateMenu();
@@ -54,8 +54,8 @@ class App {
     globalThis.addEventListener('load', () => {
       (this.lang.container.lastElementChild as HTMLElement).hidden = false;
     });
-    this.search.input.addEventListener('input', (event) => {
-      this.search.onInput(event as InputEvent);
+    this.search.input.addEventListener('input', (event: Event) => {
+      this.search.onInput(event);
     });
     this.search.button.addEventListener('click', () => {
       this.search.onReset();

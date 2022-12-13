@@ -1,12 +1,11 @@
 import AppLoader from './appLoader';
 import {
   Callback,
-  NewsResponse,
-  Response
+  NewsResponse
 } from '../../index';
 
 class AppController extends AppLoader {
-  public getSources(callback: Callback<Response | NewsResponse>, lang = '') {
+  public getSources(callback: Callback<NewsResponse>, lang = '') {
     super.getResp(
       {
         endpoint: 'sources',
@@ -18,13 +17,13 @@ class AppController extends AppLoader {
     );
   }
 
-  public getNews(e: MouseEvent, callback: Callback<Response | NewsResponse>) {
+  public getNews(e: MouseEvent, callback: Callback<NewsResponse>) {
     let { target } = e;
-    const newsContainer = e.currentTarget as HTMLElement;
+    const newsContainer = e.currentTarget as HTMLDivElement;
 
     while (target !== newsContainer) {
-      if ((target as HTMLElement).classList.contains('source__item')) {
-        const sourceId = (target as HTMLElement).getAttribute('data-source-id') as string;
+      if ((target as HTMLDivElement).classList.contains('source__item')) {
+        const sourceId = String((target as HTMLDivElement).getAttribute('data-source-id'));
         if (newsContainer.getAttribute('data-source') !== sourceId) {
           newsContainer.setAttribute('data-source', sourceId);
           super.getResp(
@@ -39,7 +38,7 @@ class AppController extends AppLoader {
         }
         return;
       }
-      target = (target as HTMLElement).parentNode;
+      target = (target as HTMLDivElement).parentNode;
     }
   }
 }

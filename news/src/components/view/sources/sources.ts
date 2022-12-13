@@ -9,20 +9,22 @@ class Sources {
     const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
     data.forEach((item) => {
-      const sourceClone = sourceItemTemp.content.cloneNode(true) as DocumentFragment;
-
-      (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
-      (sourceClone.querySelector('.source__item') as HTMLElement).setAttribute('data-source-id', item.id);
-
+      const sourceClone = sourceItemTemp.content.cloneNode(true);
+      if (sourceClone instanceof DocumentFragment) {
+        (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
+        sourceClone.querySelector('.source__item')?.setAttribute('data-source-id', item.id);
+      }
       fragment.append(sourceClone);
     });
 
-    const target = document.querySelector('.sources') as HTMLElement;
+    const target = document.querySelector('.sources');
 
     if (target) {
-      target.replaceChildren(fragment);
-    } else {
-      (document.querySelector('.sources') as HTMLElement).append(fragment);
+      if (target.childElementCount !== 0) {
+        target.replaceChildren(fragment);
+      } else {
+        target.append(fragment);
+      }
     }
   }
 }

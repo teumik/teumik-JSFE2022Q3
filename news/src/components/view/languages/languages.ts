@@ -44,11 +44,13 @@ class LangMenu {
         div.innerHTML = LanguagesDictionary[el as keyof typeof LanguagesDictionary];
         frag.append(div);
       });
-      const target = this.container.lastElementChild as HTMLElement;
-      if (target.children.length) {
-        target.replaceChildren(frag);
-      } else {
-        target.append(frag);
+      const target = this.container.lastElementChild;
+      if (target) {
+        if (target.children.length !== 0) {
+          target.replaceChildren(frag);
+        } else {
+          target.append(frag);
+        }
       }
     }
   }
