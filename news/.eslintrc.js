@@ -74,8 +74,6 @@ module.exports = {
     * Temporery properties
     */
 
-    'no-console': 'off',
-    'no-debugger': 'off',
     'class-methods-use-this': 'off',
   },
 };
