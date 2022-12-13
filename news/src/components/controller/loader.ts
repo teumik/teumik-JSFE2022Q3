@@ -21,10 +21,11 @@ class Loader {
 
   public getResp(
     { endpoint, options = {} }: Partial<Endpoints>,
-    callback = () => {
-      console.error('No callback for GET response');
-    }
+    callback: Callback<Response | NewsResponse>
   ) {
+    if (callback === undefined) {
+      throw new Error('No callback for GET response');
+    }
     this.load('GET', endpoint as EndpointsHeader, callback, options);
   }
 
