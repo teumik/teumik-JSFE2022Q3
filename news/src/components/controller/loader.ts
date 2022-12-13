@@ -30,10 +30,13 @@ class Loader {
 
   private errorHandler(res: GetResponse): GetResponse {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404) { console.log(`Sorry, but there is ${res.status}: ${StatusCodes[res.status]} error: ${res.statusText}`); }
-      throw Error(res.statusText);
+      const error = new Error();
+      error.message = `\nResponse code: ${res.status}\n${res.statusText}`;
+      if (res.status === 401 || res.status === 404) {
+        error.name = `${StatusCodes[res.status] || 'Unnamed'}`;
+      }
+      throw error;
     }
-
     return res;
   }
 
@@ -60,7 +63,7 @@ class Loader {
       .then((data) => {
         callback(data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => { throw new Error(err); });
   }
 }
 
