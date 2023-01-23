@@ -1,0 +1,87 @@
+.garage {
+  display: grid;
+  gap: 1rem;
+
+  &__cars {
+    display: grid;
+    gap: 0.5rem;
+  }
+}
+
+$size: 48px;
+
+%Icons {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  height: 100%;
+
+  svg {
+    height: $size;
+    width: 100%;
+  }
+}
+
+.car {
+  &__control {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__track {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  &__images {
+    position: relative;
+    flex-grow: 1;
+    height: $size;
+  }
+
+  &__car-icon {
+    @extend %Icons;
+    top: 85%;
+    left: 0;
+  }
+
+  &__flag-icon {
+    @extend %Icons;
+
+    svg {
+      transform: translateY(-25%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: calc($size / 2 - 1px);
+      display: block;
+      height: 75%;
+      border-right: 2px dotted black;
+    }
+
+    right: calc($size / 2);
+  }
+
+  &__options {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__buttons {
+    cursor: pointer;
+
+    &_start:not(:disabled) {
+      border: 2px solid green;
+      color: green;
+    }
+
+    &_pause:not(:disabled) {
+      border: 2px solid orangered;
+      color: orangered;
+    }
+  }
+}
