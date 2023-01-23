@@ -1,0 +1,43 @@
+$size: 5rem;
+
+.control {
+  display: grid;
+  gap: 0.5rem;
+
+  &__item {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__text {
+
+    &::placeholder {
+      color: orangered;
+    }
+  }
+
+  &__view {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__name {}
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    svg {
+      width: min-content;
+      height: $size;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    max-width: 4rem;
+  }
+}
