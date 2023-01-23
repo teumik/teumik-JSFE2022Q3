@@ -1,0 +1,42 @@
+%Arrows {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+
+.table {
+  text-align: center;
+
+  &__headers {
+    position: relative;
+
+    &:nth-child(4),
+    &:nth-child(5) {
+      cursor: pointer;
+    }
+
+    &_asc {
+      &::after {
+        content: '↓';
+        @extend %Arrows;
+      }
+    }
+
+    &_desc {
+      &::after {
+        content: '↑';
+        @extend %Arrows;
+      }
+    }
+  }
+
+  &__column {
+
+
+    svg {
+      height: 48px;
+      width: 100%;
+    }
+  }
+}
