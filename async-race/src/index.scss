@@ -1,0 +1,41 @@
+@import './lib/normalize.css';
+
+@keyframes smoothOverlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  position: relative;
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    overscroll-behavior: none;
+    cursor: pointer;
+    animation: smoothOverlay 0.2s;
+
+    .winner {
+      padding: 1rem;
+      color: darkorange;
+      background: seagreen;
+      cursor: pointer;
+    }
+  }
+}
