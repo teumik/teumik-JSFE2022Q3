@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('node:path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -16,6 +17,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isProduction ? '[contenthash].js' : '[name].[contenthash].js',
+    assetModuleFilename: 'images/[hash][ext][query]',
     clean: true,
   },
   plugins: [
@@ -51,8 +53,15 @@ const config = {
         use: [stylesHandler, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
-        test: /\.(svg|png|jpe?g|gif|webp)$/i,
+        test: /\.(png|jpe?g|gif|webp)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: getPath('images'),
+        },
+      },
+      {
+        test: /\.(svg)$/i,
+        type: 'asset/source',
         generator: {
           filename: getPath('images'),
         },
