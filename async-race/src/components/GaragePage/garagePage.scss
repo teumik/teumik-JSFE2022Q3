@@ -1,0 +1,17 @@
+.main {
+  display: grid;
+  gap: 1rem;
+
+  &__buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+.title {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0;
+}
