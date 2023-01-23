@@ -1,0 +1,85 @@
+import './garagePageButtons.scss';
+import BaseNode from '../BaseNode/BaseNode';
+import GaragePage from '../GaragePage/GaragePage';
+
+export type Swipe = '<' | '>';
+
+export default class GaragePageButtons {
+  node: HTMLElement | null;
+  parent: HTMLElement | null;
+  that: GaragePage | null;
+  disabled: {
+    page: boolean;
+  };
+
+  constructor() {
+    this.node = null;
+    this.parent = null;
+    this.that = null;
+    this.disabled = {
+      page: false,
+    };
+  }
+
+  async swipePage(swipe: Swipe) {
+    const page = this.that?.pageNumber;
+    switch (swipe) {
+      case '<': {
+        if (page?.current === 1) return;
+        if (page) page.current -= 1;
+        break;
+      }
+      case '>': {
+        if (page?.max === page?.current) return;
+        if (page) page.current += 1;
+        break;
+      }
+      default:
+        break;
+    }
+    await this.that?.headers.render();
+    await this.that?.garage.render();
+    this.that?.pageButtons.render();
+  }
+
+  render(parent?: HTMLElement, that?: GaragePage) {
+    this.parent = parent ?? this.parent;
+    this.that = that ?? this.that;
+    const page = this.that?.pageNumber;
+    const max = page?.max;
+    const current = page?.current;
+    const winners = this.that?.that?.disabled.winners;
+
+    const { node } = new BaseNode({
+      className: 'main__buttons',
+      childrens: [
+        new BaseNode({
+          tag: 'button',
+          className: ['main__buttons_prev'],
+          inner: 'Prev',
+          attributes: {
+            disabled: winners || this.disabled.page || current === 1,
+          },
+          click: () => this.swipePage('<'),
+        }).node,
+        new BaseNode({
+          tag: 'button',
+          className: ['main__buttons_next'],
+          inner: 'Next',
+          attributes: {
+            disabled: winners || max === 0 || this.disabled.page || (
+              current === max || max === null
+            ),
+          },
+          click: () => this.swipePage('>'),
+        }).node,
+      ],
+    });
+
+    this.node?.remove();
+    this.parent?.append(node);
+
+    this.node = node;
+    return node;
+  }
+}
