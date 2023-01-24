@@ -48,16 +48,13 @@ export default class Panel {
     link?.create.render();
     link?.update.render();
     link?.view.render();
-    // link?.panel.render();
-    this.render();
     await link?.that?.garage.render();
-    // link?.that?.pageButtons.render();
     this.disabled.race = false;
     const disabled = this.that?.that?.that?.disabled;
     if (disabled) Object.assign(disabled, { winners: false });
-    // link?.render();
     this.that?.that?.pageButtons.render();
     this.that?.that?.that?.nav.render();
+    this.render();
   };
 
   getRandomCar = () => {

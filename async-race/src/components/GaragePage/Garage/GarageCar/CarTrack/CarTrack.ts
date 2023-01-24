@@ -3,7 +3,7 @@ import BaseNode from '../../../../BaseNode/BaseNode';
 import CarIcons from './CarIcons/CarIcons';
 import GarageCar from '../GarageCar';
 import {
-  getWinner, toggleEngine, updateWinner, createWinner, Winner
+  getWinner, toggleEngine, updateWinner, createWinner, Winner, EngineQuery
 } from '../../../../../lib/api';
 import EngineButtons from './EngineButtons/EngineButtons';
 import { Animation } from '../../../../../lib/animation';
@@ -35,6 +35,24 @@ interface DisabledProp {
     page: boolean;
   };
   garage?: {
+    racers: number[];
+    winner: number | null;
+    winners: Map<number, Winner>;
+    isRace: boolean;
+  };
+}
+
+interface Links {
+  link?: Panel; navLink?: Nav; pageLink?: GaragePageButtons;
+}
+
+interface LastFinish {
+  success: boolean;
+  carParams: {
+    velocity: number;
+    distance: number;
+  };
+  garage: {
     racers: number[];
     winner: number | null;
     winners: Map<number, Winner>;
@@ -114,17 +132,10 @@ export default class CarTrack {
     root.append(layer);
   };
 
-  updateRender = (link?: Panel, navLink?: Nav, pageLink?: GaragePageButtons) => {
+  updateRender = ({ link, navLink, pageLink }: Links) => {
     link?.render();
     navLink?.render();
     pageLink?.render();
-  };
-
-  updateEngineButton = (bool: boolean) => {
-    console.log(bool);
-
-    this.state.stopDisabled = bool;
-    this.engineButtons?.render();
   };
 
   removeDisabled = ({
@@ -134,6 +145,44 @@ export default class CarTrack {
       Object.assign(disabled, { reset: false });
       Object.assign(pageDisabled, { page: false });
       Object.assign(garage, { ...garage, isRace: false, winner: null });
+    }
+  };
+
+  stopClick = async ({ id, status }: EngineQuery) => {
+    if (!this.animation) return;
+    await toggleEngine({ id, status });
+    this.animation.stop();
+    this.animation.reset();
+    this.state.engine = false;
+    this.state.pause = true;
+  };
+
+  startClick = ({
+    navDisabled, disabled, pageDisabled, garage, link, navLink, pageLink,
+  }: DisabledProp & Links) => {
+    if (navDisabled && disabled && pageDisabled && !disabled.reset) {
+      Object.assign(disabled, { reset: true });
+      Object.assign(navDisabled, { winners: true });
+      Object.assign(pageDisabled, { page: true });
+      this.updateRender({ link, navLink, pageLink });
+    }
+    this.state.engine = true;
+    this.state.pause = false;
+    this.state.stopDisabled = true;
+    if (this.state.id) garage?.racers?.push(this.state.id);
+  };
+
+  afterLastFinish = ({ garage, success, carParams }: LastFinish) => {
+    const { id } = this.state;
+    if (!id) return;
+    if (success && !this.state.pause && garage?.isRace) {
+      if (garage && garage.winner === null) {
+        Object.assign(garage, { ...garage, winner: id });
+        const { velocity: v, distance: s } = carParams;
+        const t = Math.round(((s / v) / 1000) * 100) / 100;
+        this.showWinner(t);
+        this.setWinnerStat({ id, time: t });
+      }
     }
   };
 
@@ -147,7 +196,6 @@ export default class CarTrack {
 
     this.state.engine = !this.state.engine;
     this.engineButtons?.render();
-    // this.updateEngineButton(!this.state.engine);
 
     const id = this.state.id ?? this.that?.state.car.id;
     if (!id) return;
@@ -163,26 +211,12 @@ export default class CarTrack {
     const garage = this.that?.that?.state;
 
     if (status === 'started') {
-      if (navDisabled && disabled && pageDisabled && !disabled.reset) {
-        Object.assign(disabled, { reset: true });
-        Object.assign(navDisabled, { winners: true });
-        Object.assign(pageDisabled, { page: true });
-        // link?.render();
-        // navLink?.render();
-        // pageLink?.render();
-        this.updateRender(link, navLink, pageLink);
-      }
-      this.state.engine = true;
-      this.state.pause = false;
-      this.state.stopDisabled = true;
-      garage?.racers?.push(id);
+      this.startClick({
+        navDisabled, disabled, pageDisabled, garage, link, navLink, pageLink,
+      });
     }
     if (status === 'stopped') {
-      await toggleEngine({ id, status });
-      this.animation.stop();
-      this.animation.reset();
-      this.state.engine = false;
-      this.state.pause = true;
+      await this.stopClick({ id, status });
       return;
     }
 
@@ -191,54 +225,28 @@ export default class CarTrack {
 
     this.state.startDisabled = true;
     this.engineButtons?.render();
-    // this.updateEngineButton(true);
 
     const carParams = await toggleEngine({ id, status });
     this.state.stopDisabled = false;
     this.engineButtons?.render();
-    // this.updateEngineButton(false);
 
-    if (this.state.pause) {
-      return;
-    }
+    if (this.state.pause) return;
 
     this.animation.init(carParams);
     this.animation.start();
 
     const { success, code } = await toggleEngine({ id, status: 'drive' });
-
-    if (success && !this.state.pause && garage?.isRace) {
-      if (garage && garage.winner === null) {
-        Object.assign(garage, { ...garage, winner: id });
-        const { velocity: v, distance: s } = carParams;
-        const t = Math.round(((s / v) / 1000) * 100) / 100;
-        this.showWinner(t);
-        this.setWinnerStat({ id, time: t });
-      }
-    }
+    if (garage) this.afterLastFinish({ garage, success, carParams });
 
     this.state.startDisabled = false;
     this.engineButtons?.render();
-    // this.updateEngineButton(false);
 
     if (garage?.racers) remove(garage.racers, id);
-
-    // if (navDisabled && disabled && pageDisabled && garage?.racers.length === 0) {
-    //   Object.assign(disabled, { reset: false });
-    //   Object.assign(pageDisabled, { page: false });
-    //   garage.winner = null;
-    //   Object.assign(garage, { ...garage, isRace: false });
-    // }
     this.removeDisabled({
       navDisabled, disabled, pageDisabled, garage,
     });
+    this.updateRender({ link, navLink, pageLink });
 
-    // link?.render();
-    // navLink?.render();
-    // pageLink?.render();
-    this.updateRender(link, navLink, pageLink);
-
-    if (this.state.pause || code === 429) return;
     if (success || code === 500) this.animation.stop();
   };
 
