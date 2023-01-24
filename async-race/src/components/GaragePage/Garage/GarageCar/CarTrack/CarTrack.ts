@@ -186,30 +186,39 @@ export default class CarTrack {
     }
   };
 
+  startDisable = (bool: boolean) => {
+    this.state.startDisabled = bool;
+    this.engineButtons?.render();
+  };
+
+  stopDisable = (bool: boolean) => {
+    this.state.stopDisabled = bool;
+    this.engineButtons?.render();
+  };
+
+  toggleEngineState = () => {
+    this.state.engine = !this.state.engine;
+    this.engineButtons?.render();
+  };
+
   click = async (sign: 'a' | 'b') => {
+    this.toggleEngineState();
     const link = this.that?.that?.that?.control?.panel;
     const disabled = link?.disabled;
     const navLink = this.that?.that?.that?.that?.nav;
     const navDisabled = navLink?.that?.disabled;
     const pageLink = this.that?.that?.that?.pageButtons;
     const pageDisabled = pageLink?.disabled;
-
-    this.state.engine = !this.state.engine;
-    this.engineButtons?.render();
+    const garage = this.that?.that?.state;
 
     const id = this.state.id ?? this.that?.state.car.id;
     if (!id) return;
     this.state.id = id;
 
-    const statusMap: Status = {
-      a: 'started',
-      b: 'stopped',
-    };
+    const statusMap: Status = { a: 'started', b: 'stopped' };
     const status = statusMap[sign];
 
     if (!this.animation) return;
-    const garage = this.that?.that?.state;
-
     if (status === 'started') {
       this.startClick({
         navDisabled, disabled, pageDisabled, garage, link, navLink, pageLink,
@@ -223,23 +232,17 @@ export default class CarTrack {
     this.animation.stop();
     this.animation.reset();
 
-    this.state.startDisabled = true;
-    this.engineButtons?.render();
-
+    this.startDisable(true);
     const carParams = await toggleEngine({ id, status });
-    this.state.stopDisabled = false;
-    this.engineButtons?.render();
+    this.stopDisable(false);
 
     if (this.state.pause) return;
-
     this.animation.init(carParams);
     this.animation.start();
 
     const { success, code } = await toggleEngine({ id, status: 'drive' });
     if (garage) this.afterLastFinish({ garage, success, carParams });
-
-    this.state.startDisabled = false;
-    this.engineButtons?.render();
+    this.startDisable(false);
 
     if (garage?.racers) remove(garage.racers, id);
     this.removeDisabled({
