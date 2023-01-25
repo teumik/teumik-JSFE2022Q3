@@ -3,6 +3,7 @@ import BaseNode from './components/BaseNode/BaseNode';
 import Nav from './components/Nav/Nav';
 import GaragePage from './components/GaragePage/GaragePage';
 import WinnersPage from './components/WinnersPage/WinnersPage';
+import { checkServer } from './lib/api';
 
 export type Pages = 'winners' | 'garage';
 
@@ -45,7 +46,10 @@ export default class App {
     this.render(this.parent);
   }
 
-  render(parent: HTMLElement | null) {
+  async render(parent: HTMLElement | null) {
+    const isWork = await checkServer();
+    if (!isWork) return new BaseNode({}).node;
+
     this.parent = parent ?? this.parent;
     const { node: wrapper } = new BaseNode({});
     const { node } = new BaseNode({

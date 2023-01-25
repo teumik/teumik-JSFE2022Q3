@@ -39,6 +39,15 @@ const paths = {
   engine: '/engine',
 };
 
+export const checkServer = async () => {
+  try {
+    await fetch(`${baseUrl}`);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 export const getQueryString = (car: Partial<BasicQuery>) => (
   Object
     .entries(car)
