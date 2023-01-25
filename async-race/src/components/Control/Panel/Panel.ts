@@ -41,6 +41,12 @@ export default class Panel {
   }
 
   reset = async () => {
+    const cars = this.that?.that?.garage.garage;
+    const garage = this.that?.that?.garage.state;
+    if (garage) Object.assign(garage, { ...garage, isRace: false });
+    cars?.map((car) => car.item.track?.click('b'));
+    this.disabled.race = true;
+
     const link = this.that?.that?.control;
     const state = link?.that?.state;
     const clone = structuredClone(this.state);
@@ -107,7 +113,8 @@ export default class Panel {
           className: 'cotrol__reset',
           inner: 'Reset',
           attributes: {
-            disabled: this.disabled.reset || false,
+            // disabled: this.disabled.reset || false,
+            // disabled: this.disabled.reset || false,
           },
           click: this.reset,
         }).node,
