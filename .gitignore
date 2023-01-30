@@ -101,5 +101,4 @@ typings/
 .DS_Store
 
 # dist folder
-dist
 !presentation/dist
