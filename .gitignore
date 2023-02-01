@@ -98,4 +98,6 @@ typings/
 
 # TernJS port file
 .tern-port
-.DS_Store
+
+# MacOS
+**/.DS_Store

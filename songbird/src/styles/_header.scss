@@ -1,0 +1,97 @@
+@import './variables';
+@import './fontFaces';
+
+.header {
+  padding: 1.5rem 2rem;
+  background: $blockBackgroundColor;
+  border-radius: 1rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  @extend %InterTightRegular;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    color: $subTextColor;
+    cursor: pointer;
+    transition: color $s;
+
+    &:not(:first-child)::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 0.2rem;
+      background-color: $accentGreenColor;
+      transform: translate(-50%);
+      transition: width $s;
+    }
+
+    &:first-child {
+      cursor: default;
+    }
+
+    &:last-child {
+      align-self: center;
+
+      &::after {
+        content: none;
+      }
+    }
+
+    &:hover {
+      color: inherit;
+
+      &::after {
+        width: 60%;
+      }
+    }
+
+    &_active {
+      color: $accentGreenColor;
+
+      &:hover {
+        color: $accentGreenColor;
+      }
+
+      &:not(:first-child)::after {
+        content: none;
+      }
+    }
+  }
+
+  &__button {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .menu {
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+
+    &__item {
+
+      &:first-child {
+        width: 100%;
+        text-align: center;
+      }
+
+      &:last-child {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+}

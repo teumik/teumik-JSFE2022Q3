@@ -1,0 +1,47 @@
+@import './variables';
+@import './fontFaces';
+
+.welcome {
+  padding: 1rem 2rem;
+  margin-bottom: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./assets/image/bird_rain.jpg');
+  background-size: cover;
+  background-position: 25% top;
+  border-radius: 1rem;
+
+  &__header {
+    margin: 0;
+    @extend %InterTightBlack;
+    text-align: center;
+  }
+
+  &__text {
+    margin: 0;
+    @extend %InterTightBold;
+    text-align: center;
+
+    &_color {
+      color: $parrotColor;
+    }
+  }
+
+  &__button {
+    padding: 0.5rem 4rem;
+    @extend %InterTightSemiBold;
+    text-transform: uppercase;
+    background: $blockBackgroundColorLight;
+    border: 0.2rem solid $accentGreenColor;
+    border-radius: 0.5rem;
+    transition: color $s, background $s;
+
+    &:hover {
+      color: $blockBackgroundColor;
+      background: $accentGreenColor;
+    }
+  }
+}
