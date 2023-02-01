@@ -1,5 +1,3 @@
-// SHUFFLE
-
 export function shuffle(array) {
   const length = array == null ? 0 : array.length;
 
