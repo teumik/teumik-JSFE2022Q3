@@ -91,7 +91,6 @@ function insertCorrectAnswers(elems, answer) {
       } else if (el === 'id') {
         elems[el] = answer[el];
       } else if (el === 'audio') {
-        // elems[el].src = answer[el];
       } else if (el !== 'player') {
         elems[el].innerHTML = answer[el];
       }
@@ -106,7 +105,6 @@ function setGuessBird(answer) {
   nodesData.elemsDefault.id = answer.id;
   nodesData.elemsDefault.isGuess = false;
   game.birdId = answer.id;
-  console.log(game.birdId, 'Bird', '<>', game.levelCount + 1, 'Level');
 }
 
 function getAnswerNode() {
