@@ -138,7 +138,6 @@ export class AudioComponent {
   }
 
   convertTime(d) {
-    console.log(this, 'Annoying ESLint');
     const min = Math.floor(d / 60);
     const sec = d % 60;
     const mm = min.toString().padStart(2, 0);
@@ -202,7 +201,6 @@ export class AudioComponent {
   }
 
   playSound(event) {
-    console.log(this.id, 'BirdID', '<>', this.name, 'Bird Name');
     if (event) {
       if (event.type === 'ended') {
         this.currentDurationState = 0;
