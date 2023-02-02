@@ -1,9 +1,0 @@
-# FOLDERS
-node_modules
-build
-.cache
-.temp
-
-# FILES
-**/.DS_Store
-*LICENSE*
