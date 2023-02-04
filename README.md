@@ -1,2 +1,7 @@
 # teumik-JSFE2022Q3
-Private repository for @teumik
+
+## Async Race
+
+Пример того, как не стоит писать на чистом JS
+
+Все познается через практику и сравнение
